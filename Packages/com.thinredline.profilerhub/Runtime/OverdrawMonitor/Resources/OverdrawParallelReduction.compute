@@ -1,0 +1,40 @@
+﻿#pragma kernel CSMain
+
+// Defines
+// ios上最多512，用32*32爆掉了，改成16*16==256
+// Metal: Compute shader (OverdrawParallelReduction.CSMain) has 1024 threads in a threadgroup which is more than the supported max of 512 in this device
+#define SIZEX 16
+#define SIZEY 16
+#define GROUPSIZE SIZEX*SIZEY
+
+
+groupshared float accumulator[GROUPSIZE];
+
+Texture2D<float4> Overdraw;
+RWStructuredBuffer<float> Output;
+int GroupX;		// dispatch的groupX个数
+
+// ios上最多512，用32*32爆掉了，改成16*16==256
+// Metal: Compute shader (OverdrawParallelReduction.CSMain) has 1024 threads in a threadgroup which is more than the supported max of 512 in this device
+[numthreads(SIZEX,SIZEY,1)]
+void CSMain (uint3 gid : SV_GroupID, uint3 inp : SV_DispatchThreadID, uint gtidx : SV_GroupIndex)
+{
+	accumulator[gtidx] = (Overdraw[inp.xy].z * 50);
+	
+	// Wait for all
+	GroupMemoryBarrierWithGroupSync();
+	
+	[unroll]
+	for (uint ix = GROUPSIZE >> 1; ix > 0; ix = ix >> 1)
+	{
+		if (gtidx < ix)
+		{
+			accumulator[gtidx] = (accumulator[gtidx] + accumulator[gtidx + ix]);
+		}
+		GroupMemoryBarrierWithGroupSync();
+	}
+	
+	if (gtidx != 0) return;
+	
+	Output[gid.y * GroupX + gid.x] = accumulator[0];
+}

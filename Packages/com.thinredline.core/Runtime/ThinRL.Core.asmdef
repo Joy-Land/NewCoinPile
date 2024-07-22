@@ -1,0 +1,23 @@
+{
+    "name": "ThinRL.Core",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e3f7d62262912d5429adc4b636d43a84",
+        "GUID:5efd170ecd8084500bed5692932fe14e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.qq.weixin.minigame",
+            "expression": "",
+            "define": "UNITY_WX"
+        }
+    ],
+    "noEngineReferences": false
+}

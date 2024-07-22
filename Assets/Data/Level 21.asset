@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8dfeaebf9ef964a8bcb865f809137a, type: 3}
+  m_Name: Level 21
+  m_EditorClassIdentifier: 
+  coinLists:
+  - data:
+    - color: 9
+      number: 2
+    - color: 1
+      number: 4
+    - color: 4
+      number: 2
+    - color: 11
+      number: 2
+    position: {x: 1, y: -18.05}
+  - data:
+    - color: 11
+      number: 4
+    - color: 2
+      number: 4
+    position: {x: -0.16, y: -15.9}
+  - data:
+    - color: 1
+      number: 3
+    - color: 4
+      number: 3
+    - color: 5
+      number: 4
+    position: {x: -1.31, y: -13.72}
+  - data:
+    - color: 5
+      number: 2
+    - color: 6
+      number: 4
+    - color: 5
+      number: 3
+    position: {x: 0.84, y: -22.43}
+  - data:
+    - color: 1
+      number: 2
+    - color: 11
+      number: 2
+    - color: 9
+      number: 2
+    - color: 4
+      number: 4
+    position: {x: -0.3200001, y: -20.28}
+  - data:
+    - color: 6
+      number: 3
+    - color: 8
+      number: 7
+    position: {x: -1.47, y: -18.1}
+  - data:
+    - color: 6
+      number: 3
+    - color: 9
+      number: 3
+    - color: 1
+      number: 2
+    - color: 2
+      number: 2
+    position: {x: -1.54, y: -22.37}
+  - data:
+    - color: 9
+      number: 3
+    - color: 11
+      number: 2
+    - color: 8
+      number: 5
+    - color: 2
+      number: 2
+    position: {x: -2.7, y: -20.22}
+  - data:
+    - color: 9
+      number: 5
+    - color: 6
+      number: 5
+    position: {x: -3.85, y: -18.04}
+  - data:
+    - color: 5
+      number: 3
+    - color: 1
+      number: 4
+    - color: 4
+      number: 3
+    position: {x: -1.54, y: -26.8}
+  - data:
+    - color: 5
+      number: 3
+    - color: 2
+      number: 5
+    - color: 4
+      number: 3
+    position: {x: -2.7, y: -24.65}
+  - data:
+    - color: 11
+      number: 5
+    - color: 8
+      number: 3
+    - color: 2
+      number: 2
+    position: {x: -3.85, y: -22.47}
+  transCoinStackList:
+    data: 09000000060000000b0000000500000008000000010000000200000004000000

@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:Toolbar name="Toolbar" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+        <ui:Button text="Save" display-tooltip-when-elided="false" name="SaveButton" enable-rich-text="false" style="width: 300px; background-color: rgb(236, 255, 0); height: 21px; align-items: center; justify-content: center; align-self: stretch; position: relative; font-size: 16px; -unity-background-image-tint-color: rgb(255, 255, 255);" />
+        <ui:Button text="Upload" display-tooltip-when-elided="false" name="UploadButton" enable-rich-text="false" style="width: 300px; background-color: rgb(0, 255, 116); height: 21px; align-items: center; justify-content: center; align-self: stretch; position: relative; -unity-text-align: middle-center; white-space: nowrap; font-size: 16px; -unity-background-image-tint-color: rgb(255, 255, 255);" />
+    </uie:Toolbar>
+    <ui:VisualElement name="ContentContainer" style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="CollectorContainer" style="flex-grow: 1; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px;">
+            <ui:Label text="Collectors" display-tooltip-when-elided="true" name="CollectorTitle" style="background-color: rgb(89, 89, 89); -unity-text-align: upper-center; -unity-font-style: bold; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; font-size: 12px;" />
+            <ui:VisualElement name="ActiveRuleContainer" style="height: 20px;" />
+            <ui:TextField picking-mode="Ignore" label="Group Name" name="GroupName" />
+            <ui:TextField picking-mode="Ignore" label="Group Desc" name="GroupDesc" />
+            <ui:TextField picking-mode="Ignore" label="Asset Tags" name="GroupTags" />
+            <ui:VisualElement name="CollectorAddContainer" style="height: 20px; flex-direction: row-reverse;">
+                <ui:Button text="[ + ]" display-tooltip-when-elided="true" name="AddBtn" />
+            </ui:VisualElement>
+            <ui:ScrollView name="CollectorScrollView" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

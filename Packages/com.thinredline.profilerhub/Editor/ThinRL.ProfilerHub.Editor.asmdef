@@ -1,0 +1,22 @@
+{
+    "name": "ThinRL.ProfilerHub.Editor",
+    "rootNamespace": "",
+    "references": [
+        "ThinRL.ProfilerHub",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "ThinRL.Core",
+        "ThinRL.Core.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

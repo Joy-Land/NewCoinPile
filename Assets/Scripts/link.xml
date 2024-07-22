@@ -1,0 +1,10 @@
+<linker>
+	<assembly fullname="Newtonsoft.Json">
+		<type fullname="Newtonsoft.Json.Converters" preserve="all"/>
+		<type fullname="Newtonsoft.Json.Utilities" preserve="all"/>
+	</assembly>
+
+	<assembly fullname="YooAsset" preserve="all"/>
+	<assembly fullname="Joyland.GamePlay" preserve="all"/>
+
+</linker>

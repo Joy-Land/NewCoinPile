@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!1 &4025516108513236145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 7
+  m_Component:
+  - component: {fileID: 122418617275853019}
+  - component: {fileID: 3428900452483465556}
+  m_Layer: 0
+  m_HasEditorInfo: 1
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &122418617275853019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025516108513236145}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1289243, y: 0.20505354, z: -3.0681078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3428900452483465556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025516108513236145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f04602a5d1867c419e9c2893e72bbaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelPassClip: {fileID: 8300000, guid: d7d8c9bf10741f24f956161659ce0d39, type: 3}
+  levelPassClipVolume: 1
+  failClip: {fileID: 8300000, guid: c3bf3efb82d63014a9778cd438cea08b, type: 3}
+  failClipVolume: 1
+  transPilePrefab: {fileID: 0}
+  cachePilePrefab: {fileID: 0}
+  coinPileCollectionPrefab: {fileID: 0}

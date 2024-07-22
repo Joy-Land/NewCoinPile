@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!1 &8169190199769224708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 7
+  m_Component:
+  - component: {fileID: 6032213403604061170}
+  - component: {fileID: 7794581729067563455}
+  m_Layer: 0
+  m_HasEditorInfo: 1
+  m_Name: Material Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6032213403604061170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169190199769224708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.4464154, y: -1.1564188, z: -6.4712353}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7794581729067563455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169190199769224708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff061bfd54bf36942b282cfb65ee9a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yellowMaterials: {fileID: 2100000, guid: ab57bbe89bd8d0840baa4af37ea78349, type: 2}
+  blueMaterials: {fileID: 2100000, guid: 25a64944f9ad70e4da1eea1967a14531, type: 2}
+  redMaterials: {fileID: 2100000, guid: ff9525f71948ca447a25ff8987f791f0, type: 2}
+  blackMaterials: {fileID: 2100000, guid: 17202e6ac2e0d2448aa1934d25bd95ec, type: 2}
+  greenMaterials: {fileID: 2100000, guid: c8fe2633c2faf5b4b9b4261c57169d77, type: 2}
+  purpleMaterials: {fileID: 2100000, guid: b844dff391b40bb4f8d4b218d5cc6872, type: 2}

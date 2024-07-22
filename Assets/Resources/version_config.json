@@ -1,0 +1,8 @@
+{
+    "debug":{
+        "cdn":"https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage"
+    },
+    "release":{
+        "cdn":""
+    }
+}

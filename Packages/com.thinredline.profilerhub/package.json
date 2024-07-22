@@ -1,0 +1,12 @@
+{
+  "name": "com.thinredline.profilerhub",
+  "displayName": "ThinRL ProfilerHub",
+  "version": "0.0.1",
+  "author": "ThinRL",
+  "unity": "2020.1",
+  "description": "\u6027\u80fd\u5206\u6790\u5de5\u5177Hub.",
+  "dependencies": {
+    "com.thinredline.core": "0.0.1"
+  },
+  "hideInEditor": false
+}

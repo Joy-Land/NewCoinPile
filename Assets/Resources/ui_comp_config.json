@@ -1,0 +1,12 @@
+{
+    "200":{
+        "bundleName":"UITestComponent",
+        "packageName":"DefaultPackage",
+        "preloadAmount":"2"
+    },
+    "201":{
+        "bundleName":"UITest1Component",
+        "packageName":"DefaultPackage",
+        "preloadAmount":"2"
+    }
+}
