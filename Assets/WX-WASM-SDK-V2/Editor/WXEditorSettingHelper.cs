@@ -406,8 +406,8 @@ namespace WeChatWASM
                 PlayerSettings.SetStackTraceLogType(LogType.Log, StackTraceLogType.None);
                 PlayerSettings.SetStackTraceLogType(LogType.Warning, StackTraceLogType.None);
                 //设置enable exceptions //22.2.21才修复了不能设置为none的问题，最好可升级下引擎
-                //PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.None; 
-                PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
+                PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.None; 
+                //PlayerSettings.WebGL.exceptionSupport = WebGLExceptionSupport.ExplicitlyThrownExceptionsOnly;
             }
             else
             {
