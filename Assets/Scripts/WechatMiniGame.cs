@@ -35,6 +35,12 @@ public class WechatMiniGame : MiniGameBase
             UpdateWxSettings();
             UpdateSystemInfo();
 
+            var fallbackFont = Application.streamingAssetsPath + "fallback.ttf";
+            WX.GetWXFont(fallbackFont, (font) =>
+            {
+                m_SystemFont = font;
+            });
+
             WX.OnShow((res) =>
             {
                 JOnShowResultParams p = new JOnShowResultParams();

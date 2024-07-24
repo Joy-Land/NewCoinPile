@@ -93,10 +93,14 @@ namespace Joyland.GamePlay
         private static Dictionary<UIViewLayerEnum, GameObject> s_UIViewLayerRootDic = new Dictionary<UIViewLayerEnum, GameObject>();
 
         private GameObject m_BackgroundNode;
+        private GameObject m_SingleImageNode;
+        private GameObject m_MultiImageNode;
 
 
         private void Awake()
         {
+            m_UIViewConfig = new Dictionary<int, UIViewConfig>();
+
             if (!TryGetComponent<CanvasScaler>(out var canvasScaler))
             {
                 return;
@@ -107,7 +111,7 @@ namespace Joyland.GamePlay
             }
             float standard_width = canvasScaler.referenceResolution.x;        //初始宽度  
             float standard_height = canvasScaler.referenceResolution.y;       //初始高度  
-            console.error("fzy ????", standard_width, standard_height, Screen.width,Screen.height, can.pixelRect.ToString(), can.GetComponent<RectTransform>().sizeDelta);
+            console.error("fzy ????", standard_width, standard_height, Screen.width, Screen.height, can.pixelRect.ToString(), can.GetComponent<RectTransform>().sizeDelta);
 
             Instance = this;
 
@@ -135,6 +139,8 @@ namespace Joyland.GamePlay
         public void CreateUINode()
         {
             m_BackgroundNode = GameObject.Find("Canvas/Background");
+            m_SingleImageNode = GameObject.Find("Canvas/Background/SingleImageNode");
+            m_MultiImageNode = GameObject.Find("Canvas/Background/MultiImageNode");
 
             RectTransform lowest = GameObject.Find("Canvas/LowestLayer")?.GetComponent<RectTransform>();
             RectTransform low = GameObject.Find("Canvas/LowLayer")?.GetComponent<RectTransform>();
@@ -143,13 +149,13 @@ namespace Joyland.GamePlay
             RectTransform hightest = GameObject.Find("Canvas/HightestLayer")?.GetComponent<RectTransform>();
             if (lowest == null)
                 lowest = new GameObject("LowestLayer", new System.Type[] { typeof(Canvas), typeof(GraphicRaycaster) }).GetComponent<RectTransform>();
-            if(low == null)
+            if (low == null)
                 low = new GameObject("LowLayer", new System.Type[] { typeof(Canvas), typeof(GraphicRaycaster) }).GetComponent<RectTransform>();
-            if(middle == null)
+            if (middle == null)
                 middle = new GameObject("MiddleLayer", new System.Type[] { typeof(Canvas), typeof(GraphicRaycaster) }).GetComponent<RectTransform>();
-            if(hight == null)
+            if (hight == null)
                 hight = new GameObject("HightLayer", new System.Type[] { typeof(Canvas), typeof(GraphicRaycaster) }).GetComponent<RectTransform>();
-            if(hightest == null)
+            if (hightest == null)
                 hightest = new GameObject("HightestLayer", new System.Type[] { typeof(Canvas), typeof(GraphicRaycaster) }).GetComponent<RectTransform>();
 
             SetUINodeParams(lowest, UIViewLayerEnum.Lowest);
@@ -184,7 +190,7 @@ namespace Joyland.GamePlay
                 }
             }
 
-            if(cccc<5)
+            if (cccc < 5)
             {
                 if (!TryGetComponent<CanvasScaler>(out var canvasScaler))
                 {
@@ -281,7 +287,7 @@ namespace Joyland.GamePlay
                     {
                         by = ((float)miniGame.SystemInfo.windowHeight - (float)(miniGame.SystemInfo.windowHeight - 8)) / (float)miniGame.SystemInfo.windowHeight;
                     }
-                    
+
                 }
 
             }
@@ -298,13 +304,26 @@ namespace Joyland.GamePlay
 
 
         private Dictionary<int, UIViewConfig> m_UIViewConfig;
-        public void InitUIViewConfig(in Dictionary<int, UIViewConfig> uiConf)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="uiConf"></param>
+        public void InitUIViewConfigWithAddingMode(in Dictionary<int, UIViewConfig> uiConf)
         {
             if (uiConf == null || uiConf.Count == 0)
             {
                 console.error("没有UI配置吗？你确定？？");
                 return;
             }
+
+            foreach (var kvp in uiConf)
+            {
+                if (!m_UIViewConfig.ContainsKey(kvp.Key))
+                {
+                    m_UIViewConfig.Add(kvp.Key, kvp.Value);
+                }
+            }
+
             m_UIViewConfig = uiConf;
         }
 
@@ -359,14 +378,91 @@ namespace Joyland.GamePlay
         /// <param name="type">0单张image，1多张image</param>
         public void SetBackground(int type, Sprite sprite)
         {
-            if(type == 0)
+            m_SingleImageNode.SetActive(false);
+            m_MultiImageNode.SetActive(false);
+            if (type == 0)
             {
-                var image = m_BackgroundNode.GetComponent<Image>();
+                m_SingleImageNode.SetActive(true);
+                var image = m_SingleImageNode.GetComponent<Image>();
                 image.sprite = sprite;
             }
-            else if(type == 1)
+            else if (type == 1)
             {
+                m_MultiImageNode.SetActive(true);
+                var images = m_MultiImageNode.GetComponentsInChildren<Image>();
+                var totalImageCount = images.Length;
+
+                var bgRoot = m_MultiImageNode;
+
+                // 计算Canvas的尺寸 默认多来150，确保铺满屏幕
+                float canvasWidth = bgRoot.GetComponent<RectTransform>().rect.width + 150;
+                float canvasHeight = bgRoot.GetComponent<RectTransform>().rect.height + 150;
+                console.error(canvasWidth, canvasHeight);
+                var sourceHeight = 150;
+                var sourceWidth = 150;
+                var imageHeight = (int)(sourceHeight * images[0].transform.localScale.y);
+                var imageWidth = (int)(sourceWidth * images[0].transform.localScale.x);
+                // 计算需要铺设的图片行数和列数
+                int rows = Mathf.CeilToInt(canvasHeight / imageHeight);
+                int cols = Mathf.CeilToInt(canvasWidth / imageWidth);
+
+                var numImages = images.Length;
+                // 限制图片数量，防止超过预设数量
+                int maxImages = rows * cols;
+                numImages = Mathf.Min(numImages, maxImages);
+
+                var idx = 0;
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < cols; j++)
+                    {
+                        var image = images[idx];
+                        // 设置Image组件的属性
+                        image.sprite = sprite;
+                        image.rectTransform.sizeDelta = new Vector2(sourceWidth, sourceHeight);
+                        image.rectTransform.anchoredPosition = new Vector2(j * imageWidth - canvasWidth * 0.5f, i * imageHeight - canvasHeight * 0.5f);
+                        idx++;
+                    }
+                }
+
+                var remainImagesCount = totalImageCount - numImages;
+                if (remainImagesCount > 0)
+                {
+                    for (int i = numImages; i < totalImageCount; i++)
+                    {
+                        images[i].gameObject.SetActive(false);
+                    }
+                }
+
+
+                // 遍历所有需要铺设的图片
+                //for (int i = 0; i < numImages; i++)
+                //{
+                //    // 创建一个新的Image组件
+                //    //GameObject imageObject = new GameObject("Image_" + i);
+                //    //Image image = imageObject.AddComponent<Image>();
+                //    var image = images[i];
+                //    // 设置Image组件的属性
+                //    image.sprite = sprite;
+                //    image.rectTransform.sizeDelta = new Vector2(imageWidth, imageHeight);
+
+                //    // 设置Image组件的父级为Canvas
+                //    //image.transform.SetParent(canvas.transform);
+
+                //    // 计算Image组件的位置
+                //    int row = i / cols;
+                //    int col = i % cols;
+                //    float x = col * imageWidth;
+                //    float y = -row * imageHeight;
+
+                //    // 设置Image组件的位置
+                //    image.rectTransform.anchoredPosition = new Vector2(x, y);
+                //}
                 //TODO...
+            }
+            else
+            {
+
             }
         }
 
@@ -438,6 +534,30 @@ namespace Joyland.GamePlay
 
         }
 
+        public T GetAndOpenUIViewOnNode<T>(GameObject rootNode, UIViewID id, in UIViewConfig uiConf, EventArgsPack args) where T : UIViewBase
+        {
+            InitUIViewConfigWithAddingMode(new Dictionary<int, UIViewConfig>() { { (int)id,uiConf} });
+
+            var uiView = rootNode.GetComponent<T>();
+            var uiInfo = new UIViewInfo();
+            uiInfo.id = id;
+            uiInfo.args = args;
+            uiInfo.view = uiView;
+            uiView.OnViewAwake(uiInfo.args);
+            uiView.SetAnimatorNode();
+            AdjuestUIOrder(uiConf, uiView);
+            if (uiInfo.view != null)
+            {
+                (uiInfo.view as UIViewBase).gameObject.SetActive(true);
+                m_UIViewLayerListDic[uiConf.layer].Add(uiInfo);
+                OnUIOpen(id, uiInfo, uiInfo.args);
+            }
+
+
+
+            return uiView;
+        }
+
         private void OnUIOpen(UIViewID id, UIViewInfo uiInfo, EventArgsPack args)
         {
             var uiView = uiInfo.view as UIViewBase;
@@ -445,16 +565,16 @@ namespace Joyland.GamePlay
             {
                 return;
             }
-            
-            if(uiView.animator != null)
+
+            if (uiView.animator != null)
             {
                 PlayEffect(uiInfo, uiView.animator, "view_open", () =>
                 {
-                    console.error("fzy 66");
+                    //console.error("fzy 66");
                     CoroutineManager.Instance.StopCoroutine(uiInfo.openCoroutine);
-                    console.error("fzy 77");
+                    //console.error("fzy 77");
                     uiView.OnViewShow(args);
-                    console.error("fzy 88");
+                    //console.error("fzy 88");
                 });
             }
             else
@@ -470,7 +590,7 @@ namespace Joyland.GamePlay
                 var uiView = m_UICloseQueue.Dequeue();
                 CloseUI(uiView);
             }
-            else if(m_UIHideQueue.Count > 0)
+            else if (m_UIHideQueue.Count > 0)
             {
                 var uiView = m_UIHideQueue.Dequeue();
                 HideUI(uiView);
@@ -512,20 +632,7 @@ namespace Joyland.GamePlay
                     //TODO：动画
                     callback?.Invoke(uiView);
 
-                    //调整ui顺序 .. 获取conf.layer下所有的儿子，找到uiview组件，牌序设置层级
-                    var viewList = new List<UIViewBase>(4);
-                    var len = m_UIViewLayerListDic[conf.layer].Count;
-                    for (int i = 0; i < len; i++)
-                    {
-                        viewList.Add(m_UIViewLayerListDic[conf.layer][i].view as UIViewBase);
-                    }
-                    viewList.Add(uiView);
-                    viewList.Sort((a, b) => a.UIOrder.CompareTo(b.UIOrder));
-                    len = viewList.Count;
-                    for (int i = 0; i < len; i++)
-                    {
-                        viewList[i].transform.SetSiblingIndex(i);
-                    }
+                    AdjuestUIOrder(conf, uiView);
                 }
                 else
                 {
@@ -533,7 +640,24 @@ namespace Joyland.GamePlay
                 }
 
             };
+        }
 
+        private void AdjuestUIOrder(UIViewConfig conf, UIViewBase uiView)
+        {
+            //调整ui顺序 .. 获取conf.layer下所有的儿子，找到uiview组件，牌序设置层级
+            var viewList = new List<UIViewBase>(4);
+            var len = m_UIViewLayerListDic[conf.layer].Count;
+            for (int i = 0; i < len; i++)
+            {
+                viewList.Add(m_UIViewLayerListDic[conf.layer][i].view as UIViewBase);
+            }
+            viewList.Add(uiView);
+            viewList.Sort((a, b) => a.UIOrder.CompareTo(b.UIOrder));
+            len = viewList.Count;
+            for (int i = 0; i < len; i++)
+            {
+                viewList[i].transform.SetSiblingIndex(i);
+            }
         }
 
         public void HideUI(IUIView uiView)
@@ -665,7 +789,7 @@ namespace Joyland.GamePlay
         private int PlayEffect(UIViewInfo info, Animator animator, string stateName, Action callback = null)
         {
             var ctr = Resources.Load<RuntimeAnimatorController>("Animation/Container_Open");
-            console.error("fzy 11",ctr.name);
+            console.error("fzy 11", ctr.name);
             animator.runtimeAnimatorController = ctr;
             animator.Update(0f);
             animator.Play(stateName, -1);
@@ -678,7 +802,7 @@ namespace Joyland.GamePlay
             {
                 info.closeCoroutine = c;
             }
-            else if(stateName == "view_open")
+            else if (stateName == "view_open")
             {
                 info.openCoroutine = c;
             }
@@ -719,7 +843,7 @@ namespace Joyland.GamePlay
                 {
                     var element = m_UIViewLayerListDic[(UIViewLayerEnum)index][i];
                     element.isClose = true;
-                    if(element.view != null)
+                    if (element.view != null)
                     {
                         var viewBase = element.view as UIViewBase;
                         viewBase.gameObject.SetActive(false);
@@ -796,7 +920,7 @@ namespace Joyland.GamePlay
         public T GetUIComponentAtNode<T>(Transform parent) where T : UICompBase
         {
             T comp = parent.GetComponent<T>();
-            if(comp == null)
+            if (comp == null)
             {
                 console.error($"无{nameof(T)}类型组件");
             }

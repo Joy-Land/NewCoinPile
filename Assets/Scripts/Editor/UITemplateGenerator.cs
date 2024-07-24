@@ -83,8 +83,18 @@ public class UITemplateGenerator : EditorWindow
             var rootName = isPanel == true ? objcets[0].name + "(Clone)" : "";
             var startStep = isPanel == true ? 0 : -1;
 
-            
-            GenerateTemplate(objcets[0], rootName, isPanel, startStep);
+
+            var c = objcets[0].transform.childCount;
+            //GenerateTemplate(objcets[0], "", isPanel, startStep);
+            for (int i = 0; i < c; i++)
+            {
+                var child = objcets[0].transform.GetChild(i);
+                if (isPanel && child.name.Contains("Component"))
+                {
+                    continue;
+                }
+                GenerateTemplate(child.gameObject, child.name, isPanel, 0);
+            }
 
             registFuncRes = "public void RegistEvent()\n{ \n " + registFuncRes + "\n} \n ";
             unregistFuncRes = "public void UnregistEvent()\n{ \n " + unregistFuncRes + "\n} \n ";
@@ -105,6 +115,7 @@ public class UITemplateGenerator : EditorWindow
     private void GenerateTemplate(GameObject root, string path, bool isPanel, int step)
     {
         var c = root.transform.childCount;
+        Debug.Log("fzy c:" + root.name+"  "+step + "  "+path);
         if (step >= 0)
         {
             if (root.name.Contains("Img_"))
@@ -112,7 +123,7 @@ public class UITemplateGenerator : EditorWindow
                 declareRes += $"public Image {root.name}; \n";
                 if (isPanel)
                 {
-                    impRes += $"{root.name} = GameObject.Find(\"{path}\").GetComponent<Image>(); \n";
+                    impRes += $"{root.name} = transform.Find(\"{path}\").GetComponent<Image>(); \n";
                 }
                 else
                 {
@@ -124,7 +135,7 @@ public class UITemplateGenerator : EditorWindow
                 declareRes += $"public RawImage {root.name}; \n";
                 if (isPanel)
                 {
-                    impRes += $"{root.name} = GameObject.Find(\"{path}\").GetComponent<RawImage>(); \n";
+                    impRes += $"{root.name} = transform.Find(\"{path}\").GetComponent<RawImage>(); \n";
                 }
                 else
                 {
@@ -136,7 +147,7 @@ public class UITemplateGenerator : EditorWindow
                 declareRes += $"public GameObject {root.name}; \n";
                 if (isPanel)
                 {
-                    impRes += $"{root.name} = GameObject.Find(\"{path}\"); \n";
+                    impRes += $"{root.name} = transform.Find(\"{path}\"); \n";
                 }
                 else
                 {
@@ -145,14 +156,14 @@ public class UITemplateGenerator : EditorWindow
             }
             else if (root.name.Contains("Txt_"))
             {
-                declareRes += $"public TextMeshProUGUI {root.name}; \n";
+                declareRes += $"public Text {root.name}; \n";
                 if (isPanel)
                 {
-                    impRes += $"{root.name} = GameObject.Find(\"{path}\").GetComponent<TextMeshProUGUI>(); \n";
+                    impRes += $"{root.name} = transform.Find(\"{path}\").GetComponent<Text>(); \n";
                 }
                 else
                 {
-                    impRes += $"{root.name} = transform.Find(\"{path}\").GetComponent<TextMeshProUGUI>(); \n";
+                    impRes += $"{root.name} = transform.Find(\"{path}\").GetComponent<Text>(); \n";
                 }
 
             }
@@ -161,7 +172,7 @@ public class UITemplateGenerator : EditorWindow
                 declareRes += $"public Button {root.name}; \n";
                 if (isPanel)
                 {
-                    impRes += $"{root.name} = GameObject.Find(\"{path}\").GetComponent<Button>(); \n";
+                    impRes += $"{root.name} = transform.Find(\"{path}\").GetComponent<Button>(); \n";
                 }
                 else
                 {
@@ -181,12 +192,26 @@ public class UITemplateGenerator : EditorWindow
                 declareRes += $"public ScrollRect {name}; \n";
                 if (isPanel)
                 {
-                    impRes += $"{name} = GameObject.Find(\"{path}\").GetComponent<ScrollRect>(); \n";
+                    impRes += $"{name} = transform.Find(\"{path}\").GetComponent<ScrollRect>(); \n";
                 }
                 else
                 {
                     impRes += $"{name} = transform.Find(\"{path}\").GetComponent<ScrollRect>(); \n";
                 }
+            }
+            else if (root.name.Contains("Slider_") || root.name.Contains("Sli_"))
+            {
+                var name = root.name.Replace(" ", "_");
+                declareRes += $"public Slider {name}; \n";
+                if (isPanel)
+                {
+                    impRes += $"{name} = transform.Find(\"{path}\").GetComponent<Slider>(); \n";
+                }
+                else
+                {
+                    impRes += $"{name} = transform.Find(\"{path}\").GetComponent<Slider>(); \n";
+                }
+                Debug.Log(isPanel.ToString() + " " + path + " " + impRes);
             }
         }
 

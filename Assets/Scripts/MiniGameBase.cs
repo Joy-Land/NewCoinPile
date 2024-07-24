@@ -332,6 +332,13 @@ public class MiniGameBase
         protected set { m_CurrentPlatform = value; }
     }
 
+    protected Font m_SystemFont;
+    public Font SystemFont
+    {
+        get { return m_SystemFont; }
+        protected set { m_SystemFont = value; }
+    }
+
     public Action<JOnShowResultParams> OnGameShowGlobalEvent;
     public Action OnGameHideGlobalEvent;
 

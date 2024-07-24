@@ -100,3 +100,11 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/UIFont
+        CollectorGUID: afa25471d1d3da64ca0ad1f0ddbd02be
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

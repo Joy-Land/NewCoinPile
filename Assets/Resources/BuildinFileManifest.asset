@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b02dfa7aa9d4545b3417a18477fbee, type: 3}
+  m_Name: BuildinFileManifest
+  m_EditorClassIdentifier: 
+  BuildinFiles:
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_audio_590b796a25b43accda7a17dd577b7cf5.bundle
+    FileCRC32: 8cf5b3af
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_effect_engines_00bf5cb068048af1906b178e9648bcea.bundle
+    FileCRC32: 64c38179
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_effect_explosions_bb5188bedebb4758429f0bb733df0f42.bundle
+    FileCRC32: 374a319f
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_entity_08f975c0030e2ad22ac5618f2990b275.bundle
+    FileCRC32: cb2c6b6c
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_battlesettings_8a7b55bcfb7536b14fb9c5a112575353.bundle
+    FileCRC32: c026d326
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_battle_c64f05a7a835a879902b069668f861d6.bundle
+    FileCRC32: 34a33b04
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_homesettings_b743cbc8187d9eed73a3e86569168b42.bundle
+    FileCRC32: 587108a2
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_home_9f543b31c52fa7bf4cebef0f5638f6ad.bundle
+    FileCRC32: 1fac1b84
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_uifont_54823bcec1653468c8c2d83eecfd940f.bundle
+    FileCRC32: 6591073a
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_uiimage_4d14de867607d4a63e571bc6a3cd0a65.bundle
+    FileCRC32: 6f46852f
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uibattle_3032235bc8e48bced11e05acfe2b8522.bundle
+    FileCRC32: 01bd8c13
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uihome_caf09bacd96e05dcfbf173c258e8f7cf.bundle
+    FileCRC32: 8bdf8bed
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uiloading_cf113b0446fe1e9b3705b9d39809cdc2.bundle
+    FileCRC32: b147c4f9
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uinewhome_1d3d1358b04b37b09d9c53e217dbf31f.bundle
+    FileCRC32: abcb3404
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uitest1component_054e2b3fbe5675623ab8f146f6ed7a2f.bundle
+    FileCRC32: 786f133a
+  - PackageName: DefaultPackage
+    FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uitestcomponent_b7932edf0e6d92be59582bab526d1dc4.bundle
+    FileCRC32: 4c72f3f4
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_effect_02664bdbdc91abff00b2dcf521418bf8.bundle
+    FileCRC32: 5309f164
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01_c577fe309b986164ae7e349b33dead78.bundle
+    FileCRC32: eb6e1d19
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01_materials_0c7a22ff6e9cf56def7fdfa03e1af8a7.bundle
+    FileCRC32: a361ee10
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_02_0e44ab228bf8bb441cf1ed6a3d91142e.bundle
+    FileCRC32: c1598002
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_02_materials_5430419104ea188fda80035b681f5bf6.bundle
+    FileCRC32: 15597499
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_03_69c10916a6144ee2e3a1acbd920e49aa.bundle
+    FileCRC32: 6c0bbd0f
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_03_materials_141cbeeee248d2fb9efd5e3aa3358d98.bundle
+    FileCRC32: 858a2d43
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_enemyship_eb393176faf824fb1abf554450e5409a.bundle
+    FileCRC32: 15ca7d12
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_enemyship_materials_68a801cbff22dbec01a33d118147a9fd.bundle
+    FileCRC32: 35ac4f97
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_playership_3ecfbe218221e84bedce8745f70306b9.bundle
+    FileCRC32: 85961bf8
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_playership_materials_92c6bcf3d9af5187db42f68dfb969200.bundle
+    FileCRC32: 58987d4c
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_scene_3e1bb7f020078b5362bf3e1279881fc2.bundle
+    FileCRC32: 8ee3e5db
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uianim_45f39f854e079ba9c1033d3a8c194d26.bundle
+    FileCRC32: 9a76b696
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uifont_cd3cf42607a92ed1e2b679c53c40596f.bundle
+    FileCRC32: eb0f302b
+  - PackageName: DefaultPackage
+    FileName: share_assets_samples_yooasset_2_1_2_space_shooter_gameres_uiatlas_common_1a87af3b45f6babe33b8185cc4a00d98.bundle
+    FileCRC32: 29db161d
+  - PackageName: DefaultPackage
+    FileName: share_packages_com_unity_render-pipelines_universal_runtime_materials_d1fd388f76d5691f8978c2afd41a9d86.bundle
+    FileCRC32: e2f43c8e
+  - PackageName: DefaultPackage
+    FileName: unityshaders_52dab13dc3d2f49232a9cbd502fadb09.bundle
+    FileCRC32: 9119ba31

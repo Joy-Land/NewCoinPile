@@ -6,6 +6,15 @@ namespace ThinRL.Core
     public class EventArgsPack
     {
         private object[] m_Args;
+        public int ArgsLength
+        {
+            get
+            {
+                if (m_Args == null)
+                    return 0;
+                return m_Args.Length;
+            }
+        }
 
         public object[] args
         {
