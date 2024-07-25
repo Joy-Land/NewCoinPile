@@ -1,3 +1,5 @@
+using Joyland.GamePlay;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UniFramework.Machine;
@@ -10,6 +12,10 @@ public class GameEntry : MonoBehaviour
 
     private void Awake()
     {
+        //var data = new { };
+        //var s = JsonConvert.SerializeObject(data);
+        //console.error(s);
+
         m_Machine = new StateMachine(this);
         m_Machine.AddNode<FsmPreloadingState>();
         m_Machine.AddNode<FsmStartGameState>();

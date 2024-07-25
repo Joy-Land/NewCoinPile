@@ -50,11 +50,43 @@ namespace Joyland.GamePlay
         UITest1Component = 201,
     }
 
+    /// <summary>
+    /// 登录成功协议返回结构
+    /// </summary>
     [Preserve]
     public class ProtoUserLoginStruct
     {
         public bool isBeginner;
         public string id;
+    }
+
+    /// <summary>
+    /// 道具下种类信息
+    /// </summary>
+    public class ItemCategoryData
+    {
+        public int categoryId { get; set; }
+        public string categoryName { get; set; }
+        public int currentRemainedNumber { get; set; }
+    }
+
+    /// <summary>
+    /// 道具信息协议返回结构
+    /// </summary>
+    public class ProtoItemDataStruct
+    {
+        public int itemId { get; set; }
+        public string itemName { get; set; }
+        public List<ItemCategoryData> categoryList { get; set; }
+    }
+
+    /// <summary>
+    /// 道具列表协议返回结构
+    /// </summary>
+    public class ProtoItemListDataStruct
+    {
+        public string version { get; set; }
+        public List<ProtoItemDataStruct> itemList { get; set; }
     }
 
     [Preserve]
@@ -70,6 +102,10 @@ namespace Joyland.GamePlay
     public static MiniGameBase Minigame = new TiktokMiniGame();
 #endif
 #endif
+
+        public static GameRequestHelper ReqHelper = new GameRequestHelper();
+
+
     }
 }
 

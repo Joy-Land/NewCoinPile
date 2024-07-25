@@ -98,7 +98,7 @@ namespace Joyland.GamePlay
             byte[] array = null;
             if(data == null)
             {
-                data = new byte[0];
+                data = default(object);
             }
             var jsonStr = JsonConvert.SerializeObject(data);
             array = Encoding.UTF8.GetBytes(jsonStr);

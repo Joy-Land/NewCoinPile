@@ -37,7 +37,7 @@ public class FrontConfig
     public string fallbackHostServer;
 }
 
-public class GameConfig
+public class TempGameConfig
 {
     public const string PACKAGE_NAME = "DefaultPackage";
     public static FrontConfig frontConfig = new FrontConfig();
@@ -213,7 +213,7 @@ public class Boot : MonoBehaviour
         // 初始化资源系统
         YooAssets.Initialize();
         // 创建资源包裹类
-        var package = YooAssets.CreatePackage(GameConfig.PACKAGE_NAME);
+        var package = YooAssets.CreatePackage(TempGameConfig.PACKAGE_NAME);
 
         // 编辑器下的模拟模式
         InitializeParameters createParameters = null;
@@ -221,7 +221,7 @@ public class Boot : MonoBehaviour
         {
             createParameters = new EditorSimulateModeParameters()
             {
-                SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.ScriptableBuildPipeline.ToString(), GameConfig.PACKAGE_NAME)
+                SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.ScriptableBuildPipeline.ToString(), TempGameConfig.PACKAGE_NAME)
             };
         }
         // 单机运行模式

@@ -777,11 +777,10 @@ namespace Joyland.GamePlay
 
         private IEnumerator DelayRunEffectCallback(Animator animator, string stateName, Action callback)
         {
-            // 状态机的切换发生在帧的结尾
             yield return new WaitForEndOfFrame();
 
             var info = animator.GetCurrentAnimatorStateInfo(0);
-            console.error("fzy 23", info.ToString());
+            //console.error("fzy 23", info.ToString());
             if (!info.IsName(stateName)) yield return null;
 
             yield return new WaitForSeconds(info.length);
