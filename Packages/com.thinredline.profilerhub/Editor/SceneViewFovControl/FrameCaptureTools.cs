@@ -56,19 +56,19 @@ namespace ThinRL.ProfilerHub.Editor.SceneViewFovControl
             }
         }
 
-        //·´ÉäHostView²âÊÔ£¬Ã²ËÆÎŞ·¨ÄÃµ½HostViewÊµÀı¡£¡£
+        //åå°„HostViewæµ‹è¯•ï¼Œè²Œä¼¼æ— æ³•æ‹¿åˆ°HostViewå®ä¾‹ã€‚ã€‚
         public static void GetHost()
         {
 
             System.Reflection.Assembly assembly = typeof(UnityEditor.EditorWindow).Assembly;
-            //×ÓÀà
+            //å­ç±»
             Type type = assembly.GetType("UnityEditor.GameView");
-            //»ùÀà
+            //åŸºç±»
             Type typeGUIView = assembly.GetType("UnityEditor.GUIView");
 
             Type hostView = assembly.GetType("UnityEditor.HostView");
             object obj = Activator.CreateInstance(hostView);
-            //»ñµÃË½ÓĞ×Ö¶Î
+            //è·å¾—ç§æœ‰å­—æ®µ
             FieldInfo fi = type.GetField("m_Parent", BindingFlags.NonPublic | BindingFlags.Instance);
             //FieldInfo[] fis = type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
             //Console.WriteLine(fis.Length);

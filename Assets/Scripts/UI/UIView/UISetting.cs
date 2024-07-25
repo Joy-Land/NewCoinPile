@@ -92,14 +92,20 @@ public class UISetting : UIViewBase
 
         if (this.animator == null)
         {
-            this.animator = Obj_Container.GetComponent<Animator>() ?? Obj_Container.AddComponent<Animator>();
+            if(Obj_Container.GetComponent<Animator>() == null)
+            {
+                this.animator = Obj_Container.AddComponent<Animator>();
+            }
         }
+
     }
 
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        UpdateStatus();
     }
     public override void OnViewUpdate()
     {

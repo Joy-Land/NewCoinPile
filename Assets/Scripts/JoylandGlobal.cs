@@ -19,6 +19,8 @@ namespace Joyland.GamePlay
     {
         public static readonly string AddProgressBar = "AddProgressBar";
         public static readonly string DownloadFinish = "DownloadFinish";
+
+        public static readonly string EverythingIsReady = "EverythingIsReady";
     }
 
     [Preserve]
@@ -36,6 +38,10 @@ namespace Joyland.GamePlay
         UINewHome = 100,
         UIStartGame = 101,
         UISetting = 102,
+        UIHomePage = 103,
+        UIPopupItem = 104,
+        UIBank = 105,
+
     }
     [Preserve]
     public enum UICompID

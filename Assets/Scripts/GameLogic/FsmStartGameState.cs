@@ -37,8 +37,11 @@ public class FsmStartGameState : IStateNode
     /// </summary>
     public EPlayMode PlayMode = EPlayMode.EditorSimulateMode;
 
+    private StateMachine m_Machine;
     public void OnCreate(StateMachine machine)
     {
+        m_Machine = machine;
+
         PlayMode = EPlayMode.WebPlayMode;
 
         Application.targetFrameRate = 30;
@@ -53,11 +56,14 @@ public class FsmStartGameState : IStateNode
         PlayMode = EPlayMode.HostPlayMode;
 #endif
 #endif
-        EventManager.Instance.AddEvent(GameEventGlobalDefine.DownloadFinish, OnDownloadFinish);
+
+
     }
 
     public void OnEnter()
     {
+        EventManager.Instance.AddEvent(GameEventGlobalDefine.EverythingIsReady, OnEverythingIsReadyEvent);
+        EventManager.Instance.AddEvent(GameEventGlobalDefine.DownloadFinish, OnDownloadFinishEvent);
         // 初始化事件系统
         UniEvent.Initalize();
 
@@ -78,7 +84,11 @@ public class FsmStartGameState : IStateNode
 
     public void OnExit()
     {
-        EventManager.Instance.RemoveEvent(GameEventGlobalDefine.DownloadFinish, OnDownloadFinish);
+        console.error(this.ToString() + "退出");
+        EventManager.Instance.RemoveEvent(GameEventGlobalDefine.EverythingIsReady, OnEverythingIsReadyEvent);
+        EventManager.Instance.RemoveEvent(GameEventGlobalDefine.DownloadFinish, OnDownloadFinishEvent);
+
+        UIManager.Instance.CloseUI(UIViewID.UIStartGame);
     }
 
     public void OnUpdate()
@@ -86,8 +96,12 @@ public class FsmStartGameState : IStateNode
 
     }
 
+    public void OnEverythingIsReadyEvent(object sender, EventArgsPack e)
+    {
+        m_Machine.ChangeState<FsmHomeState>();
+    }
 
-    public async void OnDownloadFinish(object sender, EventArgsPack e)
+    public async void OnDownloadFinishEvent(object sender, EventArgsPack e)
     {
         //测试
         EventManager.Instance.DispatchEvent(GameEventGlobalDefine.AddProgressBar, null, new EventArgsPack((int)LoadingStageEventCode.InitResource, (float)((int)LoadingStageEventCode.InitResource)));

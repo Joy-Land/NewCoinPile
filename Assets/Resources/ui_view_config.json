@@ -3,5 +3,25 @@
         "bundleName":"UINewHome",
         "layer":"2",
         "packageName":"DefaultPackage"
+    },
+    "102":{
+        "bundleName":"UISetting",
+        "layer":"2",
+        "packageName":"DefaultPackage"
+    },
+    "103":{
+        "bundleName":"UIHomePage",
+        "layer":"0",
+        "packageName":"DefaultPackage"
+    },
+    "104":{
+        "bundleName":"UIPopupItem",
+        "layer":"2",
+        "packageName":"DefaultPackage"
+    },
+    "105":{
+        "bundleName":"UIBank",
+        "layer":"2",
+        "packageName":"DefaultPackage"
     }
 }

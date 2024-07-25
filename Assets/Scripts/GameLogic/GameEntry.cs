@@ -13,6 +13,7 @@ public class GameEntry : MonoBehaviour
         m_Machine = new StateMachine(this);
         m_Machine.AddNode<FsmPreloadingState>();
         m_Machine.AddNode<FsmStartGameState>();
+        m_Machine.AddNode<FsmHomeState>();
 
         m_Machine.SetBlackboardValue("_UIStartGameNode", uiStartGameNode);
     }

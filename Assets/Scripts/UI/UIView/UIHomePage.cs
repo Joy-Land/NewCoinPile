@@ -1,3 +1,4 @@
+using Joyland.GamePlay;
 using System.Collections;
 using System.Collections.Generic;
 using ThinRL.Core;
@@ -87,12 +88,12 @@ public class UIHomePage : UIViewBase
 
     public void OnBtn_SettingClicked()
     {
-
+        UIManager.Instance.OpenUI(UIViewID.UISetting);
     }
 
     public void OnBtn_BankClicked()
     {
-
+        UIManager.Instance.OpenUI(UIViewID.UIBank);
     }
 
     public void UnregistEvent()

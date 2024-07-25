@@ -23,6 +23,7 @@ public class FsmPreloadingState : IStateNode
 
         J.Minigame.Initialize(false, PlayerPrefsManager.GetUserBool(GamePlayerPrefsKey.EnableVibrate, true));
 
+        UIManager.Instance.Init();
         //console.error(s.textureRect);
         //设置ui背景
         UIManager.Instance.SetBackground(1, Resources.Load<Sprite>("TempTest/img_pattern_loading"));

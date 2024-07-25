@@ -42,7 +42,7 @@ namespace Joyland.GamePlay
     /// <summary>
     /// 挂载到Canvas上
     /// </summary>
-    public class UIManager : MonoBehaviour
+    public class UIManager : MonoSingleton<UIManager>
     {
 
         private class UIViewInfo
@@ -63,8 +63,6 @@ namespace Joyland.GamePlay
                 secondTimer = 0;
             }
         }
-
-        public static UIManager Instance;
 
         private bool m_IsOpening = false;
         private bool m_IsHiding = false;
@@ -105,16 +103,21 @@ namespace Joyland.GamePlay
         private GameObject m_SingleImageNode;
         private GameObject m_MultiImageNode;
 
-
-        private void Awake()
+        public void Init()
         {
             m_UIViewConfig = new Dictionary<int, UIViewConfig>();
+            m_RootCanvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
+            if(m_RootCanvas == null)
+            {
+                console.error("需要先确保UI根节点加载完成");
+                return;
+            }
 
-            if (!TryGetComponent<CanvasScaler>(out var canvasScaler))
+            if (!m_RootCanvas.TryGetComponent<CanvasScaler>(out var canvasScaler))
             {
                 return;
             }
-            if (!TryGetComponent<Canvas>(out var can))
+            if (!m_RootCanvas.TryGetComponent<Canvas>(out var can))
             {
                 return;
             }
@@ -122,13 +125,6 @@ namespace Joyland.GamePlay
             float standard_height = canvasScaler.referenceResolution.y;       //初始高度  
             console.error("fzy ????", standard_width, standard_height, Screen.width, Screen.height, can.pixelRect.ToString(), can.GetComponent<RectTransform>().sizeDelta);
 
-            Instance = this;
-
-            if (!TryGetComponent<Canvas>(out m_RootCanvas))
-            {
-                console.error("需要先确保UI根节点加载完成");
-                return;
-            }
 
             m_UIOpenQueue = new Queue<UIViewInfo>();
             m_UICloseQueue = new Queue<IUIView>();
@@ -141,13 +137,13 @@ namespace Joyland.GamePlay
             m_UIViewLayerListDic.Add(UIViewLayerEnum.Hight, new List<UIViewInfo>());
             m_UIViewLayerListDic.Add(UIViewLayerEnum.Hightest, new List<UIViewInfo>());
 
-            AdjustUI();
             CreateUINode();
+            AdjustUI();
         }
 
         public void CreateUINode()
         {
-            m_BackgroundNode = GameObject.Find("Canvas/Background");
+            m_BackgroundNode = GameObject.Find("Canvas/Background").gameObject;
             m_SingleImageNode = GameObject.Find("Canvas/Background/SingleImageNode");
             m_MultiImageNode = GameObject.Find("Canvas/Background/MultiImageNode");
 
@@ -223,11 +219,10 @@ namespace Joyland.GamePlay
         /// </summary>
         public void AdjustUI()
         {
-            if (!TryGetComponent<CanvasScaler>(out var canvasScaler))
+            if (!m_RootCanvas.TryGetComponent<CanvasScaler>(out var canvasScaler))
             {
                 return;
             }
-
             var bgRectTransform = m_BackgroundNode.GetComponent<RectTransform>();
             m_FullOffset.offsetMin = bgRectTransform.offsetMin;
             m_FullOffset.offsetMax = bgRectTransform.offsetMax;
@@ -390,8 +385,8 @@ namespace Joyland.GamePlay
                 var bgRoot = m_MultiImageNode;
 
                 // 计算Canvas的尺寸 默认多来150，确保铺满屏幕
-                float canvasWidth = bgRoot.GetComponent<RectTransform>().rect.width + 150;
-                float canvasHeight = bgRoot.GetComponent<RectTransform>().rect.height + 150;
+                float canvasWidth = bgRoot.GetComponent<RectTransform>().rect.width + 200;
+                float canvasHeight = bgRoot.GetComponent<RectTransform>().rect.height + 600;
                 console.error(canvasWidth, canvasHeight);
                 var sourceHeight = 150;
                 var sourceWidth = 150;
@@ -429,31 +424,6 @@ namespace Joyland.GamePlay
                     }
                 }
 
-
-                // 遍历所有需要铺设的图片
-                //for (int i = 0; i < numImages; i++)
-                //{
-                //    // 创建一个新的Image组件
-                //    //GameObject imageObject = new GameObject("Image_" + i);
-                //    //Image image = imageObject.AddComponent<Image>();
-                //    var image = images[i];
-                //    // 设置Image组件的属性
-                //    image.sprite = sprite;
-                //    image.rectTransform.sizeDelta = new Vector2(imageWidth, imageHeight);
-
-                //    // 设置Image组件的父级为Canvas
-                //    //image.transform.SetParent(canvas.transform);
-
-                //    // 计算Image组件的位置
-                //    int row = i / cols;
-                //    int col = i % cols;
-                //    float x = col * imageWidth;
-                //    float y = -row * imageHeight;
-
-                //    // 设置Image组件的位置
-                //    image.rectTransform.anchoredPosition = new Vector2(x, y);
-                //}
-                //TODO...
             }
             else
             {
@@ -461,7 +431,7 @@ namespace Joyland.GamePlay
             }
         }
 
-        public void OpenUI(UIViewID id, EventArgsPack args)
+        public void OpenUI(UIViewID id, EventArgsPack args = null)
         {
             var uiInfo = new UIViewInfo();
             uiInfo.id = id;
@@ -568,9 +538,9 @@ namespace Joyland.GamePlay
                     //console.error("fzy 66");
                     CoroutineManager.Instance.StopCoroutine(uiInfo.openCoroutine);
                     //console.error("fzy 77");
-                    uiView.OnViewShow(args);
                     //console.error("fzy 88");
                 });
+                uiView.OnViewShow(args);
             }
             else
             {
@@ -784,13 +754,13 @@ namespace Joyland.GamePlay
         private int PlayEffect(UIViewInfo info, Animator animator, string stateName, Action callback = null)
         {
             var ctr = Resources.Load<RuntimeAnimatorController>("Animation/Container_Open");
-            console.error("fzy 11", ctr.name);
+            //console.error("fzy 11", ctr.name);
             animator.runtimeAnimatorController = ctr;
             animator.Update(0f);
             animator.Play(stateName, -1);
 
             if (callback == null) return 0;
-            console.error("fzy 22", animator.name);
+            //console.error("fzy 22", animator.name);
 
             var c = CoroutineManager.Instance.StartCoroutine(DelayRunEffectCallback(animator, stateName, callback));
             if (stateName == "view_close")

@@ -92,8 +92,8 @@ public class UIStartGame : UIViewBase
             Txt_StageDesc.text = stageDesc;
             if(stageCode == (int)LoadingStageEventCode.Finish)
             {
-                //可以切状态机,关闭这个ui，正式进入游戏了
-
+                //可以发消息切状态机,关闭这个ui，正式进入游戏了
+                EventManager.Instance.DispatchEvent(GameEventGlobalDefine.EverythingIsReady, null, null);
             }
         }
         curProgress = Mathf.Min(curProgress, (float)m_TotalProgress);
