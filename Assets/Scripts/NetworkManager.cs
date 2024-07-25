@@ -64,7 +64,7 @@ namespace Joyland.GamePlay
         {
             m_BaseUrl = baseUrl;
 
-            m_HeaderCookie = PlayerPrefsManager.GetString("userCookie", "");
+            m_HeaderCookie = PlayerPrefsManager.GetUserString(GamePlayerPrefsKey.UserCookie, "");
             if (m_HeaderCookie == null)
             {
                 m_HeaderCookie = "";
@@ -82,7 +82,7 @@ namespace Joyland.GamePlay
             if (splitRes != null && splitRes.Length > 0)
             {
                 m_HeaderCookie = splitRes[0];
-                PlayerPrefsManager.SetString("userCookie", m_HeaderCookie);
+                PlayerPrefsManager.SetUserString(GamePlayerPrefsKey.UserCookie, m_HeaderCookie);
             }
             else
             {

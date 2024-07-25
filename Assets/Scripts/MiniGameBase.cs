@@ -1,6 +1,8 @@
+using Joyland.GamePlay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ThinRL.Core.Tools;
 using UnityEngine;
 using UnityEngine.Scripting;
 using WeChatWASM;
@@ -301,6 +303,101 @@ public class JOnTouchStartListenerResult
     public JTouch[] touches;
 }
 
+[Preserve]
+public class JUserInfo
+{
+    //
+    // 摘要:
+    //     用户头像图片的 URL。URL 最后一个数值代表正方形头像大小（有 0、46、64、96、132 数值可选，0 代表 640x640 的正方形头像，46
+    //     表示 46x46 的正方形头像，剩余数值以此类推。默认132），用户没有头像时该项为空。若用户更换头像，原有头像 URL 将失效。
+    public string avatarUrl;
+
+    //
+    // 摘要:
+    //     用户所在城市。不再返回，参考 [相关公告](https://developers.weixin.qq.com/community/develop/doc/00028edbe3c58081e7cc834705b801)
+    public string city;
+
+    //
+    // 摘要:
+    //     用户所在国家。不再返回，参考 [相关公告](https://developers.weixin.qq.com/community/develop/doc/00028edbe3c58081e7cc834705b801)
+    public string country;
+
+    //
+    // 摘要:
+    //     用户性别。不再返回，参考 [相关公告](https://developers.weixin.qq.com/community/develop/doc/00028edbe3c58081e7cc834705b801)
+    //     可选值： - 0: 未知; - 1: 男性; - 2: 女性;
+    public double gender;
+
+    //
+    // 摘要:
+    //     显示 country，province，city 所用的语言。强制返回 “zh_CN”，参考 [相关公告](https://developers.weixin.qq.com/community/develop/doc/00028edbe3c58081e7cc834705b801)
+    //     可选值： - 'en': 英文; - 'zh_CN': 简体中文; - 'zh_TW': 繁体中文;
+    public string language;
+
+    //
+    // 摘要:
+    //     用户昵称
+    public string nickName;
+
+    /// <summary>
+    /// 摘要:
+    ///     用户所在省份。不再返回，参考 [相关公告](https://developers.weixin.qq.com/community/develop/doc/00028edbe3c58081e7cc834705b801)
+    /// </summary>
+
+    public string province;
+}
+
+[Preserve]
+public class JGetUserInfoSuccessCallbackResult
+{
+    //
+    // 摘要:
+    //     需要基础库： `2.7.0` 敏感数据对应的云 ID，开通[云开发](https://developers.weixin.qq.com/minigame/dev/wxcloud/basis/getting-started.html)的小程序才会返回，可通过云调用直接获取开放数据，详细见[云调用直接获取开放数据](https://developers.weixin.qq.com/minigame/dev/guide/open-ability/signature.html#method-cloud)
+    public string cloudID;
+
+    //
+    // 摘要:
+    //     包括敏感数据在内的完整用户信息的加密数据，详见 [用户数据的签名验证和加解密](https://developers.weixin.qq.com/minigame/dev/guide/open-ability/signature.html#加密数据解密算法)
+    public string encryptedData;
+
+    //
+    // 摘要:
+    //     加密算法的初始向量，详见 [用户数据的签名验证和加解密](https://developers.weixin.qq.com/minigame/dev/guide/open-ability/signature.html#加密数据解密算法)
+    public string iv;
+
+    //
+    // 摘要:
+    //     不包括敏感信息的原始数据字符串，用于计算签名
+    public string rawData;
+
+    //
+    // 摘要:
+    //     使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，详见 [用户数据的签名验证和加解密](https://developers.weixin.qq.com/minigame/dev/guide/open-ability/signature.html)
+    public string signature;
+
+    //
+    // 摘要:
+    //     [UserInfo](https://developers.weixin.qq.com/minigame/dev/api/open-api/user-info/UserInfo.html)
+    //     用户信息对象，不包含 openid 等敏感信息
+    public JUserInfo userInfo;
+
+    public string errMsg;
+}
+
+public class UserAuthData
+{
+    public bool hasUserInfoAuth;
+    public bool hasFuzzyLocationAuth;
+    public bool hasWeRunAuth;
+    public bool hasWritePhtosAlbum;
+}
+
+public class LoginSuccessReturnData
+{
+    public JGetUserInfoSuccessCallbackResult info;
+    public ProtoUserLoginStruct userLoginReturnData;
+}
+
 public enum JPlantform
 {
     Editor,
@@ -310,6 +407,15 @@ public enum JPlantform
 
 public class MiniGameBase
 {
+    public const int MAX_RETRY_LOGIN_COUNT = 3;
+    protected int m_CurrentLoginCount = 0;
+
+    protected UserAuthData m_AuthData = new UserAuthData();
+    public UserAuthData AuthData
+    {
+        get { return m_AuthData; }
+        protected set { m_AuthData = value; }
+    }
 
     protected JSystemInfo m_SystemInfo = new JSystemInfo();
     public JSystemInfo SystemInfo
@@ -322,7 +428,11 @@ public class MiniGameBase
     public bool EnableVibrate
     {
         get { return m_EnableVibrate; }
-        protected set { m_EnableVibrate = value; }
+        set 
+        { 
+            m_EnableVibrate = value;
+            PlayerPrefsManager.SetUserBool(GamePlayerPrefsKey.EnableVibrate, m_EnableVibrate);
+        }
     }
 
     protected JPlantform m_CurrentPlatform = JPlantform.Editor;
@@ -379,12 +489,16 @@ public class MiniGameBase
 
     }
 
+    public virtual void GetUserInfo(Action<JGetUserInfoSuccessCallbackResult> successCb, Action failCb = null)
+    {
+    }
+
     public virtual void CreateUserInfoButton()
     {
 
     }
 
-    public virtual void UserLogin()
+    public virtual void UserLogin(Action<LoginSuccessReturnData> successCb, Action failCb = null)
     {
 
     }

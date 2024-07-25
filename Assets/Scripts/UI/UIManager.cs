@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ThinRL.Core;
 using ThinRL.Core.Pool;
+using ThinRL.Core.Tools;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -79,6 +80,14 @@ namespace Joyland.GamePlay
             get
             {
                 return m_SafeOffset;
+            }
+        }
+        private (Vector2 offsetMin, Vector2 offsetMax) m_FullOffset = new ValueTuple<Vector2, Vector2>();
+        public (Vector2 offsetMin, Vector2 offsetMax) FullOffset
+        {
+            get
+            {
+                return m_FullOffset;
             }
         }
 
@@ -165,8 +174,6 @@ namespace Joyland.GamePlay
             SetUINodeParams(hightest, UIViewLayerEnum.Hightest);
         }
 
-        int cccc = 0;
-
         private void Update()
         {
             for (int index = 0; index < (int)UIViewLayerEnum.Count; index++)
@@ -188,22 +195,6 @@ namespace Joyland.GamePlay
                         }
                     }
                 }
-            }
-
-            if (cccc < 5)
-            {
-                if (!TryGetComponent<CanvasScaler>(out var canvasScaler))
-                {
-                    return;
-                }
-                if (!TryGetComponent<Canvas>(out var can))
-                {
-                    return;
-                }
-                float standard_width = canvasScaler.referenceResolution.x;        //初始宽度  
-                float standard_height = canvasScaler.referenceResolution.y;       //初始高度  
-                console.error("fzy ????", standard_width, standard_height, Screen.width, Screen.height, can.pixelRect.ToString(), can.GetComponent<RectTransform>().sizeDelta);
-                cccc++;
             }
 
         }
@@ -237,6 +228,10 @@ namespace Joyland.GamePlay
                 return;
             }
 
+            var bgRectTransform = m_BackgroundNode.GetComponent<RectTransform>();
+            m_FullOffset.offsetMin = bgRectTransform.offsetMin;
+            m_FullOffset.offsetMax = bgRectTransform.offsetMax;
+
             float standard_width = canvasScaler.referenceResolution.x;        //初始宽度  
             float standard_height = canvasScaler.referenceResolution.y;       //初始高度  
             float root_width = m_RootCanvas.GetComponent<RectTransform>().sizeDelta.x;
@@ -264,8 +259,6 @@ namespace Joyland.GamePlay
 
 
             ref readonly var miniGame = ref J.Minigame;
-
-            miniGame.Initialize(false, true);
 
             float tx = 0, bx = 0;
             float ty = 0, by = 0;
@@ -295,6 +288,8 @@ namespace Joyland.GamePlay
             console.error(miniGame.SystemInfo.safeArea, miniGame.SystemInfo.windowWidth, miniGame.SystemInfo.windowHeight);
             m_SafeOffset.offsetMin = new Vector2(0 + (root_width * bx), 0 + (root_height * by));
             m_SafeOffset.offsetMax = new Vector2(0 + -(root_width * tx), 0 - (root_height * ty));
+
+ 
             console.error(m_SafeOffset.offsetMin, m_SafeOffset.offsetMax);
             var res = new Vector2(root_width, root_height * (1 - (ty + by)));
             console.error(standard_width + "  " + standard_height + "  " + res.x + "  " + res.y);

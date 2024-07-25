@@ -38,6 +38,29 @@ namespace ThinRL.Core.Tools
             return PlayerPrefs.GetInt(GetUserKey(key), defaultValue);
         }
 
+        //bool
+        public static void SetBool(string key, bool value)
+        {
+            PlayerPrefs.SetInt(key, value ? 1 : 0);
+        }
+
+        public static void SetUserBool(string key, bool value)
+        {
+            PlayerPrefs.SetInt(GetUserKey(key), value ? 1 : 0);
+        }
+        public static bool GetBool(string key)
+        {
+            return PlayerPrefs.GetInt(key) == 1 ? true : false;
+        }
+        public static bool GetBool(string key, bool defaultValue)
+        {
+            return PlayerPrefs.GetInt(key, defaultValue? 1 : 0) == 1 ? true : false;
+        }
+        public static bool GetUserBool(string key, bool defaultValue)
+        {
+            return PlayerPrefs.GetInt(GetUserKey(key), defaultValue ? 1 : 0) == 1 ? true : false;
+        }
+
         //float
         public static void SetFloat(string key, float value)
         {

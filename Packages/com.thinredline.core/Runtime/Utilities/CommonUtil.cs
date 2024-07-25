@@ -119,6 +119,27 @@ namespace ThinRL.Core
 
                 return shuffled;
             }
+
+            public static string GenerateRandomCodeWithTimestamp()
+            {
+                long timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds(); // 获取当前时间戳（毫秒）
+                string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                string randomCode = "";
+
+                // 生成随机字符部分
+                System.Random random = new System.Random();
+                for (int i = 0; i < 10; i++)
+                {
+                    int randomIndex = random.Next(characters.Length);
+                    randomCode += characters[randomIndex];
+                }
+
+                // 将时间戳转换为指定格式并加入随机码中
+                string timestampStr = timestamp.ToString();
+                randomCode += timestampStr.Substring(timestampStr.Length - 6); // 添加时间戳后 6 位
+
+                return randomCode;
+            }
         }
 
 

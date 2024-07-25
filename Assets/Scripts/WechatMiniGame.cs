@@ -1,7 +1,10 @@
+using Cysharp.Threading.Tasks;
+using Joyland.GamePlay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using ThinRL.Core;
+using ThinRL.Core.Tools;
 using UnityEngine;
 using UnityEngine.Scripting;
 using WeChatWASM;
@@ -142,6 +145,41 @@ public class WechatMiniGame : MiniGameBase
         return p;
     }
 
+    public override void GetUserInfo(Action<JGetUserInfoSuccessCallbackResult> successCb, Action failCb = null)
+    {
+        base.GetUserInfo(successCb, failCb);
+        if (!CheckWXValid())
+        {
+            successCb?.Invoke(null);
+            return;
+        }
+        WX.GetUserInfo(new GetUserInfoOption()
+        {
+            success = (res) =>
+            {
+                JGetUserInfoSuccessCallbackResult result = new JGetUserInfoSuccessCallbackResult();
+                result.cloudID = res.cloudID;
+                result.encryptedData = res.encryptedData;
+                result.iv = res.iv;
+                result.rawData = res.rawData;
+                result.signature = res.signature;
+                result.errMsg = res.errMsg;
+                result.userInfo = new JUserInfo();
+                result.userInfo.nickName = res.userInfo.nickName;
+                result.userInfo.avatarUrl = res.userInfo.avatarUrl;
+                result.userInfo.city = res.userInfo.city;
+                result.userInfo.country = res.userInfo.country;
+                result.userInfo.gender = res.userInfo.gender;
+                result.userInfo.language = res.userInfo.language;
+                result.userInfo.province = res.userInfo.province;
+                successCb?.Invoke(result);
+            },
+            fail = (res) =>
+            {
+                console.error("无法获取到UserInfo", res.errMsg);
+            }
+        });
+    }
     public override void CreateUserInfoButton()
     {
 
@@ -228,7 +266,7 @@ public class WechatMiniGame : MiniGameBase
         {
             return;
         }
-        WX.ShowToast(new ShowToastOption() { title = title, duration = duration, icon = icon, mask = true, success = (e)=> { successCB?.Invoke(); } });
+        WX.ShowToast(new ShowToastOption() { title = title, duration = duration, icon = icon, mask = false, success = (e)=> { successCB?.Invoke(); } });
     }
 
 
@@ -248,10 +286,10 @@ public class WechatMiniGame : MiniGameBase
         {
             success = (res) =>
             {
-                var hasUserInfoAuth = res.authSetting["scope.userInfo"];
-                var hasFuzzyLocationAuth = res.authSetting["scope.userFuzzyLocation"];
-                var hasWeRunAuth = res.authSetting["scope.werun'"];
-                var hasWritePhtosAlbum = res.authSetting["scope.writePhotosAlbum'"];
+                m_AuthData.hasUserInfoAuth = res.authSetting["scope.userInfo"];
+                m_AuthData.hasFuzzyLocationAuth = res.authSetting["scope.userFuzzyLocation"];
+                m_AuthData.hasWeRunAuth = res.authSetting["scope.werun'"];
+                m_AuthData.hasWritePhtosAlbum = res.authSetting["scope.writePhotosAlbum'"];
             }
         });
     }
@@ -305,6 +343,144 @@ public class WechatMiniGame : MiniGameBase
         }
 
         WX.ShareAppMessage(GetShareInfo());
+    }
+
+    public override void UserLogin(Action<LoginSuccessReturnData> successCb, Action failCb = null)
+    {
+        base.UserLogin(successCb, failCb);
+
+        if (!CheckWXValid())
+        {
+            return;
+        }
+
+        Action loginAgain = delegate ()
+        {
+            Func<UniTaskVoid> retry = async delegate ()
+            {
+                await UniTask.Delay(TimeSpan.FromMilliseconds(1000));
+                if(m_CurrentLoginCount >= MAX_RETRY_LOGIN_COUNT)
+                {
+                    failCb?.Invoke();
+                }
+                else
+                {
+                    UserLogin(successCb, failCb);
+                    ShowToast("正在尝试重新登录");
+                    console.error("login_fail: ====>", m_CurrentLoginCount);
+                    m_CurrentLoginCount += 1;
+                }
+            };
+
+            retry.Invoke();
+        };
+
+        if(CheckWXValid())
+        {
+            WX.Login(new LoginOption()
+            {
+                success = (e) =>
+                {
+                    var data = new { code = e.code };
+                    console.info(data);
+                    NetworkManager.Instance.GetReq<ProtoUserLoginStruct>("login", data, (res) =>
+                    {
+                        if (res.isSuccessed)
+                        {
+                            if (res.resData.code == 0)
+                            {
+                                if (res.headers.TryGetValue("Set-Cookie", out var cookieString))
+                                {
+                                    NetworkManager.Instance.CacheCookieSync(cookieString);
+                                }
+                                else
+                                {
+                                    console.error("【重要警告】！！！！！！！！！！无cookie！！！！！！");
+                                }
+
+                                ProtoUserLoginStruct userLoginResultData = new ProtoUserLoginStruct()
+                                {
+                                    id = res.resData.data.id,
+                                    isBeginner = res.resData.data.isBeginner
+                                };
+                                //已经获得用户授权的话，直接发
+                                if (m_AuthData.hasUserInfoAuth)
+                                {
+                                    GetUserInfo((userInfo) =>
+                                    {
+                                        successCb?.Invoke(new LoginSuccessReturnData() { info = userInfo, userLoginReturnData = userLoginResultData });
+                                    });
+                                }
+                                else
+                                {
+                                    successCb?.Invoke(new LoginSuccessReturnData() { info = null, userLoginReturnData = userLoginResultData });
+                                }
+                            }
+                            else
+                            {
+                                console.error("error code:", res.resData.code);
+                                loginAgain();
+                            }
+                        }
+                        else
+                        {
+                            loginAgain();
+                        }
+
+                    });
+                },
+                fail = (e) =>
+                {
+                    loginAgain();
+                }
+            });
+        }
+        else
+        {
+            var fakeCode = PlayerPrefsManager.GetString(GamePlayerPrefsKey.FakeLoginCode, "");
+            if(fakeCode == "")
+            {
+                fakeCode = CommonUtil.Random.GenerateRandomCodeWithTimestamp();
+                PlayerPrefsManager.SetString(GamePlayerPrefsKey.FakeLoginCode, fakeCode);
+            }
+            var data = new { code = fakeCode };
+            console.info(data);
+            NetworkManager.Instance.GetReq<ProtoUserLoginStruct>("fake_login", data, (res) =>
+            {
+                if (res.isSuccessed)
+                {
+                    if (res.resData.code == 0)
+                    {
+                        if (res.headers.TryGetValue("Set-Cookie", out var cookieString))
+                        {
+                            NetworkManager.Instance.CacheCookieSync(cookieString);
+                        }
+                        else
+                        {
+                            console.error("【重要警告】！！！！！！！！！！无cookie！！！！！！");
+                        }
+
+                        ProtoUserLoginStruct userLoginResultData = new ProtoUserLoginStruct()
+                        {
+                            id = res.resData.data.id,
+                            isBeginner = res.resData.data.isBeginner
+                        };
+                        successCb?.Invoke(new LoginSuccessReturnData() { info = null, userLoginReturnData = userLoginResultData });
+                    }
+                    else
+                    {
+                        console.error("error code:", res.resData.code);
+                        loginAgain();
+                    }
+                }
+                else
+                {
+                    loginAgain();
+                }
+
+            });
+        }
+
     }
 
     private ShareAppMessageOption GetShareInfo()

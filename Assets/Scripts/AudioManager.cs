@@ -1,13 +1,25 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using ThinRL.Core;
 using ThinRL.Core.Pool;
+using ThinRL.Core.Tools;
 using UnityEngine;
+using UnityEngine.Scripting;
 using YooAsset;
 
 namespace Joyland.GamePlay
 {
+    [Preserve]
+    public class AudioConfig
+    {
+        public float volumeBg;
+        public bool enableBg;
+        public float volumeEffect;
+        public bool enableEffect;
+    }
+
     [DisallowMultipleComponent]
     public class AudioManager : MonoSingleton<AudioManager>
     {
@@ -20,6 +32,10 @@ namespace Joyland.GamePlay
             /// </summary>
             public AudioSource refAudioSourceNode;
             public float timer;
+            /// <summary>
+            /// 用来辅助判定是否可以回收
+            /// </summary>
+            public bool needRecycle;
         }
         private PrefabPool m_AudioNodePool = null;
 
@@ -28,8 +44,11 @@ namespace Joyland.GamePlay
         private Dictionary<string, List<AudioInfo>> m_AudioClipCacheDic;
         private Dictionary<string, AudioInfo> m_BGAudioClipCacheDic;
 
+        private string m_CurrentBgURL = string.Empty;
+        private bool m_CurrentBgLoopMode = true;
+        private Action m_CurrentBGFinishCallback;
+
         private float m_BackgroundMusicVolmue = 1.0f;
-        private float m_EffectMusicVolume = 1.0f;
         public float BackgroundMusicVolume
         {
             get { return m_BackgroundMusicVolmue; }
@@ -40,9 +59,10 @@ namespace Joyland.GamePlay
             }
         }
 
+        private float m_EffectMusicVolume = 1.0f;
         public float EffectMusicVolmue
         {
-            get {return  m_EffectMusicVolume; }
+            get { return m_EffectMusicVolume; }
             set
             {
                 m_EffectMusicVolume = value;
@@ -57,8 +77,84 @@ namespace Joyland.GamePlay
                 }
             }
         }
+
+        private bool m_BackgroundMusicEnable = true;
+        public bool BackgroundMusicEnable
+        {
+            get { return m_BackgroundMusicEnable; }
+            set
+            {
+                m_BackgroundMusicEnable = value;
+                if (m_BackgroundMusicEnable)
+                {
+                    PlayBackgroundMusic(m_CurrentBgURL, m_CurrentBgLoopMode, m_CurrentBGFinishCallback);
+                }
+                else
+                {
+                    //TODO:干掉正在播放的小曲
+                    StopBackgroundMusic();
+                }
+
+            }
+        }
+
+        private bool m_EffectMusicEnable = true;
+        public bool EffectMusicEnable
+        {
+            get { return m_EffectMusicEnable; }
+            set
+            {
+                m_EffectMusicEnable = value;
+                if (m_EffectMusicEnable)
+                {
+
+                }
+                else
+                {
+                    //TODO:干掉正在播放的小曲
+                    StopAllEffectMusic();
+                }
+            }
+        }
+
+        public void LoadAudioConfig()
+        {
+            var dataString = PlayerPrefsManager.GetUserString(GamePlayerPrefsKey.AudioSetting, "");
+            if (string.IsNullOrEmpty(dataString) == false)
+            {
+                try
+                {
+                    var data = JsonConvert.DeserializeObject<AudioConfig>(dataString);
+                    m_BackgroundMusicVolmue = data.volumeBg;
+                    m_EffectMusicVolume = data.volumeEffect;
+                    m_BackgroundMusicEnable = data.enableBg;
+                    m_EffectMusicEnable = data.enableEffect;
+                }
+                catch
+                {
+                    m_BackgroundMusicVolmue = 1;
+                    m_EffectMusicVolume = 1;
+                    m_BackgroundMusicEnable = true;
+                    m_EffectMusicEnable = true;
+                }
+            }
+        }
+
+        public void SaveAudioConfig()
+        {
+            AudioConfig conf = new AudioConfig();
+            conf.enableEffect = m_EffectMusicEnable;
+            conf.enableBg = m_BackgroundMusicEnable;
+            conf.volumeEffect = m_EffectMusicVolume;
+            conf.volumeBg = m_BackgroundMusicVolmue;
+            var confString = JsonConvert.SerializeObject(conf);
+            PlayerPrefsManager.SetUserString(GamePlayerPrefsKey.AudioSetting, confString);
+        }
+
         private void Awake()
         {
+            LoadAudioConfig();
+
             m_AudioClipCacheDic = new Dictionary<string, List<AudioInfo>>();
             m_BGAudioClipCacheDic = new Dictionary<string, AudioInfo>();
 
@@ -67,14 +163,15 @@ namespace Joyland.GamePlay
 
             m_AudioNodePool = GameObjectPool.Instance.CreatePool(m_BackgroundAudioSource.gameObject, 3);
 
-            AddOrCreateAudioSource(m_BackgroundAudioSource.gameObject, true);
+
+            AddOrCreateAudioSource(m_BackgroundAudioSource.gameObject, true, m_BackgroundMusicVolmue);
         }
 
-        private AudioSource AddOrCreateAudioSource(GameObject obj, bool loop)
+        private AudioSource AddOrCreateAudioSource(GameObject obj, bool loop, float volume)
         {
             var audioSource = obj.GetComponent<AudioSource>() ?? obj.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
-            audioSource.volume = 1.0f;
+            audioSource.volume = volume;
             audioSource.spatialBlend = 0;
             audioSource.loop = loop;
             return audioSource;
@@ -82,31 +179,46 @@ namespace Joyland.GamePlay
 
         public void PlayBackgroundMusic(string url, bool isLoop = true, Action finishCallback = null)
         {
-            if (m_BGAudioClipCacheDic.TryGetValue(url, out var infoCache))
+            if (BackgroundMusicEnable == false)
             {
-                var info = infoCache;
-                info.refAudioSourceNode = m_BackgroundAudioSource;
-                info.timer = 0;
-                info.finishCallback = isLoop ? null : finishCallback;
-                PlayBackgroundMusic_Internal(info.clip, isLoop);
+                return;
             }
-            else
+
+            //保证正在播放的音频不会被打断
+            if (m_CurrentBgURL != url || isLoop == false)
             {
-                var assetHandle = YooAssets.LoadAssetAsync<AudioClip>(url);
-                assetHandle.Completed += (handle) =>
+                m_CurrentBgURL = url;
+                m_CurrentBgLoopMode = isLoop;
+                m_CurrentBGFinishCallback = finishCallback;
+
+                if (m_BGAudioClipCacheDic.TryGetValue(url, out var infoCache))
                 {
-                    if (handle.Status == EOperationStatus.Succeed)
+                    var info = infoCache;
+                    info.refAudioSourceNode = m_BackgroundAudioSource;
+                    info.timer = 0;
+                    info.finishCallback = isLoop ? null : finishCallback;
+                    info.needRecycle = false;
+                    PlayBackgroundMusic_Internal(info.clip, isLoop);
+                }
+                else
+                {
+                    var assetHandle = YooAssets.LoadAssetAsync<AudioClip>(url);
+                    assetHandle.Completed += (handle) =>
                     {
-                        var loadedClip = handle.AssetObject as AudioClip;
-                        AudioInfo info = new AudioInfo();
-                        info.clip = loadedClip;
-                        info.refAudioSourceNode = m_BackgroundAudioSource;
-                        info.timer = 0;
-                        info.finishCallback = isLoop ? null : finishCallback;
-                        m_BGAudioClipCacheDic.Add(url, info);
-                        PlayBackgroundMusic_Internal(loadedClip, isLoop);
-                    }
-                };
+                        if (handle.Status == EOperationStatus.Succeed)
+                        {
+                            var loadedClip = handle.AssetObject as AudioClip;
+                            AudioInfo info = new AudioInfo();
+                            info.clip = loadedClip;
+                            info.refAudioSourceNode = m_BackgroundAudioSource;
+                            info.timer = 0;
+                            info.finishCallback = isLoop ? null : finishCallback;
+                            info.needRecycle = false;
+                            m_BGAudioClipCacheDic.Add(url, info);
+                            PlayBackgroundMusic_Internal(loadedClip, isLoop);
+                        }
+                    };
+                }
             }
         }
 
@@ -128,6 +240,11 @@ namespace Joyland.GamePlay
         {
             if (m_BackgroundAudioSource)
             {
+                //var url = m_BackgroundAudioSource.name;
+                //if(m_BGAudioClipCacheDic.TryGetValue(url, out var info))
+                //{
+                //    info.needRecycle = true;
+                //}
                 m_BackgroundAudioSource.Stop();
             }
         }
@@ -150,13 +267,16 @@ namespace Joyland.GamePlay
 
         public void PlayEffectMusic(string url, Action finishCallback = null)
         {
-
+            if (EffectMusicEnable == false)
+            {
+                return;
+            }
             var assetHandle = YooAssets.LoadAssetAsync<AudioClip>(url);
             assetHandle.Completed += (handle) =>
             {
                 if (handle.Status == EOperationStatus.Succeed)
                 {
-                    var audioSource = AddOrCreateAudioSource(m_AudioNodePool.GetGameObject(this.transform), false);
+                    var audioSource = AddOrCreateAudioSource(m_AudioNodePool.GetGameObject(this.transform), false, EffectMusicVolmue);
 
 
                     var loadedClip = handle.AssetObject as AudioClip;
@@ -166,6 +286,7 @@ namespace Joyland.GamePlay
                     info.refAudioSourceNode = audioSource;
                     info.timer = 0;
                     info.finishCallback = finishCallback;
+                    info.needRecycle = false;
 
                     if (m_AudioClipCacheDic.ContainsKey(url))
                     {
@@ -185,12 +306,13 @@ namespace Joyland.GamePlay
 
         public void StopEffectMusic(string url)
         {
-            if(m_AudioClipCacheDic.TryGetValue(url, out var elements))
+            if (m_AudioClipCacheDic.TryGetValue(url, out var elements))
             {
                 var len = elements.Count;
                 for (var i = 0; i < len; i++)
                 {
                     var item = elements[i];
+                    item.needRecycle = true;
                     item.refAudioSourceNode.Stop();
                 }
             }
@@ -204,6 +326,7 @@ namespace Joyland.GamePlay
                 for (var i = 0; i < len; i++)
                 {
                     var item = element.Value[i];
+                    item.needRecycle = true;
                     item.refAudioSourceNode.Stop();
                 }
             }
@@ -227,7 +350,7 @@ namespace Joyland.GamePlay
 
         }
 
-        List<ValueTuple<string,AudioInfo>> m_SafeDeleteList = new List<ValueTuple<string, AudioInfo>>(1 << 2);
+        List<ValueTuple<string, AudioInfo>> m_SafeDeleteList = new List<ValueTuple<string, AudioInfo>>(1 << 2);
         // Update is called once per frame
         void Update()
         {
@@ -244,8 +367,15 @@ namespace Joyland.GamePlay
                         item.timer += Time.deltaTime;
                         if (item.timer > item.clip.length)
                         {
-                            m_SafeDeleteList.Add(new (element.Key, item));
+                            m_SafeDeleteList.Add(new(element.Key, item));
                             item.finishCallback?.Invoke();
+                        }
+                    }
+                    else
+                    {
+                        if (item.needRecycle)
+                        {
+                            m_SafeDeleteList.Add(new(element.Key, item));
                         }
                     }
                 }
@@ -260,6 +390,13 @@ namespace Joyland.GamePlay
                     if (item.timer > item.clip.length)
                     {
                         item.finishCallback?.Invoke();
+                    }
+                }
+                else
+                {
+                    if (item.needRecycle)
+                    {
+                        //
                     }
                 }
             }

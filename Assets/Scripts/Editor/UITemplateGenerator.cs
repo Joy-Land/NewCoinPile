@@ -21,6 +21,7 @@ public class UITemplateGenerator : EditorWindow
     string funcRes = "";
     string registFuncRes = "";
     string unregistFuncRes = "";
+    string extraAwakeRes = "";
     private void OnGUI()
     {
         var objcets = Selection.gameObjects;
@@ -74,6 +75,7 @@ public class UITemplateGenerator : EditorWindow
             funcRes = "";
             registFuncRes = "";
             unregistFuncRes = "";
+            extraAwakeRes = "";
             if (objcets.Length > 1)
             {
                 EditorUtility.DisplayDialog("错误", "请选择一个物体生成", "确定");
@@ -129,6 +131,11 @@ public class UITemplateGenerator : EditorWindow
                 {
                     impRes += $"{root.name} = transform.Find(\"{path}\").GetComponent<Image>(); \n";
                 }
+                if(root.name == "Img_Bg" || root.name == "Img_BG")
+                {
+                    extraAwakeRes += $"{root.name}.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin; \n";
+                    extraAwakeRes += $"{root.name}.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax; \n";
+                }
             }
             else if (root.name.Contains("RwImg_") || root.name.Contains("RawImg_"))
             {
@@ -147,11 +154,11 @@ public class UITemplateGenerator : EditorWindow
                 declareRes += $"public GameObject {root.name}; \n";
                 if (isPanel)
                 {
-                    impRes += $"{root.name} = transform.Find(\"{path}\"); \n";
+                    impRes += $"{root.name} = transform.Find(\"{path}\").gameObject; \n";
                 }
                 else
                 {
-                    impRes += $"{root.name} = transform.Find(\"{path}\"); \n";
+                    impRes += $"{root.name} = transform.Find(\"{path}\").gameObject; \n";
                 }
             }
             else if (root.name.Contains("Txt_"))
@@ -179,11 +186,11 @@ public class UITemplateGenerator : EditorWindow
                     impRes += $"{root.name} = transform.Find(\"{path}\").GetComponent<Button>(); \n";
                 }
 
-                registFuncRes += $"{root.name}.onClick.AddListener(On{root.name}Clicked);";
+                registFuncRes += $"{root.name}.onClick.AddListener(On{root.name}Clicked);\n";
 
                 funcRes += $"\n public void On{root.name}Clicked()" + "\n{ \n\n }\n";
 
-                unregistFuncRes += $"{root.name}.onClick.RemoveListener(On{root.name}Clicked);";
+                unregistFuncRes += $"{root.name}.onClick.RemoveListener(On{root.name}Clicked);\n";
 
             }
             else if (root.name.Contains("ScrView_"))
@@ -235,6 +242,7 @@ public class UITemplateGenerator : EditorWindow
                 "{\n" +
                 "\tbase.OnViewAwake(args);\n" +
                 $"{impRes}\n" +
+                $"{extraAwakeRes}\n"+
                 "\n}\n";
 
             defaultFuncRes += "public override void OnViewShow(EventArgsPack args)\n" +
