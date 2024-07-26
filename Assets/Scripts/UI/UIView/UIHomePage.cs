@@ -1,4 +1,5 @@
 using Joyland.GamePlay;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ThinRL.Core;
@@ -70,10 +71,20 @@ public class UIHomePage : UIViewBase
 
     }
 
+    
 
     public void OnBtn_StartGameClicked()
     {
 
+        //args[0]：是否带图片类型， args[1]：desc， args[2]：动画播放完成回调 args[3]：点击遮罩关闭回调
+        //UIManager.Instance.OpenUI(UIViewID.UITips, new EventArgsPack(true, "你好，你的利息很高很高",
+        //    new Action(() => { console.info("动画播放回调", this.name); }),
+        //    new Action(() => { console.info("点击后的回调"); })));
+    }
+
+    public void EventArgsPack(Delegate @delegate)
+    {
+        //m_Args = new object[] { @delegate };
     }
 
     public void OnBtn_RankClicked()

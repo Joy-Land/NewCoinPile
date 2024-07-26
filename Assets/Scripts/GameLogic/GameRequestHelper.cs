@@ -33,4 +33,32 @@ public class GameRequestHelper
             }
         });
     }
+
+    public static void UpdateItemData(int itemID, int categroyID, int updateNumber, int ttl, Action<ProtoItemDataStruct> successCb)
+    {
+        NetworkManager.Instance.GetReq<ProtoItemDataStruct>("update_item_number", new { itemId = itemID, categoryId = categroyID, updateNumber = updateNumber, ttl = ttl }, (res) =>
+        {
+            if(res.isSuccessed)
+            {
+                if(res.resData.code == 0)
+                {
+                    successCb?.Invoke(res.resData.data);
+                }
+            }
+        });
+    }
+
+    public static void UploadUserInfo(string nickName, string avatarUrl, Action successCb)
+    {
+        NetworkManager.Instance.PostReq<ProtoEmptyStruct>("set_user_name_and_avatar", new { userName = nickName, userAvatar = avatarUrl }, (res) =>
+        {
+            if(res.isSuccessed)
+            {
+                if(res.resData.code == 0)
+                {
+                    console.info("头像昵称上报成功");
+                }
+            }
+        });
+    }
 }

@@ -129,7 +129,15 @@ namespace Joyland.GamePlay
                 console.info("POST 请求成功！");
                 // 处理响应结果
                 string responseText = req.downloadHandler.text;
-                httpRes.resData = JsonConvert.DeserializeObject<ServerResult<T>>(responseText);
+                try
+                {
+                    httpRes.resData = JsonConvert.DeserializeObject<ServerResult<T>>(responseText);
+                }
+                catch
+                {
+                    httpRes = null;
+                }
+
                 httpRes.isSuccessed = req.responseCode == 200;
                 httpRes.headers = req.GetResponseHeaders();
                 if(httpRes.isSuccessed)

@@ -23,5 +23,10 @@
         "bundleName":"UIBank",
         "layer":"2",
         "packageName":"DefaultPackage"
+    },
+    "106":{
+        "bundleName":"UITips",
+        "layer":"4",
+        "packageName":"DefaultPackage"
     }
 }

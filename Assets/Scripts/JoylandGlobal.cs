@@ -41,13 +41,33 @@ namespace Joyland.GamePlay
         UIHomePage = 103,
         UIPopupItem = 104,
         UIBank = 105,
-
+        UITips = 106,
     }
     [Preserve]
     public enum UICompID
     {
         UITestComponent = 200,
         UITest1Component = 201,
+    }
+
+    [Preserve]
+    public enum ItemCategoryID:int
+    {
+        Default = 0,
+        Share = 1,
+        Video = 2,
+    }
+
+    [Preserve]
+    public enum ItemID
+    {
+
+    }
+
+    [Preserve]
+    public class ProtoEmptyStruct
+    {
+
     }
 
     /// <summary>
