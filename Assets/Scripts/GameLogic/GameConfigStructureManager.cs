@@ -3,22 +3,23 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameConfig;
 
 public class GameItemManager
 {
-    public Dictionary<int, GameConfig.GameItemConfigData> m_LocalAllItemConfigDatas = new Dictionary<int, GameConfig.GameItemConfigData>();
+    public Dictionary<int, GameConfig.GameItemConfigData> AllItemConfigDatas = new Dictionary<int, GameConfig.GameItemConfigData>();
 
     public GameItemManager(Dictionary<int, GameConfig.GameItemConfigData> allItemDatas)
     {
         var jsonString = JsonConvert.SerializeObject(allItemDatas);
-        m_LocalAllItemConfigDatas = JsonConvert.DeserializeObject<Dictionary<int, GameConfig.GameItemConfigData>>(jsonString);
+        AllItemConfigDatas = JsonConvert.DeserializeObject<Dictionary<int, GameConfig.GameItemConfigData>>(jsonString);
     }
 
     public GameConfig.GameItemConfigData GetItemConfigData(ItemID id)
     {
         var key = (int)id;
         GameConfig.GameItemConfigData data = null;
-        if (m_LocalAllItemConfigDatas.TryGetValue(key, out data))
+        if (AllItemConfigDatas.TryGetValue(key, out data))
         {
             return data;
         }
@@ -28,13 +29,13 @@ public class GameItemManager
     public void UpdateItemData(ItemID id, GameConfig.GameItemConfigData itemData)
     {
         var key = (int)id;
-        if (m_LocalAllItemConfigDatas.ContainsKey(key))
+        if (AllItemConfigDatas.ContainsKey(key))
         {
-            m_LocalAllItemConfigDatas[key] = itemData;
+            AllItemConfigDatas[key] = itemData;
         }
         else
         {
-            m_LocalAllItemConfigDatas.Add(key, itemData);
+            AllItemConfigDatas.Add(key, itemData);
         }
     }
 
@@ -74,6 +75,45 @@ public class GameItemManager
         }
     }
 
+}
+
+public class LocalCopyWriteConfig
+{
+    public Dictionary<string, string> AllCopyWriteConfigDatas = new Dictionary<string, string>();
+    public LocalCopyWriteConfig(string json)
+    {
+        AllCopyWriteConfigDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+    }
+}
+
+public class LocalCollectConfig
+{
+    public List<GameConfig.CollectConfigData.CollectItemConfigData> AllCollectItemConfigDatas;
+    public LocalCollectConfig(string json)
+    {
+        GameConfig.CollectConfigData AllCollectConfigData = JsonConvert.DeserializeObject<GameConfig.CollectConfigData>(json);
+        AllCollectItemConfigDatas = AllCollectConfigData.collect_item_list;
+        //console.error(AllCollectConfigData);
+        //console.error(AllCollectConfigData.collect_item_list);
+    }
+}
+
+public class LocalItemUsageConfig
+{
+    Dictionary<int, ItemUsageConfigData.GameItemUsageConfigData> AllItemUsageConfigDatas;
+    public LocalItemUsageConfig(Dictionary<int, ItemUsageConfigData.GameItemUsageConfigData> allItemUsageConfig)
+    {
+        AllItemUsageConfigDatas = allItemUsageConfig;
+    }
+
+    public ItemUsageConfigData.GameItemUsageConfigData GetItemUsageConfigData(int id)
+    {
+        if(AllItemUsageConfigDatas.ContainsKey(id))
+        {
+            return AllItemUsageConfigDatas[id];
+        }
+        return null;
+    }
 }
 
 

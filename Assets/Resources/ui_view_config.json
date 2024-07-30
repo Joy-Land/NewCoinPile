@@ -28,5 +28,25 @@
         "bundleName":"UITips",
         "layer":"4",
         "packageName":"DefaultPackage"
+    },
+    "107":{
+        "bundleName":"UICollect",
+        "layer":"2",
+        "packageName":"DefaultPackage"
+    },
+    "108":{
+        "bundleName":"UICollectInfo",
+        "layer":"2",
+        "packageName":"DefaultPackage"
+    },
+    "109":{
+        "bundleName":"UIGameOver",
+        "layer":"4",
+        "packageName":"DefaultPackage"
+    },
+    "110":{
+        "bundleName":"UIGameSettlement",
+        "layer":"4",
+        "packageName":"DefaultPackage"
     }
 }

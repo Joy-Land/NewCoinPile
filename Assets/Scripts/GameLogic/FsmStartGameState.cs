@@ -16,6 +16,7 @@ using UniFramework.Machine;
 using UnityEngine;
 using UnityEngine.Scripting;
 using YooAsset;
+using static UnityEngine.Rendering.ReloadAttribute;
 
 public class FsmStartGameState : IStateNode
 {
@@ -115,9 +116,44 @@ public class FsmStartGameState : IStateNode
         await UIManager.Instance.InitUICompListConfig(compConfig);
         EventManager.Instance.DispatchEvent(GameEventGlobalDefine.AddProgressBar, null, new EventArgsPack((int)LoadingStageEventCode.InitResource, (float)((int)LoadingStageEventCode.InitResource) + 1));
 
+        await LoadNecessaryConfig();
+
         EventManager.Instance.DispatchEvent(GameEventGlobalDefine.AddProgressBar, null, new EventArgsPack((int)LoadingStageEventCode.Finish, (float)((int)LoadingStageEventCode.Finish)));
     }
 
+    private async UniTask LoadNecessaryConfig()
+    {
+        //文案配置
+        var copyWrite = YooAssets.LoadAssetAsync<TextAsset>("CopyWriteConfig");
+        copyWrite.Completed += (handle) =>
+        {
+            var res = handle.AssetObject as TextAsset;
+            GameConfig.Instance.LoadLocalCopyWriteConfig(res.text);
+            console.info(GameConfig.LocalCopyWriteManager.AllCopyWriteConfigDatas);
+        };
+        await copyWrite.ToUniTask();
+
+        //收藏配置
+        var collect = YooAssets.LoadAssetAsync<TextAsset>("CollectConfig");
+        collect.Completed += (handle) =>
+        {
+            var res = handle.AssetObject as TextAsset;
+            GameConfig.Instance.LoadLocalCollectConfig(res.text);
+            console.info(GameConfig.LocalCollectManager.AllCollectItemConfigDatas);
+        };
+        await collect.ToUniTask();
+
+
+        var itemUsage = YooAssets.LoadAssetAsync<TextAsset>("ItemUsageConfig");
+        itemUsage.Completed += (handle) =>
+        {
+            var res = handle.AssetObject as TextAsset;
+            GameConfig.Instance.LoadLocalItemUsageConfig(res.text);
+        };
+        await itemUsage.ToUniTask();
+        
+        //别的配置
+    }
 
     private static string m_CDNRootPath = "https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage";//https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage
     //const string cndROOTPath = "https://cdn.joylandstudios.com/UnityTest/DefaultPackage";

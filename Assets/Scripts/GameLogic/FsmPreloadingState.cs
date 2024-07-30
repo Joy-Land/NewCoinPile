@@ -10,6 +10,8 @@ public class FsmPreloadingState : IStateNode
 {
     private GameObject m_UIStartGameNode;
     private StateMachine m_Machine;
+
+    private Sprite m_Bg;
     public void OnCreate(StateMachine machine)
     {
         m_Machine = machine;
@@ -26,7 +28,10 @@ public class FsmPreloadingState : IStateNode
         UIManager.Instance.Init();
         //console.error(s.textureRect);
         //设置ui背景
-        UIManager.Instance.SetBackground(1, Resources.Load<Sprite>("TempTest/img_pattern_loading"));
+        //UIManager.Instance.SetBackground(1, Resources.Load<Sprite>("TempTest/img_pattern_loading"));
+
+        m_Bg = Resources.Load<Sprite>("FirstAssets/bg2");
+        UIManager.Instance.SetBackground(0, m_Bg);
         UIManager.Instance.GetAndOpenUIViewOnNode<UIStartGame>(m_UIStartGameNode, UIViewID.UIStartGame, 
             new UIViewConfig() { bundleName = "", layer = UIViewLayerEnum.Lowest, packageName = "" }, new EventArgsPack((int)LoadingStageEventCode.Finish));
 
@@ -37,7 +42,7 @@ public class FsmPreloadingState : IStateNode
 
     public void OnExit()
     {
-        
+        Resources.UnloadAsset(m_Bg);
     }
 
     public void OnUpdate()

@@ -9,17 +9,27 @@ using UnityEngine.UI;
 
 public class UIStartGame : UIViewBase
 {
-    public Slider Slider_Progress;
+    public Image Img_Bg;
     public Text Txt_StageDesc;
+    public Text Txt_Tesss;
     public Text Txt_Test;
+    public Image Img_Slider;
+
 
     private int m_TotalProgress = 1;
     public override void OnViewAwake(EventArgsPack args)
     {
         base.OnViewAwake(args);
-        Slider_Progress = transform.Find("Slider_Progress").GetComponent<Slider>();
+
+        Img_Bg = transform.Find("Img_Bg").GetComponent<Image>();
         Txt_StageDesc = transform.Find("Txt_StageDesc").GetComponent<Text>();
+        Txt_Tesss = transform.Find("Txt_StageDesc/Txt_Tesss").GetComponent<Text>();
         Txt_Test = transform.Find("Txt_Test").GetComponent<Text>();
+        Img_Slider = transform.Find("Progress/Img_Slider").GetComponent<Image>();
+
+
+        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
 
         Txt_StageDesc.font = J.Minigame.SystemFont;
         m_TotalProgress = args.GetData<int>(0);
@@ -97,7 +107,7 @@ public class UIStartGame : UIViewBase
             }
         }
         curProgress = Mathf.Min(curProgress, (float)m_TotalProgress);
-        Slider_Progress.value = curProgress / m_TotalProgress;
+        Img_Slider.fillAmount = curProgress / m_TotalProgress;
     }
 
 

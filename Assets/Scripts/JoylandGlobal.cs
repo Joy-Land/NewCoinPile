@@ -42,12 +42,17 @@ namespace Joyland.GamePlay
         UIPopupItem = 104,
         UIBank = 105,
         UITips = 106,
+        UICollect = 107,
+        UICollectInfo = 108,
+        UIGameOver = 109,
+        UIGameSettlement = 110,
     }
     [Preserve]
     public enum UICompID
     {
         UITestComponent = 200,
         UITest1Component = 201,
+        UICollectItemComponent = 202,
     }
 
     [Preserve]

@@ -1,0 +1,40 @@
+{
+    "itemList": [
+        {
+            "itemId": 5001,
+            "itemName": "加牌道具",
+            "defaultCount": 3,
+            "currentCount": 3,
+            "maxAcquireCount": 1,
+            "currentAcquireCount": 0,
+            "desc":""
+        },
+        {
+            "itemId": 5002,
+            "itemName": "撤回道具",
+            "defaultCount": 3,
+            "currentCount": 0,
+            "maxAcquireCount": 3,
+            "currentAcquireCount": 0,
+            "desc":"撤回最近的一张牌放到原位置"
+        },
+        {
+            "itemId": 5003,
+            "itemName": "万能牌",
+            "defaultCount": 1,
+            "currentCount": 0,
+            "maxAcquireCount": 6,
+            "currentAcquireCount": 0,
+            "desc":""
+        },
+        {
+            "itemId": 5004,
+            "itemName": "洗牌",
+            "defaultCount": 3,
+            "currentCount": 0,
+            "maxAcquireCount": 3,
+            "currentAcquireCount": 0,
+            "desc":"随机打乱所有未使用的牌"
+        }
+    ]
+}

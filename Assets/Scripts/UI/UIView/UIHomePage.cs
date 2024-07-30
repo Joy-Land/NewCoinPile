@@ -15,7 +15,10 @@ public class UIHomePage : UIViewBase
         set { _UIOrder = value; }
     }
 
-
+    public Image Img_Bg;
+    public Image Img_House;
+    public Image Img_Bord;
+    public Text Txt_InterestRate;
     public Button Btn_StartGame;
     public Button Btn_Rank;
     public Button Btn_Collect;
@@ -23,14 +26,20 @@ public class UIHomePage : UIViewBase
     public Button Btn_Bank;
 
 
+
     public override void OnViewAwake(EventArgsPack args)
     {
         base.OnViewAwake(args);
+        Img_Bg = transform.Find("Img_Bg").GetComponent<Image>();
+        Img_House = transform.Find("Img_Bg/Img_House").GetComponent<Image>();
+        Img_Bord = transform.Find("Img_Bg/Img_Bord").GetComponent<Image>();
+        Txt_InterestRate = transform.Find("Img_Bg/Img_Bord/Txt_InterestRate").GetComponent<Text>();
         Btn_StartGame = transform.Find("Btn_StartGame").GetComponent<Button>();
         Btn_Rank = transform.Find("Btn_Rank").GetComponent<Button>();
         Btn_Collect = transform.Find("Btn_Collect").GetComponent<Button>();
         Btn_Setting = transform.Find("Btn_Setting").GetComponent<Button>();
         Btn_Bank = transform.Find("Btn_Bank").GetComponent<Button>();
+
 
 
     }
@@ -71,21 +80,18 @@ public class UIHomePage : UIViewBase
 
     }
 
-    
+    public RectTransform ss;
+    public RectTransform ee;
 
     public void OnBtn_StartGameClicked()
     {
-
+        UIFlyElementSys.Instance.PlayFlyCoinEffect(ss.position, ee.position);
         //args[0]：是否带图片类型， args[1]：desc， args[2]：动画播放完成回调 args[3]：点击遮罩关闭回调
         //UIManager.Instance.OpenUI(UIViewID.UITips, new EventArgsPack(true, "你好，你的利息很高很高",
         //    new Action(() => { console.info("动画播放回调", this.name); }),
         //    new Action(() => { console.info("点击后的回调"); })));
     }
 
-    public void EventArgsPack(Delegate @delegate)
-    {
-        //m_Args = new object[] { @delegate };
-    }
 
     public void OnBtn_RankClicked()
     {
@@ -94,7 +100,7 @@ public class UIHomePage : UIViewBase
 
     public void OnBtn_CollectClicked()
     {
-
+        UIManager.Instance.OpenUI(UIViewID.UICollect);
     }
 
     public void OnBtn_SettingClicked()

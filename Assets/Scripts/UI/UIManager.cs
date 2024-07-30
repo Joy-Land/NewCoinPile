@@ -363,7 +363,7 @@ namespace Joyland.GamePlay
         }
 
         /// <summary>
-        /// 
+        /// 设置背景 0单张image，1多张image
         /// </summary>
         /// <param name="type">0单张image，1多张image</param>
         public void SetBackground(int type, Sprite sprite)
@@ -507,6 +507,7 @@ namespace Joyland.GamePlay
             var uiInfo = new UIViewInfo();
             uiInfo.id = id;
             uiInfo.args = args;
+            console.error(rootNode.name, id, uiConf,args,uiInfo.args);
             uiInfo.view = uiView;
             uiView.OnViewAwake(uiInfo.args);
             uiView.SetAnimatorNode();
@@ -872,7 +873,7 @@ namespace Joyland.GamePlay
             {
                 var obj = pool.GetGameObject(parent);
                 comp = obj.GetComponent<T>();
-                if (comp != null)
+                if (comp == null)
                 {
                     comp = obj.AddComponent<T>();
                 }

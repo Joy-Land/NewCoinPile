@@ -1,0 +1,20 @@
+version: 2
+tpsheetFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
+- Assets/GameBundle/Atlas/UIGame/ui_game.tpsheet
+- Assets/GameBundle/Atlas/UIGameOver/ui_gameover.tpsheet
+- Assets/GameBundle/Atlas/UIHome/ui_home.tpsheet
+- Assets/GameBundle/Atlas/UITools/ui_tools.tpsheet
+textureFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.png
+- Assets/GameBundle/Atlas/UIGame/ui_game.png
+- Assets/GameBundle/Atlas/UIGameOver/ui_gameover.png
+- Assets/GameBundle/Atlas/UIHome/ui_home.png
+- Assets/GameBundle/Atlas/UITools/ui_tools.png
+normalmapFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
+- 
+- 
+- 
+enableDebugOutput: 0

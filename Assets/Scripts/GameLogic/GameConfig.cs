@@ -1,4 +1,5 @@
 using Joyland.GamePlay;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,34 @@ public class GameConfig
         public List<(int categoryID, int currentRemainedNumber)> categroylist;
     }
 
+    public class ItemUsageConfigData
+    {
+        public class GameItemUsageConfigData
+        {
+            public int itemId;
+            public string itemName;
+            public int defaultCount;
+            public int currentCount;
+            public int maxAcquireCount;
+            public int currentAcquireCount;
+            public string desc;
+        }
+
+        public List<GameItemUsageConfigData> itemList;
+    }
+
+
+    public class CollectConfigData
+    {
+        public class CollectItemConfigData
+        {
+            public float limit;
+            public string desc;
+            public string note;
+        }
+        public List<CollectItemConfigData> collect_item_list;
+    }
+
     private static GameItemManager m_GameItemManager;
     public static GameItemManager GameItemManager
     {
@@ -24,6 +53,33 @@ public class GameConfig
         }
     }
 
+    private static LocalCopyWriteConfig m_LocalCopyWriteManager;
+    public static LocalCopyWriteConfig LocalCopyWriteManager
+    {
+        get
+        {
+            return m_LocalCopyWriteManager;
+        }
+    }
+
+    private static LocalCollectConfig m_LocalCollectManager;
+    public static LocalCollectConfig LocalCollectManager
+    {
+        get
+        {
+            return m_LocalCollectManager;
+        }
+    }
+
+
+    private static LocalItemUsageConfig m_LocalItemUsageManager;
+    public static LocalItemUsageConfig LocalItemUsageManager
+    {
+        get
+        {
+            return m_LocalItemUsageManager;
+        }
+    }
 
 
     private GameConfig() { }
@@ -43,6 +99,37 @@ public class GameConfig
     /// </summary>
     private Dictionary<int, GameItemConfigData> m_ServerAllItemConfigDatas = new Dictionary<int, GameItemConfigData>();
 
+    public void LoadLocalCopyWriteConfig(string json)
+    {
+        m_LocalCopyWriteManager = new LocalCopyWriteConfig(json);
+    }
+
+    public void LoadLocalCollectConfig(string json)
+    {
+        m_LocalCollectManager = new LocalCollectConfig(json);
+    }
+
+    public void LoadLocalItemUsageConfig(string json)
+    {
+        Dictionary<int, ItemUsageConfigData.GameItemUsageConfigData> allItemUsageConfigDatas = new Dictionary<int, ItemUsageConfigData.GameItemUsageConfigData>();
+
+        var itemUsageList = JsonConvert.DeserializeObject<ItemUsageConfigData>(json).itemList;
+        foreach (var itemUsage in itemUsageList)
+        {
+            var gConf = new ItemUsageConfigData.GameItemUsageConfigData() { 
+                itemId = itemUsage.itemId,
+                defaultCount = itemUsage.defaultCount,
+                currentCount = itemUsage.currentCount,
+                maxAcquireCount = itemUsage.maxAcquireCount,
+                currentAcquireCount = itemUsage.currentAcquireCount,
+                itemName = itemUsage.itemName,
+                desc = itemUsage.desc,
+            };
+            allItemUsageConfigDatas.Add(itemUsage.itemId, gConf);
+        }
+        //TODO:
+        m_LocalItemUsageManager = new LocalItemUsageConfig(allItemUsageConfigDatas);
+    }
 
     public void SetAllItemData(List<ProtoItemDataStruct> itemDataList)
     {

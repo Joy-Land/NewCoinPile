@@ -8,5 +8,10 @@
         "bundleName":"UITest1Component",
         "packageName":"DefaultPackage",
         "preloadAmount":"2"
+    },
+    "202":{
+        "bundleName":"UICollectItemComponent",
+        "packageName":"DefaultPackage",
+        "preloadAmount":"2"
     }
 }
