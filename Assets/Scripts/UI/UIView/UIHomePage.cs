@@ -40,8 +40,8 @@ public class UIHomePage : UIViewBase
         Btn_Setting = transform.Find("Btn_Setting").GetComponent<Button>();
         Btn_Bank = transform.Find("Btn_Bank").GetComponent<Button>();
 
-
-
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
     }
     public override void OnViewShow(EventArgsPack args)
     {

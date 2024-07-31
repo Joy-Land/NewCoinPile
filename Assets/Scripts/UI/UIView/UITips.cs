@@ -30,8 +30,8 @@ public class UITips : UIViewBase
         Obj_NoImageType = transform.Find("Obj_Container/Obj_NoImageType").gameObject;
         Txt_NoImageTypeDesc = transform.Find("Obj_Container/Obj_NoImageType/GameObject/Txt_NoImageTypeDesc").GetComponent<Text>();
 
-        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
-        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
         //参数：  args[0]：是否带图片类型， args[1]：desc， args[2]：动画播放完成回调 args[3]：点击遮罩关闭回调
 

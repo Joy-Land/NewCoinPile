@@ -318,8 +318,16 @@ public class WechatMiniGame : MiniGameBase
             m_SystemInfo.platform = info.platform;
             m_SystemInfo.fontSizeSetting = info.fontSizeSetting;
             m_SystemInfo.SDKVersion = info.SDKVersion;
+            m_SystemInfo.statusBarHeight = info.statusBarHeight;
             m_SystemInfo.host = new JSystemInfoHost() { appId = info.host.appId };
             m_SystemInfo.enableDebug = info.enableDebug;
+            m_SystemInfo.safeArea = new JSafeArea();
+            m_SystemInfo.safeArea.top = info.safeArea.top;
+            m_SystemInfo.safeArea.right = info.safeArea.right;
+            m_SystemInfo.safeArea.left = info.safeArea.left;
+            m_SystemInfo.safeArea.bottom = info.safeArea.bottom;
+            m_SystemInfo.safeArea.width = info.safeArea.width;
+            m_SystemInfo.safeArea.height = info.safeArea.height;
         }
     }
 

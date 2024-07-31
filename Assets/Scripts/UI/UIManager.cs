@@ -89,6 +89,15 @@ namespace Joyland.GamePlay
             }
         }
 
+        private Vector2 m_FullSizeDetail = new Vector2(1080, 1920);
+        public Vector2 FullSizeDetail
+        {
+            get
+            {
+                return m_FullSizeDetail;
+            }
+        }
+
         private Queue<UIViewInfo> m_UIOpenQueue;
         private Queue<IUIView> m_UICloseQueue;
         private Queue<IUIView> m_UIHideQueue;
@@ -107,7 +116,7 @@ namespace Joyland.GamePlay
         {
             m_UIViewConfig = new Dictionary<int, UIViewConfig>();
             m_RootCanvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
-            if(m_RootCanvas == null)
+            if (m_RootCanvas == null)
             {
                 console.error("需要先确保UI根节点加载完成");
                 return;
@@ -225,8 +234,8 @@ namespace Joyland.GamePlay
                 return;
             }
             var bgRectTransform = m_BackgroundNode.GetComponent<RectTransform>();
-            m_FullOffset.offsetMin = bgRectTransform.offsetMin;
-            m_FullOffset.offsetMax = bgRectTransform.offsetMax;
+            m_FullSizeDetail = bgRectTransform.sizeDelta;
+
 
             float standard_width = canvasScaler.referenceResolution.x;        //初始宽度  
             float standard_height = canvasScaler.referenceResolution.y;       //初始高度  
@@ -281,11 +290,14 @@ namespace Joyland.GamePlay
 
             }
 
-            console.error(miniGame.SystemInfo.safeArea, miniGame.SystemInfo.windowWidth, miniGame.SystemInfo.windowHeight);
-            m_SafeOffset.offsetMin = new Vector2(0 + (root_width * bx), 0 + (root_height * by));
-            m_SafeOffset.offsetMax = new Vector2(0 + -(root_width * tx), 0 - (root_height * ty));
+            m_FullOffset.offsetMin = new Vector2((root_width * bx), (root_height * by));
+            m_FullOffset.offsetMax = new Vector2(-(root_width * tx), -(root_height * ty));
 
- 
+            console.error(miniGame.SystemInfo.safeArea, miniGame.SystemInfo.windowWidth, miniGame.SystemInfo.windowHeight);
+            m_SafeOffset.offsetMin = new Vector2(0 + m_FullOffset.offsetMin.x, 0 + m_FullOffset.offsetMin.y);
+            m_SafeOffset.offsetMax = new Vector2(0 + m_FullOffset.offsetMax.x, 0 + m_FullOffset.offsetMax.y);
+
+
             console.error(m_SafeOffset.offsetMin, m_SafeOffset.offsetMax);
             var res = new Vector2(root_width, root_height * (1 - (ty + by)));
             console.error(standard_width + "  " + standard_height + "  " + res.x + "  " + res.y);
@@ -502,13 +514,13 @@ namespace Joyland.GamePlay
 
         public T GetAndOpenUIViewOnNode<T>(GameObject rootNode, UIViewID id, in UIViewConfig uiConf, EventArgsPack args) where T : UIViewBase
         {
-            InitUIViewConfigWithAddingMode(new Dictionary<int, UIViewConfig>() { { (int)id,uiConf} });
+            InitUIViewConfigWithAddingMode(new Dictionary<int, UIViewConfig>() { { (int)id, uiConf } });
 
             var uiView = rootNode.GetComponent<T>();
             var uiInfo = new UIViewInfo();
             uiInfo.id = id;
             uiInfo.args = args;
-            console.error(rootNode.name, id, uiConf,args,uiInfo.args);
+            console.error(rootNode.name, id, uiConf, args, uiInfo.args);
             uiInfo.view = uiView;
             uiView.OnViewAwake(uiInfo.args);
             uiView.SetAnimatorNode();

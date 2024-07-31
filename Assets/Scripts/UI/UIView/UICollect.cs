@@ -39,8 +39,8 @@ public class UICollect : UIViewBase
         ScrollView_CollectItems = transform.Find("Obj_Container/ScrollView_CollectItems").GetComponent<ScrollRect>();
         Obj_CollectItemsContent = transform.Find("Obj_Container/ScrollView_CollectItems/Viewport/Obj_CollectItemsContent").gameObject;
 
-        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
-        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
 
         //读取配置们，然后展示

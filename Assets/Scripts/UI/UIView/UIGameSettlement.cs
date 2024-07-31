@@ -43,8 +43,8 @@ public class UIGameSettlement : UIViewBase
         Img_TryGetTypeRevive = transform.Find("Obj_Container/Obj_Fail/Btn_TryGetRevive/Img_TryGetTypeRevive").GetComponent<Image>();
         Btn_Close = transform.Find("Obj_Container/Obj_Fail/Btn_Close").GetComponent<Button>();
 
-        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
-        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
         if (args.ArgsLength > 0)
         {
