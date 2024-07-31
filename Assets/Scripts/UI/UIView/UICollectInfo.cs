@@ -38,8 +38,8 @@ public class UICollectInfo : UIViewBase
         Txt_Desc1 = transform.Find("Obj_Container/GameObject/Txt_Desc1").GetComponent<Text>();
         Txt_Desc2 = transform.Find("Obj_Container/GameObject/Txt_Desc2").GetComponent<Text>();
 
-        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
-        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
         if (args.ArgsLength > 0)
         {

@@ -49,10 +49,10 @@ public class UIPopupItem : UIViewBase
         Txt_TryGetItem = transform.Find("Obj_Container/Btn_TryGetItem/Txt_TryGetItem").GetComponent<Text>();
         Img_TryGetTypeIcon = transform.Find("Obj_Container/Btn_TryGetItem/Img_TryGetTypeIcon").GetComponent<Image>();
 
-        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
-        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
-        if(args.ArgsLength>0)
+        if (args.ArgsLength>0)
         {
             m_ItemID = (ItemID)args.GetData<int>(0);
             m_ItemCategroyDate = GameConfig.GameItemManager.GetItemCategoryData(m_ItemID);

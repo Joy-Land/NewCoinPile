@@ -41,6 +41,40 @@ public class JSystemInfoHost
 }
 
 [Preserve]
+public class JSafeArea
+{
+    //
+    // 摘要:
+    //     安全区域右下角纵坐标
+    public double bottom;
+
+    //
+    // 摘要:
+    //     安全区域的高度，单位逻辑像素
+    public double height;
+
+    //
+    // 摘要:
+    //     安全区域左上角横坐标
+    public double left;
+
+    //
+    // 摘要:
+    //     安全区域右下角横坐标
+    public double right;
+
+    //
+    // 摘要:
+    //     安全区域左上角纵坐标
+    public double top;
+
+    //
+    // 摘要:
+    //     安全区域的宽度，单位逻辑像素
+    public double width;
+}
+
+[Preserve]
 public class JSystemInfo
 {
     //
@@ -160,7 +194,7 @@ public class JSystemInfo
     //
     // 摘要:
     //     需要基础库： `2.7.0` 在竖屏正方向下的安全区域。部分机型没有安全区域概念，也不会返回 safeArea 字段，开发者需自行兼容。
-    public SafeArea safeArea;
+    public JSafeArea safeArea;
 
     //
     // 摘要:

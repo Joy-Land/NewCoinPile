@@ -79,10 +79,10 @@ public class UISetting : UIViewBase
         Obj_InGame = transform.Find("Obj_Container/Obj_InGame").gameObject;
         Btn_Leave = transform.Find("Obj_Container/Obj_InGame/Btn_Leave").GetComponent<Button>();
 
-        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
-        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
-        if(args.ArgsLength>0)
+        if (args.ArgsLength>0)
         {
             m_IsIngame = args.GetData<bool>(0);
         }

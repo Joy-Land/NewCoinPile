@@ -49,10 +49,10 @@ public class UIGameOver : UIViewBase
         Txt_TryGetRevive = transform.Find("Obj_Container/Obj_Fail/Btn_TryGetRevive/Txt_TryGetRevive").GetComponent<Text>();
         Img_TryGetTypeRevive = transform.Find("Obj_Container/Obj_Fail/Btn_TryGetRevive/Img_TryGetTypeRevive").GetComponent<Image>();
 
-        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
-        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
-        if(args.ArgsLength>0)
+        if (args.ArgsLength>0)
         {
             m_IsSucces = args.GetData<bool>(0);
         }

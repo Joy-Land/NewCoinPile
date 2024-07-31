@@ -51,8 +51,8 @@ public class UIBank : UIViewBase
         Obj_TotalAssets = transform.Find("Obj_Container/Obj_TotalAssets").gameObject;
         Txt_TotalCoins = transform.Find("Obj_Container/Obj_TotalAssets/Image/Txt_TotalCoins").GetComponent<Text>();
 
-        Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
-        Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+        Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
+        Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
 
     }
