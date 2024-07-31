@@ -2,8 +2,10 @@ using Joyland.GamePlay;
 using System.Collections;
 using System.Collections.Generic;
 using ThinRL.Core;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using YooAsset;
 
 public class UIPopupItem : UIViewBase
 {
@@ -26,6 +28,12 @@ public class UIPopupItem : UIViewBase
     public Text Txt_TryGetItem;
     public Image Img_TryGetTypeIcon;
 
+    private Dictionary<ItemID, (string icon, string desc)> panelConf = new Dictionary<ItemID, (string icon, string desc)>() {
+
+    };
+
+    private ItemID m_ItemID = 0;
+    private (ItemCategoryID type, int remainNumber) m_ItemCategroyDate;
     public override void OnViewAwake(EventArgsPack args)
     {
         base.OnViewAwake(args);
@@ -43,6 +51,12 @@ public class UIPopupItem : UIViewBase
 
         Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
+
+        if(args.ArgsLength>0)
+        {
+            m_ItemID = (ItemID)args.GetData<int>(0);
+            m_ItemCategroyDate = GameConfig.GameItemManager.GetItemCategoryData(m_ItemID);
+        }
     }
 
     public override void SetAnimatorNode()
@@ -61,6 +75,21 @@ public class UIPopupItem : UIViewBase
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        var conf = GameConfig.LocalItemUsageManager.GetItemUsageConfigData((int)m_ItemID);
+        Txt_Title.text = conf.itemName;
+        Txt_Desc.text = conf.desc;
+
+        Img_ItemIcon.SetImageWithAsync("ui_tools", panelConf[m_ItemID].icon);
+        if(m_ItemCategroyDate.type == ItemCategoryID.Video)
+        {
+            Img_TryGetTypeIcon.SetImageWithAsync("ui_tools", "icon_ads");
+        }
+        else
+        {
+            Img_TryGetTypeIcon.SetImageWithAsync("ui_tools", "icon_share");
+        }
+        
     }
     public override void OnViewUpdate()
     {
@@ -94,11 +123,32 @@ public class UIPopupItem : UIViewBase
 
     public void OnBtn_CloseClicked()
     {
-
+        UIManager.Instance.CloseUI(UIViewID.UIPopupItem);
     }
 
     public void OnBtn_TryGetItemClicked()
     {
+        if(m_ItemCategroyDate.type == ItemCategoryID.Share)
+        {
+            J.Minigame.Share(() =>
+            {
+                UIManager.Instance.CloseUI(UIViewID.UIPopupItem);
+                GameConfig.GameItemManager.UpdateItemCategoryData(m_ItemID, m_ItemCategroyDate.type, -1);
+                J.ReqHelper.UpdateItemData((int)m_ItemID, (int)m_ItemCategroyDate.type, m_ItemCategroyDate.remainNumber - 1, 0, (resData) =>
+                {
+                    GameConfig.Instance.SetItemData(resData);
+                });
+            });
+        }
+        else if(m_ItemCategroyDate.type == ItemCategoryID.Video)
+        {
+            UIManager.Instance.CloseUI(UIViewID.UIPopupItem);
+
+        }
+        else if(m_ItemCategroyDate.type == ItemCategoryID.Default)
+        {
+            UIManager.Instance.CloseUI(UIViewID.UIPopupItem);
+        }
 
     }
 

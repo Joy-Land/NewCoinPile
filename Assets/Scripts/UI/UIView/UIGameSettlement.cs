@@ -46,7 +46,10 @@ public class UIGameSettlement : UIViewBase
         Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
 
+        if (args.ArgsLength > 0)
+        {
 
+        }
     }
     public override void OnViewShow(EventArgsPack args)
     {

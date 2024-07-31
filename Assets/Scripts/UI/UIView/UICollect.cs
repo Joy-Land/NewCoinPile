@@ -1,9 +1,11 @@
+
 using Joyland.GamePlay;
 using System.Collections;
 using System.Collections.Generic;
 using ThinRL.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using YooAsset;
 
 public class UICollect : UIViewBase
 {
@@ -41,7 +43,6 @@ public class UICollect : UIViewBase
         Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
 
 
-
         //读取配置们，然后展示
         var list = GameConfig.LocalCollectManager.AllCollectItemConfigDatas;
         var len = list.Count;
@@ -53,7 +54,7 @@ public class UICollect : UIViewBase
             m_CollectItemCompList.Add(collectItemComp);
 
             //TODO:根据元子数量，设置每个comp状态
-            collectItemComp.SetData(new EventArgsPack(confData.limit));
+            collectItemComp.SetData(new EventArgsPack(i));
         }
     }
 

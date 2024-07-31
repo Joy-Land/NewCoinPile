@@ -48,5 +48,10 @@
         "bundleName":"UIGameSettlement",
         "layer":"4",
         "packageName":"DefaultPackage"
+    },
+    "111":{
+        "bundleName":"UIGamePage",
+        "layer":"1",
+        "packageName":"DefaultPackage"
     }
 }

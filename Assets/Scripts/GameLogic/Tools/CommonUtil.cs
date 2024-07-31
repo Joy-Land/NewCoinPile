@@ -6,13 +6,24 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
-using Debug = UnityEngine.Debug;
+using ThinRL.Core;
+using Joyland.GamePlay;
 
-namespace ThinRL.Core
+
+namespace Joyland.GamePlay
 {
     public static class CommonUtil
     {
+        public static void SetImageWithAsync(this UnityEngine.UI.Image image, string atlasName, string spriteName, string packageName = "DefaultPackage")
+        {
+            var package = YooAsset.YooAssets.GetPackage(packageName);
+            package.LoadSubAssetsAsync<Sprite>(atlasName).Completed += (handle) =>
+            {
+                var target = handle.GetSubAssetObject<Sprite>(spriteName);
+                image.sprite = target;
+            };
+        }
+
         public static class Common
         {
             /// <summary>
@@ -140,6 +151,11 @@ namespace ThinRL.Core
 
                 return randomCode;
             }
+        }
+
+        public static class Assets
+        {
+
         }
 
 

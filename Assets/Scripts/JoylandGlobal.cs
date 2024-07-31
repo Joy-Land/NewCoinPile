@@ -46,6 +46,7 @@ namespace Joyland.GamePlay
         UICollectInfo = 108,
         UIGameOver = 109,
         UIGameSettlement = 110,
+        UIGamePage = 111,
     }
     [Preserve]
     public enum UICompID
@@ -130,6 +131,7 @@ namespace Joyland.GamePlay
 
         public static GameRequestHelper ReqHelper = new GameRequestHelper();
 
+        public static GamePlayerDataManager PlayerDataManager = new GamePlayerDataManager();
 
     }
 }

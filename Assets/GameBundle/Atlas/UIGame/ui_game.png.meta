@@ -206,6 +206,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: img_plus
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 220
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27df7ac0d3cb0c34ab2c79125b55074d
+      internalID: -330495544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -220,6 +241,7 @@ TextureImporter:
       btn_settiing: -677274173
       icon_btn_green: -766731562
       img_mark_number: 2055818239
+      img_plus: -330495544
       img_toast: 1120216337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

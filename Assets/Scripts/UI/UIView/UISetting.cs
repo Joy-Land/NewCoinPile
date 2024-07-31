@@ -43,6 +43,7 @@ public class UISetting : UIViewBase
     public GameObject Obj_InGame;
     public Button Btn_Leave;
 
+    private bool m_IsIngame = false;
 
     private bool m_AudioEffectFlag = true;
     private bool m_AudioMusicFlag = true;
@@ -81,6 +82,11 @@ public class UISetting : UIViewBase
         Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
 
+        if(args.ArgsLength>0)
+        {
+            m_IsIngame = args.GetData<bool>(0);
+        }
+
         m_VibrateFlag = J.Minigame.EnableVibrate;
         m_AudioEffectFlag = AudioManager.Instance.EffectMusicEnable;
         m_AudioMusicFlag = AudioManager.Instance.BackgroundMusicEnable;
@@ -104,6 +110,8 @@ public class UISetting : UIViewBase
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        Btn_Leave.gameObject.SetActive(m_IsIngame);
 
         UpdateStatus();
     }

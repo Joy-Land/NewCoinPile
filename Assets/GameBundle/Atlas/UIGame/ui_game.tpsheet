@@ -4,7 +4,7 @@
 # To import these sprites into your Unity project, download "TexturePackerImporter":
 # https://www.codeandweb.com/texturepacker/unity
 #
-# $TexturePacker:SmartUpdate:2163bd3fc84161ef08ab577b1fd8bbbb:f43a96c2b6b7f28f8fd78345b5adb682:992f030eed6d1e50782187927c09d063$
+# $TexturePacker:SmartUpdate:6c6b2d3cb6a231e54b678ec4dcba4a23:5d648b2f755395fc00ac7d2c5ca031c8:992f030eed6d1e50782187927c09d063$
 #
 :format=40300
 :texture=ui_game.png
@@ -16,4 +16,5 @@
 btn_settiing;1;35;118;123; 0.5;0.5; 0;0;0;0; 4;118;0;0;0;0;123;118;123; 2;1;2;3;0;1;3
 icon_btn_green;103;307;204;204; 0.5;0.5; 0;0;0;0; 4;204;0;0;0;0;204;204;204; 2;1;2;3;0;1;3
 img_mark_number;103;262;43;43; 0.5;0.5; 0;0;0;0; 4;43;0;0;0;0;43;43;43; 2;1;2;3;0;1;3
+img_plus;103;220;42;40; 0.5;0.5; 0;0;0;0; 4;42;0;0;0;0;40;42;40; 2;1;2;3;0;1;3
 img_toast;1;160;100;351; 0.5;0.5; 0;0;0;0; 4;100;0;0;0;0;351;100;351; 2;1;2;3;0;1;3

@@ -24,7 +24,7 @@ public class UICollectInfo : UIViewBase
     public Text Txt_Desc1;
     public Text Txt_Desc2;
 
-
+    private int m_ItemIdx;
     public override void OnViewAwake(EventArgsPack args)
     {
         base.OnViewAwake(args);
@@ -42,12 +42,37 @@ public class UICollectInfo : UIViewBase
         Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
 
 
+        m_ItemIdx = args.GetData<int>(0);
     }
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        var idx = m_ItemIdx;
+
+        var conf = GameConfig.LocalCollectManager.AllCollectItemConfigDatas[idx];
+
+        var testCurrentCoins = 90;
+
+        Txt_TotalCoins.text = testCurrentCoins.ToString() + "万";
+        Txt_Desc1.text = string.Format(GameConfig.LocalCopyWriteManager.AllCopyWriteConfigDatas["collect_desc1"], conf.desc);
+        Txt_Desc2.text = string.Format(GameConfig.LocalCopyWriteManager.AllCopyWriteConfigDatas["collect_desc2"], conf.note);
     }
+
+    public override void SetAnimatorNode()
+    {
+        base.SetAnimatorNode();
+
+        if (this.animator == null)
+        {
+            if (Obj_Container.GetComponent<Animator>() == null)
+            {
+                this.animator = Obj_Container.AddComponent<Animator>();
+            }
+        }
+    }
+
     public override void OnViewUpdate()
     {
         base.OnViewUpdate();

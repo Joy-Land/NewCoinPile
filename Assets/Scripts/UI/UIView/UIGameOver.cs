@@ -52,7 +52,10 @@ public class UIGameOver : UIViewBase
         Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
 
+        if(args.ArgsLength>0)
+        {
 
+        }
     }
     public override void OnViewShow(EventArgsPack args)
     {
@@ -93,22 +96,31 @@ public class UIGameOver : UIViewBase
 
     public void OnBtn_CloseClicked()
     {
-
+        //关闭页面
+        UIManager.Instance.CloseUI(UIViewID.UIGameOver);
+        //跳转到结算
+        UIManager.Instance.OpenUI(UIViewID.UIGameSettlement);
     }
 
     public void OnBtn_TryGetMoreCoinsClicked()
     {
+        //看广告
 
+        //判断自己资产是否到了下一级别
+        //如果没到，直接到下一关
+        //如果到了，进入结算界面
     }
 
     public void OnBtn_TryGetCoinsClicked()
     {
-
+        //判断自己资产是否到了下一级别
+        //如果没到，直接到下一关
+        //如果到了，进入结算界面
     }
 
     public void OnBtn_TryGetReviveClicked()
     {
-
+        //做通知局内事件复活，局内处理完事件看完广告再关掉这个gameover界面
     }
 
     public void UnregistEvent()

@@ -105,7 +105,7 @@ public class UIHomePage : UIViewBase
 
     public void OnBtn_SettingClicked()
     {
-        UIManager.Instance.OpenUI(UIViewID.UISetting);
+        UIManager.Instance.OpenUI(UIViewID.UISetting, new EventArgsPack(false));
     }
 
     public void OnBtn_BankClicked()
