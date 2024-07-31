@@ -196,6 +196,11 @@ namespace CoinPileScript
                 }
             }
         }
+
+        public Boolean CheckCoinPileIsEmpty()
+        {
+            return coinList.Count == 0;
+        }
         
         public Boolean CheckCoinTopHasSameColor(CoinColor color)
         {
@@ -216,7 +221,7 @@ namespace CoinPileScript
                 return stackTop.frozenNumber > 0;
             }
             
-            return true;
+            return false;
         }
 
         public Boolean CheckTopCoinIsShuttered()
@@ -227,7 +232,7 @@ namespace CoinPileScript
                 return stackTop.isShutter && !stackTop.shutterIsOpen ;
             }
             
-            return true;
+            return false;
         }
 
         public Boolean CheckIsBelowTopCoin(int coinElementIndex)

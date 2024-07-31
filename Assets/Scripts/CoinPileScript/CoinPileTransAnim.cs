@@ -39,7 +39,7 @@ namespace CoinPileScript
                 TransferCoinsAnim(coinTransNumberList[i], coinGoList[i], destGoList[i], destStartIndexList[i], onCompleteList[i], i == coinTransNumberList.Count - 1 ? onAllComplete : null, i == coinTransNumberList.Count - 1 ? onAnimEnd : null);
                 if (i < coinTransNumberList.Count - 1)
                 {
-                    yield return new WaitForSeconds(flyDuration);
+                    yield return new WaitForSeconds(flyDuration * intervalPercent * 2);
                 }
             }
         }

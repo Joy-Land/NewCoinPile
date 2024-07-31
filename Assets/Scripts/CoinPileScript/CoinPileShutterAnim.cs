@@ -28,7 +28,16 @@ namespace CoinPileScript
             var coinShutterComponent = coinShutterGameObject.GetComponent<CoinShutter>();
             if (coinShutterComponent != null)
             {
-                coinShutterComponent.ChangeShutterStatus(isOpen, false, onComplete, onAllComplete);
+                coinShutterComponent.ChangeShutterStatus(isOpen, false, null, null);
+                if (onComplete != null)
+                {
+                    onComplete();
+                }
+
+                if (onAllComplete != null)
+                {
+                    onAllComplete();
+                }
             }
         }
         
