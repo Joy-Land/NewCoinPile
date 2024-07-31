@@ -31,6 +31,8 @@ public class FsmStartGameState : IStateNode
         public Config release;
     }
 
+    private Sprite m_Bg;
+
     public const string PACKAGE_NAME = "DefaultPackage";
 
     /// <summary>
@@ -63,6 +65,13 @@ public class FsmStartGameState : IStateNode
 
     public void OnEnter()
     {
+        var m_UIStartGameNode = m_Machine.GetBlackboardValue("_UIStartGameNode") as GameObject;
+        m_Bg = Resources.Load<Sprite>("FirstAssets/bg2");
+        console.error("fzy bb:", m_Bg);
+        UIManager.Instance.SetBackground(0, m_Bg);
+        UIManager.Instance.GetAndOpenUIViewOnNode<UIStartGame>(m_UIStartGameNode, UIViewID.UIStartGame,
+            new UIViewConfig() { bundleName = "", layer = UIViewLayerEnum.Lowest, packageName = "" }, new EventArgsPack((int)LoadingStageEventCode.Finish));
+
         EventManager.Instance.AddEvent(GameEventGlobalDefine.EverythingIsReady, OnEverythingIsReadyEvent);
         EventManager.Instance.AddEvent(GameEventGlobalDefine.DownloadFinish, OnDownloadFinishEvent);
         // 初始化事件系统
@@ -85,6 +94,10 @@ public class FsmStartGameState : IStateNode
 
     public void OnExit()
     {
+        if (m_Bg)
+        {
+            Resources.UnloadAsset(m_Bg);
+        }
         console.error(this.ToString() + "退出");
         EventManager.Instance.RemoveEvent(GameEventGlobalDefine.EverythingIsReady, OnEverythingIsReadyEvent);
         EventManager.Instance.RemoveEvent(GameEventGlobalDefine.DownloadFinish, OnDownloadFinishEvent);

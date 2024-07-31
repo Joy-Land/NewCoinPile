@@ -8,10 +8,10 @@ using UnityEngine;
 
 public class FsmPreloadingState : IStateNode
 {
-    private GameObject m_UIStartGameNode;
+    //private GameObject m_UIStartGameNode;
     private StateMachine m_Machine;
 
-    private Sprite m_Bg;
+
     public void OnCreate(StateMachine machine)
     {
         m_Machine = machine;
@@ -19,19 +19,13 @@ public class FsmPreloadingState : IStateNode
 
     public void OnEnter()
     {
-        m_UIStartGameNode = m_Machine.GetBlackboardValue("_UIStartGameNode") as GameObject;
+
 
         NetworkManager.Instance.Initialize("https://xuyuanchi-grayscale.joylandstudios.com/");
 
         J.Minigame.Initialize(false, PlayerPrefsManager.GetUserBool(GamePlayerPrefsKey.EnableVibrate, true));
 
         UIManager.Instance.Init();
-
-        m_Bg = Resources.Load<Sprite>("FirstAssets/bg2");
-        console.error("fzy bb:",m_Bg);
-        UIManager.Instance.SetBackground(0, m_Bg);
-        UIManager.Instance.GetAndOpenUIViewOnNode<UIStartGame>(m_UIStartGameNode, UIViewID.UIStartGame, 
-            new UIViewConfig() { bundleName = "", layer = UIViewLayerEnum.Lowest, packageName = "" }, new EventArgsPack((int)LoadingStageEventCode.Finish));
 
         AudioManager.Instance.LoadAudioConfig();
 
@@ -40,10 +34,7 @@ public class FsmPreloadingState : IStateNode
 
     public void OnExit()
     {
-        if (m_Bg)
-        { 
-            //Resources.UnloadAsset(m_Bg);
-        }
+
     }
 
     public void OnUpdate()
