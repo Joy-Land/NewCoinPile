@@ -39,11 +39,12 @@ public class WechatMiniGame : MiniGameBase
             UpdateWxSettings();
             UpdateSystemInfo();
 
-            var fallbackFont = Application.streamingAssetsPath + "fallback.ttf";
-            WX.GetWXFont(fallbackFont, (font) =>
-            {
-                m_SystemFont = font;
-            });
+            //var fallbackFont = Application.streamingAssetsPath + "fallback.ttf";
+            //WX.GetWXFont(fallbackFont, (font) =>
+            //{
+            //    m_SystemFont = font;
+            //    console.error("fzy font:", font);
+            //});
 
             WX.OnShow((res) =>
             {

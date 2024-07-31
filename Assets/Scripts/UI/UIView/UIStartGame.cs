@@ -6,6 +6,7 @@ using ThinRL.Core;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
+using WeChatWASM;
 
 public class UIStartGame : UIViewBase
 {
@@ -30,12 +31,19 @@ public class UIStartGame : UIViewBase
 
         Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
-
 #if UNITY_EDITOR
 
 #else
-#if !UNITY_EDITOR && UNITY_WX
-        Txt_StageDesc.font = J.Minigame.SystemFont;
+#if UNITY_WX
+        var fallbackFont = Application.streamingAssetsPath + "fallback.ttf";
+        WX.GetWXFont(fallbackFont, (font) =>
+        {
+            //m_SystemFont = font;
+            Txt_StageDesc.font = font;
+            console.error("fzy font:", font);
+        });
+
+        console.error("fzy zzz font:", J.Minigame.SystemFont);
 #endif
 #endif
         m_TotalProgress = args.GetData<int>(0);
