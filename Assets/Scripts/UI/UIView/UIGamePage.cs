@@ -35,8 +35,8 @@ public class UIGamePage : UIViewBase
         Img_MagnetEmpty = transform.Find("Btn_Magnet/Image/Img_MagnetEmpty").GetComponent<Image>();
 
 
-
     }
+
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
@@ -72,8 +72,29 @@ public class UIGamePage : UIViewBase
         Btn_Clear.onClick.AddListener(OnBtn_ClearClicked);
         Btn_Magnet.onClick.AddListener(OnBtn_MagnetClicked);
 
+        EventManager.Instance.AddEvent(GameEventGlobalDefine.OnGetGameTools, OnGetGetToolsEvent);
     }
 
+    /// <summary>
+    /// 0:道具id
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public void OnGetGetToolsEvent(object sender, EventArgsPack e)
+    {
+        var itemId = (ItemID)e.GetData<int>(0);
+
+        var usageData = GameConfig.LocalItemUsageManager.GetItemUsageConfigData((int)itemId);
+        usageData.currentCount = usageData.defaultCount;
+        usageData.currentAcquireCount++;
+        RefreshItemUIStatus(itemId);
+
+    }
+
+    public void RefreshItemUIStatus(ItemID itemID)
+    {
+
+    }
 
     public void OnBtn_SettingClicked()
     {
@@ -82,7 +103,7 @@ public class UIGamePage : UIViewBase
 
     public void OnBtn_BankClicked()
     {
-
+        UIManager.Instance.OpenUI(UIViewID.UIBank);
     }
 
     public void OnBtn_AddBoxClicked()
@@ -108,6 +129,7 @@ public class UIGamePage : UIViewBase
         Btn_Clear.onClick.RemoveListener(OnBtn_ClearClicked);
         Btn_Magnet.onClick.RemoveListener(OnBtn_MagnetClicked);
 
+        EventManager.Instance.RemoveEvent(GameEventGlobalDefine.OnGetGameTools, OnGetGetToolsEvent);
     }
 
 

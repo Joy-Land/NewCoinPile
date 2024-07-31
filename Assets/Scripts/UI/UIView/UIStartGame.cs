@@ -31,7 +31,13 @@ public class UIStartGame : UIViewBase
         Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
 
+#if UNITY_EDITOR
+
+#else
+#if !UNITY_EDITOR && UNITY_WX
         Txt_StageDesc.font = J.Minigame.SystemFont;
+#endif
+#endif
         m_TotalProgress = args.GetData<int>(0);
     }
 

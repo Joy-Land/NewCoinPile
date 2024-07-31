@@ -35,10 +35,14 @@ public class UITips : UIViewBase
 
         //参数：  args[0]：是否带图片类型， args[1]：desc， args[2]：动画播放完成回调 args[3]：点击遮罩关闭回调
 
-        m_IsHasImageType = args.GetData<bool>(0);
-        m_Desc = args.GetData<string>(1);
-        m_AnimationFinishCb = args.GetData<Action>(2);
-        m_ClickCloseFinishCb = args.GetData<Action>(3);
+        if (args.ArgsLength > 0)
+        {
+            m_IsHasImageType = args.GetData<bool>(0);
+            m_Desc = args.GetData<string>(1);
+            m_AnimationFinishCb = args.GetData<Action>(2);
+            m_ClickCloseFinishCb = args.GetData<Action>(3);
+        }
+
     }
 
     public override void OnViewShow(EventArgsPack args)
@@ -49,6 +53,8 @@ public class UITips : UIViewBase
         Obj_HasImageType.SetActive(m_IsHasImageType);
         Obj_NoImageType.SetActive(m_IsHasImageType);
 
+        Txt_HasImageTypeDesc.text = m_Desc;
+        Txt_NoImageTypeDesc.text = m_Desc;
     }
 
     public override void OnViewUpdate()

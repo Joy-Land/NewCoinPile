@@ -21,6 +21,11 @@ namespace Joyland.GamePlay
         public static readonly string DownloadFinish = "DownloadFinish";
 
         public static readonly string EverythingIsReady = "EverythingIsReady";
+
+        public static readonly string EnterGamePage = "EnterGamePage";
+        public static readonly string ExitGamePage = "ExitGamePage";
+
+        public static readonly string OnGetGameTools = "OnGetGameTools";
     }
 
     [Preserve]
@@ -67,7 +72,9 @@ namespace Joyland.GamePlay
     [Preserve]
     public enum ItemID
     {
-
+        AddSlot = 1000,
+        Clear = 1001,
+        Magnet = 1002,
     }
 
     [Preserve]

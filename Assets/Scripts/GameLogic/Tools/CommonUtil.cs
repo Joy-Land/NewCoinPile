@@ -85,6 +85,29 @@ namespace Joyland.GamePlay
                 return dateTime.ToString("yyyy/MM/dd HH:mm:ss:fff");
             }
 
+            public static string ConvertToChineseCurrencyUnit(long number)
+            {
+                if (number == 0)
+                {
+                    return "零";
+                }
+
+                string[] units = { "","万", "十万", "百万", "千万", "亿", "十亿", "百亿", "千亿" };
+                int unitIndex = 0;
+
+                while (number >= 10000 && unitIndex < units.Length)
+                {
+                    number /= 10000;
+                    unitIndex++;
+                }
+
+                if (unitIndex == units.Length)
+                {
+                    return "千亿以上";
+                }
+
+                return number + units[unitIndex];
+            }
 
 
             [ThreadStatic]

@@ -41,8 +41,10 @@ public class UICollectInfo : UIViewBase
         Img_Bg.GetComponent<RectTransform>().offsetMin = UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = UIManager.Instance.FullOffset.offsetMax;
 
-
-        m_ItemIdx = args.GetData<int>(0);
+        if (args.ArgsLength > 0)
+        {
+            m_ItemIdx = args.GetData<int>(0);
+        }
     }
     public override void OnViewShow(EventArgsPack args)
     {
@@ -58,6 +60,7 @@ public class UICollectInfo : UIViewBase
         Txt_TotalCoins.text = testCurrentCoins.ToString() + "万";
         Txt_Desc1.text = string.Format(GameConfig.LocalCopyWriteManager.AllCopyWriteConfigDatas["collect_desc1"], conf.desc);
         Txt_Desc2.text = string.Format(GameConfig.LocalCopyWriteManager.AllCopyWriteConfigDatas["collect_desc2"], conf.note);
+
     }
 
     public override void SetAnimatorNode()
