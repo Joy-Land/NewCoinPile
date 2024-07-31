@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8dfeaebf9ef964a8bcb865f809137a, type: 3}
+  m_Name: Level 71
+  m_EditorClassIdentifier: 
+  coinLists:
+  - data:
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 11
+      number: 3
+      isHidden: 0
+      isFrozen: 1
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 0
+    position: {x: -2.65, y: -21.57}
+  - data:
+    - color: 6
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 9
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 0
+    position: {x: -3.96, y: -16.3}
+  - data:
+    - color: 11
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 1
+      shutterIsOpen: 0
+    - color: 2
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 1
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 0
+    position: {x: -1.36, y: -16.3}
+  - data:
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 10
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 11
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 0
+    position: {x: 1.35, y: -16.3}
+  - data:
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 1
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 2
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 9
+      number: 3
+      isHidden: 0
+      isFrozen: 1
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 0
+    position: {x: -0.01, y: -21.57}
+  - data:
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 2
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 9
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 6
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 10
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 1
+    tunnelStartIndex: 1
+    position: {x: -1.36, y: -13.55}
+  - data:
+    - color: 10
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 9
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 6
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 0
+    position: {x: -3.96, y: -19.24}
+  - data:
+    - color: 11
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 1
+      shutterIsOpen: 1
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 1
+      shutterIsOpen: 1
+    - color: 10
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 0
+    position: {x: -1.36, y: -19.24}
+  - data:
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 6
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 2
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 0
+    position: {x: 1.35, y: -19.24}
+  transCoinStackList:
+    data: 08000000040000000b0000000200000009000000060000000a000000

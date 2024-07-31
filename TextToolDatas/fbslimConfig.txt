@@ -1,0 +1,90 @@
+!Soft.c1d63e75
+!UnityWatermark-small.d7411008
+!EscToExit_back.21b1540e
+!EscToExit_Text.2e1ee8b4
+!UnityWatermark-trial-big.66f46ac8
+!UnityWatermark-trial.60b4e34e
+!UnityWatermark-beta.dd37c61b
+!UnityWatermark-edu.a8c472ae
+!UnityWatermark-dev.ae1fc174
+!WarningSign.59b8d955
+!UnityWatermark-proto.5084375a
+!UnityWatermarkPlugin-beta.52403834
+!box.643f5df8
+!button active.c15aedb7
+!button hover.42efb15e
+!button on hover.2c40c4b8
+!button on.7ff0e5a1
+!button.bdec6b82
+!horizontal scrollbar thumb.4137b46d
+!horizontal scrollbar.0ac38291
+!horizontalslider.722f02b2
+!slider thumb active.168a62a9
+!slider thumb.a7acef71
+!slidert humb hover.0c248117
+!toggle active.e32a2ca9
+!toggle hover.614620f6
+!toggle on hover.528d6b34
+!toggle on.1f99750a
+!toggle on active.9d52caeb
+!toggle.6eafbcb0
+!vertical scrollbar thumb.7ba97313
+!vertical scrollbar.d38290f1
+!verticalslider.58266f5f
+!window on.38a76040
+!window.a62d1258
+!textfield.a75d69ec
+!textfield on.f2c2fb5c
+!textfield hover.8c7ae9d8
+!UnitySplash-HolographicTrackingLoss.cbf38e69
+!UnitySplash-Light(Clone).05ef6840
+LDR_LLL1_0.1e9160f6
+BayerMatrix.407551c1
+!UISprite.b48f75d0
+!Background.665e03a7
+!Knob.dadd3d45
+!CoinOrangeTexture.f7df3d17
+!shadow.40ea8b65
+!CoinBrownTexture.cae7cdd6
+!coin1.58969efa
+!CoinBlueDarkTexture.a43b40bc
+!Rope_1_Nor.37d21a07
+!Coin_Tube.3536aa12
+!BIAO.1f230964
+!ColorPaletteV10.f2780ada
+!Rope_1_Rog.a22aae13
+!MU.858e590b
+!img_loadingprograss_bg.5e63680f
+!CoinPinkTexture.57e554e5
+!CoinTealTexture.224c45d5
+!CoinYellowTexture.c671df96
+!CoinBlueTexture.8372f79e
+!Rope_1_AO.a98244ea
+!img_loadingprograss.aa720374
+!CoinGreenTexture.41a4cc2b
+!coin2.ce8b9a0a
+!CoinGreyTexture.2f6b46e4
+!yun1.4ca42c58
+!CoinRedTexture.87d587e4
+!img_pattern_loading.71282c1e
+!yun2.1eebd1ee
+!GE.7d040fe6
+!bg.6a78a6c2
+!BGSpriteShaded.fe463dd6
+!yun4.bca8256a
+!XIAO.784f283e
+!CoinPurpleTexture.17d89971
+!yun3.c7e7448b
+!1.75b9fdaf
+!suansong.4205e8be
+!CoinGreenDarkTexture.1e292303
+!Ice_Normal.cfa93cb0
+!LiberationSans SDF Atlas.ac9f1c83
+!UIMask.09363183
+!White1px.f8d314fe
+!UIFoldoutClosed.89295238
+!UIFoldoutOpened.84255435
+!bg2.f5d1dc3a
+!UICheckMark.d924f22b
+Space.3af8e7b1
+UIElement8px.f411169b

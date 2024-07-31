@@ -9,5 +9,6 @@ namespace SOData
     {
         public List<CoinList> coinLists = new List<CoinList>();
         public TransCoinStackList transCoinStackList;
+        public CoinPileRopeList coinPileRopeList;
     }
 }

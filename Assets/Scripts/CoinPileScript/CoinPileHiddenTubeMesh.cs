@@ -11,7 +11,7 @@ namespace CoinPileScript
         
         private readonly float startZ = -0.09f;
         private readonly float coinOffsetZ = 0.18f;
-        private readonly float coinScaleZ = 0.9f;
+        private readonly float coinScaleY = 0.2f;
 
         private Dictionary<int, GameObject> coinHiddenTubeMap;
         
@@ -29,7 +29,8 @@ namespace CoinPileScript
                     // 生成 CoinHiddenTube 的 Mesh
                     var mesh = Instantiate(coinHiddenTube, this.transform);
                     mesh.transform.localPosition = new Vector3(0, 0, startZ + coinOffsetZ * sum);
-                    mesh.transform.localScale = new Vector3(1.0f, 1.0f, coinScaleZ * setting.number);
+                    mesh.transform.localEulerAngles = new Vector3(270,0,0);
+                    mesh.transform.localScale = new Vector3(1.0f, coinScaleY * setting.number, 1.0f);
                     
                     // 记录到 Map 中
                     coinHiddenTubeMap.Add(setting.id, mesh);

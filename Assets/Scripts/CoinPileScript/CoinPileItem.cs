@@ -10,5 +10,7 @@ namespace CoinPileScript
         public int number;
         public Boolean isHidden;
         public int frozenNumber;
+        public Boolean isShutter;
+        public Boolean shutterIsOpen;
     }
 }

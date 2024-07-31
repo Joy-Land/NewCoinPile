@@ -6,13 +6,13 @@ namespace Prefab
 {
     public class CoinStackTopPrefab : MonoBehaviour
     {
-        [SerializeField] private new Renderer renderer;
+        [SerializeField] private Renderer mainRenderer;
 
         public void ChangeColor(Material material)
         {
-            if (renderer != null)
+            if (mainRenderer != null)
             {
-                renderer.material = material;
+                mainRenderer.material = material;
             }
         }
     }

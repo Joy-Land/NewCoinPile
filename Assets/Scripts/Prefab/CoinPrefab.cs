@@ -6,13 +6,55 @@ namespace Prefab
 {
     public class CoinPrefab : MonoBehaviour
     {
-        [SerializeField] private Renderer renderer;
+        [SerializeField] private Renderer mainRenderer;
+        [SerializeField] private Renderer subRenderer;
+        [SerializeField] private Transform ropePoint;
+        [SerializeField] private GameObject ropePin;
 
         public void ChangeColor(Material material)
         {
-            if (renderer != null)
+            if (mainRenderer != null)
             {
-                renderer.material = material;
+                mainRenderer.material = material;
+            }
+        }
+        
+        public void Hide()
+        {
+            if (mainRenderer != null)
+            {
+                mainRenderer.enabled = false;
+                subRenderer.enabled = false;
+            }
+        }
+
+        public void Show()
+        {
+            if (mainRenderer != null)
+            {
+                mainRenderer.enabled = true;
+                subRenderer.enabled = true;
+            }
+        }
+
+        public Transform GetRopePoint()
+        {
+            return ropePoint;
+        }
+
+        public void ShowRopePin()
+        {
+            if (ropePin != null)
+            {
+                ropePin.SetActive(true);
+            }
+        }
+        
+        public void HideRopePin()
+        {
+            if (ropePin != null)
+            {
+                ropePin.SetActive(false);
             }
         }
     }

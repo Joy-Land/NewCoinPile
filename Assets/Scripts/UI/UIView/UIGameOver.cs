@@ -29,7 +29,7 @@ public class UIGameOver : UIViewBase
     public Text Txt_TryGetRevive;
     public Image Img_TryGetTypeRevive;
 
-
+    private bool m_IsSucces = false;
     public override void OnViewAwake(EventArgsPack args)
     {
         base.OnViewAwake(args);
@@ -54,13 +54,29 @@ public class UIGameOver : UIViewBase
 
         if(args.ArgsLength>0)
         {
-
+            m_IsSucces = args.GetData<bool>(0);
         }
+        
+        //Test------------------------------------
+        Btn_TryGetMoreCoins.gameObject.SetActive(false);
+        Btn_TryGetCoins.GetComponentInChildren<Text>().text = "进入下一关";
     }
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        if (m_IsSucces)
+        {
+            Obj_Success.SetActive(true);
+            Obj_Fail.SetActive(false);
+        }
+        else
+        {
+            Obj_Success.SetActive(false);
+            Obj_Fail.SetActive(true);
+        }
+
     }
     public override void OnViewUpdate()
     {
@@ -70,7 +86,6 @@ public class UIGameOver : UIViewBase
     public override void OnViewUpdateBySecond()
     {
         base.OnViewUpdateBySecond();
-
     }
     public override void OnViewHide()
     {
@@ -116,6 +131,11 @@ public class UIGameOver : UIViewBase
         //判断自己资产是否到了下一级别
         //如果没到，直接到下一关
         //如果到了，进入结算界面
+        
+        
+        //Test----------------
+        UIManager.Instance.CloseUI(UIViewID.UIGameOver);
+        Manager.GameManager.Instance.ReStart(true);
     }
 
     public void OnBtn_TryGetReviveClicked()

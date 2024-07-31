@@ -2,38 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Framework;
+using Joyland.GamePlay;
+using ThinRL.Core;
 using UnityEngine;
 
 namespace Manager
 {
     public class UIManager : SingletonBaseMono<UIManager>
     {
-        [SerializeField] private GameObject successCanvas;
-        [SerializeField] private GameObject failCanvas;
+        // [SerializeField] private GameObject successCanvas;
+        // [SerializeField] private GameObject failCanvas;
 
         public void ShowSuccess()
         {
-            successCanvas.SetActive(true);
-        }
-        
-        public void ShowFail()
-        {
-            failCanvas.SetActive(true);
-        }
-        
-        public void HideSuccess()
-        {
-            successCanvas.SetActive(false);
-        }
-        
-        public void HideFail()
-        {
-            failCanvas.SetActive(false);
+            Joyland.GamePlay.UIManager.Instance.OpenUI(UIViewID.UIGameOver, new EventArgsPack(true));
         }
 
-        public void OneMoreTimeCallback(Boolean nextLevel)
+        public void ShowFail()
         {
-            GameManager.Instance.ReStart(nextLevel);
+            //failCanvas.SetActive(true);
+            //Joyland.GamePlay.UIManager.Instance.OpenUI(UIViewID.UIGameOver,new EventArgsPack(false));
+            Joyland.GamePlay.UIManager.Instance.OpenUI(UIViewID.UIGameSettlement, new EventArgsPack(false));
         }
     }
 }

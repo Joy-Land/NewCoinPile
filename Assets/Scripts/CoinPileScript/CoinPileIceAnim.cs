@@ -37,17 +37,18 @@ namespace CoinPileScript
             sequence.AppendCallback(() =>
                 {
                     ShakeManager.Instance.Vibrate();
-                }).Join(topCoinGroupGameObject.transform.DOShakePosition(shakeDuration, shakeStrength, shakeNumber, shakeRandom, false,
+                })
+                .Join(topCoinGroupGameObject.transform.DOShakePosition(shakeDuration, shakeStrength, shakeNumber, shakeRandom, false,
                     true, ShakeRandomnessMode.Harmonic))
                 .Join(coinIceGameObject.transform.DOShakePosition(shakeDuration, shakeStrength, shakeNumber, shakeRandom, false,
                     true, ShakeRandomnessMode.Harmonic))
-                .onComplete += () =>
+                .AppendCallback(() =>
+                {
+                    if (onComplete != null)
                     {
-                        if (onComplete != null)
-                        {
-                            onComplete();
-                        }
-                    };
+                        onComplete();
+                    }
+                });
         }
     }
 }

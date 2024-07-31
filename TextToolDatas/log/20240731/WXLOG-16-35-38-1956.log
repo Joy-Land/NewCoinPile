@@ -1,0 +1,47 @@
+﻿<wxlog>
+  <threadId>#main</threadId>
+  <timestamp>16:35:38:0180</timestamp>
+  <msgtype>MsgWXLogLaunch</msgtype>
+  <content>[The WXLogger is launched!]</content>
+  <stackFrames>
+[CALL STACK][0]: Method:WXTextureTools.Application.Options.OptionsConfig..ctor; File:.0
+[CALL STACK][1]: Method:WXTextureTools.Application.App..ctor; File:.0
+[CALL STACK][2]: Method:WXTextureTools.Program.Main; File:.0
+</stackFrames>
+</wxlog>
+<wxlog>
+  <threadId>#main</threadId>
+  <timestamp>16:35:38:0270</timestamp>
+  <msgtype>MsgMixture</msgtype>
+  <content>string|String[]
+OptionsConfig,-option=mirrorImage
+-dataDir=D:/WorkSpace/NewCoinPile/TextToolDatas
+-inPath=D:/WorkSpace/NewCoinPile/TextToolDatas\firstBundleTextures\png\512\EmojiOne.9438d40e.png
+-outPath=D:/WorkSpace/NewCoinPile/TextToolDatas\mirrorImageTemp\temp5289.png
+-execRoot=D:/WorkSpace/NewCoinPile/Assets\WX-WASM-SDK-V2\Editor\TextureEditor\Node
+</content>
+  <stackFrames>
+[CALL STACK][0]: Method:WXTextureTools.Application.App..ctor; File:.0
+[CALL STACK][1]: Method:WXTextureTools.Program.Main; File:.0
+</stackFrames>
+</wxlog>
+<wxlog>
+  <threadId>#main</threadId>
+  <timestamp>16:35:38:0280</timestamp>
+  <msgtype>MsgMixture</msgtype>
+  <content>string|string
+UnityBridgeHandler - SetDataDir,D:/WorkSpace/NewCoinPile/TextToolDatas\temp</content>
+  <stackFrames>
+[CALL STACK][0]: Method:WXTextureTools.Program.Main; File:.0
+</stackFrames>
+</wxlog>
+<wxlog>
+  <threadId>#main</threadId>
+  <timestamp>16:35:38:0340</timestamp>
+  <msgtype>MsgString</msgtype>
+  <content>WXMirrorImageExec</content>
+  <stackFrames>
+[CALL STACK][0]: Method:WXTextureTools.Application.App..ctor; File:.0
+[CALL STACK][1]: Method:WXTextureTools.Program.Main; File:.0
+</stackFrames>
+</wxlog>

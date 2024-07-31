@@ -139,6 +139,7 @@ namespace Joyland.GamePlay
 
             CreateUINode();
             AdjustUI();
+            CreateUINode();
         }
 
         public void CreateUINode()

@@ -86,7 +86,7 @@ public class UIHomePage : UIViewBase
     public void OnBtn_StartGameClicked()
     {
         EventManager.Instance.DispatchEvent(GameEventGlobalDefine.EnterGamePage, null, null);
-        UIFlyElementSys.Instance.PlayFlyCoinEffect(ss.position, ee.position);
+        //UIFlyElementSys.Instance.PlayFlyCoinEffect(ss.position, ee.position);
         //args[0]：是否带图片类型， args[1]：desc， args[2]：动画播放完成回调 args[3]：点击遮罩关闭回调
         //UIManager.Instance.OpenUI(UIViewID.UITips, new EventArgsPack(true, "你好，你的利息很高很高",
         //    new Action(() => { console.info("动画播放回调", this.name); }),

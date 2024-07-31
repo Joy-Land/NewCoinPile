@@ -1,25 +1,24 @@
 %YAML 1.1
-%TAG !u! tag:yousandi.cn,2023:
+%TAG !u! tag:unity3d.com,2011:
 --- !u!1 &208952509559695961
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 1071760675992009407}
   - component: {fileID: 4045241104773826981}
   - component: {fileID: 6571665544870747813}
   - component: {fileID: 1485067117915140347}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Fail Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1071760675992009407
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112,13 +111,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 5320025528743181799}
   - component: {fileID: 3821775766022065967}
   - component: {fileID: 7921890012357291170}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,14 +246,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 1251480605045919068}
   - component: {fileID: 5894545188597105748}
   - component: {fileID: 3375468272569294184}
   - component: {fileID: 3847653551557070168}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,14 +380,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 8071169603685769525}
   - component: {fileID: 2217985895061095805}
   - component: {fileID: 7744111200145067784}
   - component: {fileID: 7012656428129738471}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,13 +514,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 7404075299011808586}
   - component: {fileID: 1480380163953312819}
   - component: {fileID: 1054111051981047145}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,20 +590,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 6731563332646708505}
   - component: {fileID: 6684086560255616471}
   - component: {fileID: 619930144707266633}
   - component: {fileID: 6157712230891077826}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Success Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6731563332646708505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -694,20 +688,19 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!1 &4973050661302933473
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 3439161474743887406}
   - component: {fileID: 1157678531613572865}
   - component: {fileID: 6156995168618837738}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,12 +830,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 807897946122896478}
   - component: {fileID: 4081376992657750047}
   m_Layer: 0
-  m_HasEditorInfo: 1
   m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,21 +870,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e1d17c544f04f44ae2d2a81b960b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  successCanvas: {fileID: 3624523667725464954}
-  failCanvas: {fileID: 208952509559695961}
 --- !u!1 &5602371185681179993
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 5258167334394647498}
   - component: {fileID: 6475702311144584574}
   - component: {fileID: 4079824307171188685}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1022,13 +1011,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 6554863386296390719}
   - component: {fileID: 5131898858933997073}
   - component: {fileID: 1946539712232052797}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1158,13 +1146,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 7
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4322979023953217641}
   - component: {fileID: 2818131618390022048}
   - component: {fileID: 6137527539136568075}
   m_Layer: 5
-  m_HasEditorInfo: 1
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

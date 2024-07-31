@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4416841833038735756}
   - component: {fileID: 5791256733622573118}
+  - component: {fileID: 1593703016373366064}
+  - component: {fileID: 2229603579675878182}
   m_Layer: 0
   m_HasEditorInfo: 1
   m_Name: Coin Pile Collection
@@ -31,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5791256733622573118
 MonoBehaviour:
@@ -47,3 +49,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPilePrefab: {fileID: 1389895846148220071, guid: baed183dda2a4ae49bb739546020ce85,
     type: 3}
+--- !u!114 &1593703016373366064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684087832368409271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc66a7b5715d87842b9379e21fd0b969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPileRope: {fileID: 881220070331049958, guid: 209a2b6d817289b45a782e5e52288eb4,
+    type: 3}
+--- !u!114 &2229603579675878182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684087832368409271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df94f87f754bf9a4fbb47c5c8f0f37b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -31,6 +31,7 @@ public class FsmHomeState : IStateNode
     public void OnEnterGamePageEvent(object sender, EventArgsPack e)
     {
         m_Machine.ChangeState<FsmGameState>();
+        
     }
 
     public void OnExit()

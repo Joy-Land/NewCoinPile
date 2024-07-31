@@ -14,6 +14,7 @@ namespace Manager
 {
     public class GameManager : SingletonBaseMono<GameManager>
     {
+        [SerializeField] private UIEditorManager uiEditorManager;
         // Game Manager 的作用
         // 1. 记录当前运钱区的颜色和容量，以及下一个运钱区的颜色和容量
         // 2. 记录每个缓冲区的颜色和容量
@@ -65,15 +66,17 @@ namespace Manager
 
         private void Init()
         {
+            if (uiEditorManager != null)
+            {
+                uiEditorManager.HideSuccess();
+                uiEditorManager.HideFail();
+            }
+            
             // 开始游戏的开关
             isStopped = false;
             
-            // 
+            // 检查运钱区是否已满的开关
             checkCurrentTransPileIsFullLock = false;
-            
-            // 确保 UI 关闭
-            UIManager.Instance.HideSuccess();
-            UIManager.Instance.HideFail();
             
             if (LevelManager.Instance.GetLevelDataByIndex(levelIndex, out var levelData))
             {
@@ -97,7 +100,7 @@ namespace Manager
                 {
                     throw new Exception("CoinPileCollection component missing");
                 }
-                coinPileCollection.Init(levelData.coinLists);
+                coinPileCollection.Init(levelData.coinLists, levelData.coinPileRopeList);
             }
         }
         
@@ -106,7 +109,7 @@ namespace Manager
             transPile.GetCurrentTransPile(out color, out freeNumber, out transGameObject);
         }
         
-        public void GetNextTransPile(out CoinColor color, out int freeNumber, out GameObject transGameObject)
+        private void GetNextTransPile(out CoinColor color, out int freeNumber, out GameObject transGameObject)
         {
             transPile.GetNextTransPile(out color, out freeNumber, out transGameObject);
         }
@@ -131,18 +134,66 @@ namespace Manager
             return isStopped;
         }
 
-        public void GameIsFailed()
+        private void GameIsFailed()
         {
             isStopped = true;
-            UIManager.Instance.ShowFail();
+            if (uiEditorManager != null)
+            {
+                uiEditorManager.ShowFail();
+            }
+            else
+            {
+                UIManager.Instance.ShowFail();
+            }
             SoundFXManager.Instance.PlaySoundFXClip(failClip, Vector3.zero, failClipVolume);
         }
 
         private void GameIsSuccessful()
         {
             isStopped = true;
-            UIManager.Instance.ShowSuccess();
+            if (uiEditorManager != null)
+            {
+                uiEditorManager.ShowSuccess();
+            }
+            else
+            {
+                UIManager.Instance.ShowSuccess();
+            }
             SoundFXManager.Instance.PlaySoundFXClip(levelPassClip, Vector3.zero, levelPassClipVolume);
+        }
+
+        public void CheckGameIsFailed()
+        {
+            // 判定游戏是否结束
+            // 判断是否当前所有钱堆顶部是不是已经没有可以点击的了
+            // 钱堆顶部都被冰冻住了或者开关挡住了
+            if (coinPileCollection.CheckAllCoinPilesIsFrozenOrShuttered())
+            {
+                GameIsFailed();
+            }
+            
+            // 进行死亡判定前，需要先判断缓冲区是否满了，如果都没满，就不进行死亡判定
+            if (CheckCachePileListIsFull())
+            {
+                // 重新获取一下当前运钱区的数量
+                GetCurrentTransPile(out CoinColor _, out int transPileFreeNumberLocal, out GameObject _);
+                if (transPileFreeNumberLocal == 0)
+                {
+                    // 如果当前运钱区满了，那就判断下一个运钱区的颜色，然后查找是否能找到和其颜色相同的缓冲区
+                    GetNextTransPile(out CoinColor nextTransColor, out int _,
+                        out GameObject _);
+                    if (!FindSameColorCachePile(nextTransColor, out int _))
+                    {
+                        // 如果所有缓冲区中，根本没有和下一个运钱区颜色相同的缓冲区，则游戏失败
+                        GameIsFailed();
+                    }
+                }
+                else
+                {
+                    // 如果当前运钱区没满，则直接判定死亡
+                    GameIsFailed();
+                }
+            };
         }
         
         public Boolean CheckCoinPilesHasColor(CoinColor color, out List<int> coinIndexList)
@@ -150,7 +201,7 @@ namespace Manager
             return coinPileCollection.CheckCoinPilesHasColor(color, out coinIndexList);
         }
 
-        public Boolean CheckCachePileListIsFull()
+        private Boolean CheckCachePileListIsFull()
         {
             return cachePile.CheckCachePileListIsFull();
         }
@@ -214,7 +265,7 @@ namespace Manager
             cachePile.MoveCachePileToTransPile(cachePileIndex, onComplete);
         }
         
-        public Boolean FindSameColorCachePile(CoinColor transPileColor, out int cachePileIndex)
+        private Boolean FindSameColorCachePile(CoinColor transPileColor, out int cachePileIndex)
         {
             return cachePile.FindSameColorCachePile(transPileColor, out cachePileIndex);
         }

@@ -28,6 +28,7 @@ public class FsmPreloadingState : IStateNode
         UIManager.Instance.Init();
 
         m_Bg = Resources.Load<Sprite>("FirstAssets/bg2");
+        console.error("fzy bb:",m_Bg);
         UIManager.Instance.SetBackground(0, m_Bg);
         UIManager.Instance.GetAndOpenUIViewOnNode<UIStartGame>(m_UIStartGameNode, UIViewID.UIStartGame, 
             new UIViewConfig() { bundleName = "", layer = UIViewLayerEnum.Lowest, packageName = "" }, new EventArgsPack((int)LoadingStageEventCode.Finish));
@@ -35,11 +36,14 @@ public class FsmPreloadingState : IStateNode
         AudioManager.Instance.LoadAudioConfig();
 
         m_Machine.ChangeState<FsmStartGameState>();
-    }
+    }  
 
     public void OnExit()
     {
-        Resources.UnloadAsset(m_Bg);
+        if (m_Bg)
+        { 
+            //Resources.UnloadAsset(m_Bg);
+        }
     }
 
     public void OnUpdate()

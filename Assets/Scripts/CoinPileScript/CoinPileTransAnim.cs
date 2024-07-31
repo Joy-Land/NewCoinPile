@@ -58,20 +58,16 @@ namespace CoinPileScript
                                 SoundFXManager.Instance.PlaySoundFXClip(coinFlyClip, coin.transform.position, coinFlyClipVolume);
                                 ShakeManager.Instance.Vibrate();
                             })
-                            .Insert(i * flyDuration * intervalPercent,
-                                coin.transform.DOMoveX(position.x, flyDuration))
-                            .Insert(i * flyDuration * intervalPercent,
-                                coin.transform.DOMoveY(position.y, flyDuration))
-                            .Insert(i * flyDuration * intervalPercent,
-                                coin.transform.DOMoveZ(position.z, flyDuration).SetEase(zCurve))
+                            .Join(coin.transform.DOMoveX(position.x, flyDuration))
+                            .Join(coin.transform.DOMoveY(position.y, flyDuration))
+                            .Join(coin.transform.DOMoveZ(position.z, flyDuration).SetEase(zCurve))
                             .Join(coin.transform.DORotateQuaternion(destPlaceholder.transform.rotation, flyDuration))
-                            .onComplete +=
-                        () =>
-                        {
-                            // Debug.Log("Move Complete");
-                            coin.transform.parent = destPlaceholder.transform;
-                            destPlaceholder.GetComponent<CoinPlaceholder>().coin = coin;
-                        };
+                            .InsertCallback(i*flyDuration * intervalPercent,() =>
+                            {
+                                // Debug.Log("Move Complete");
+                                coin.transform.parent = destPlaceholder.transform;
+                                destPlaceholder.GetComponent<CoinPlaceholder>().coin = coin;
+                            });
                     
                     // 插入 onAnimEnd
                     if (onAnimEnd != null && i == number - 1)
@@ -85,6 +81,19 @@ namespace CoinPileScript
                 destStartIndex++;
             }
 
+            // sequence.AppendCallback(() =>
+            // {
+            //     if (onComplete != null)
+            //     {
+            //         onComplete();
+            //     }
+            //
+            //     if (onAllComplete != null)
+            //     {
+            //         onAllComplete();
+            //     }
+            // });
+            
             sequence.onComplete += () =>
             {
                 if (onComplete != null)

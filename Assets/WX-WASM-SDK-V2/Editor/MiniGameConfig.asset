@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: MiniGameConfig
   m_EditorClassIdentifier: 
   ProjectConf:
-    projectName: CoinPile
-    Appid: wxefa0a952537410bd
-    CDN: 
-    assetLoadType: 1
+    projectName: NewCoinPile
+    Appid: wx83a1af3ddb0635da
+    CDN: https://cdn.joylandstudios.com/UnityTest/webgl
+    assetLoadType: 0
     compressDataPackage: 1
     VideoUrl: 
-    DST: E:/CocosProject/duomino/PhysicalTest/Build
+    DST: D:/WorkSpace/NewCoinPile/Build
     StreamCDN: 
     bundleHashLength: 32
     bundlePathIdentifier: StreamingAssets;

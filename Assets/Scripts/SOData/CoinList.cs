@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Manager;
 
-
 namespace SOData
 {
     [System.Serializable]
@@ -14,12 +13,16 @@ namespace SOData
         public int number;
         public Boolean isHidden;
         public Boolean isFrozen;
+        public Boolean isShutter;
+        public Boolean shutterIsOpen;
     }
     
     [System.Serializable]
     public class CoinList 
     {
-        public List<CoinItem> data = new List<CoinItem>();
+       public List<CoinItem> data = new List<CoinItem>();
+        public Boolean hasTunnel;
+        public int tunnelStartIndex;
         public Vector2 position;
     }
 }

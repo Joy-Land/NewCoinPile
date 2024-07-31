@@ -100,7 +100,6 @@ namespace DG.Tweening
             {
 #if true // PHYSICS2D_MARKER
                 return false;
-                //return target.GetComponent<Rigidbody2D>() != null;
 #else
                 return false;
 #endif
@@ -144,15 +143,6 @@ namespace DG.Tweening
                 }
 #endif
 #if true // PHYSICS2D_MARKER
-                if (!rBodyFoundAndTweened && tweenRigidbody) {
-                    //Rigidbody2D rBody2D = target.GetComponent<Rigidbody2D>();
-                    //if (rBody2D != null) {
-                    //    rBodyFoundAndTweened = true;
-                    //    t = isLocal
-                    //        ? rBody2D.DOLocalPath(path, duration, pathMode)
-                    //        : rBody2D.DOPath(path, duration, pathMode);
-                    //}
-                }
 #endif
                 if (!rBodyFoundAndTweened) {
                     t = isLocal

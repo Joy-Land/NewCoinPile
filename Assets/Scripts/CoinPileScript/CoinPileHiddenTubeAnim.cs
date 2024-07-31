@@ -12,7 +12,7 @@ namespace CoinPileScript
         
         public void HideCoinTube(GameObject mesh, int hiddenNumber, Action onComplete)
         {
-            mesh.transform.DOScaleZ(0.0f, hiddenSpeed * hiddenNumber).onComplete = () =>
+            mesh.transform.DOScaleY(0.0f, hiddenSpeed * hiddenNumber).onComplete += () =>
             {
                 if (onComplete != null)
                 {

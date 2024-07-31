@@ -111,4 +111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8721901058c086e49ad24003d7cd5943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 1403766480845371090}
+  mainRenderer: {fileID: 1403766480845371090}

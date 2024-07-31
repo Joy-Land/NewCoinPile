@@ -27,7 +27,7 @@ public class UIGameSettlement : UIViewBase
     public Image Img_TryGetTypeRevive;
     public Button Btn_Close;
 
-
+    private bool m_IsSuccess = false;
     public override void OnViewAwake(EventArgsPack args)
     {
         base.OnViewAwake(args);
@@ -48,13 +48,24 @@ public class UIGameSettlement : UIViewBase
 
         if (args.ArgsLength > 0)
         {
-
+            m_IsSuccess = args.GetData<bool>(0);
         }
     }
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        if (m_IsSuccess)
+        {
+            Obj_Success.SetActive(true);
+            Obj_Fail.SetActive(false);
+        }
+        else
+        {
+            Obj_Success.SetActive(false);
+            Obj_Fail.SetActive(true);
+        }
     }
     public override void OnViewUpdate()
     {
@@ -94,12 +105,17 @@ public class UIGameSettlement : UIViewBase
 
     public void OnBtn_TryGetReviveClicked()
     {
-
+        Manager.GameManager.Instance.ReStart(false);
+        UIManager.Instance.CloseUI(UIViewID.UIGameSettlement);
     }
 
     public void OnBtn_CloseClicked()
     {
-
+        UIManager.Instance.CloseUI(UIViewID.UIGameSettlement);
+        
+        //切状态机到主页
+        EventManager.Instance.DispatchEvent(GameEventGlobalDefine.ExitGamePage, null, null);
+        Manager.GameManager.Instance.ReStart(false);
     }
 
     public void UnregistEvent()

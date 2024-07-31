@@ -190,7 +190,9 @@ public class UISetting : UIViewBase
 
     public void OnBtn_LeaveClicked()
     {
-
+        UIManager.Instance.CloseUI(UIViewID.UISetting);
+        Manager.GameManager.Instance.ReStart(false);
+        EventManager.Instance.DispatchEvent(GameEventGlobalDefine.ExitGamePage,null,null);
     }
 
     public void UnregistEvent()

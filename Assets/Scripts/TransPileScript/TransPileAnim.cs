@@ -87,7 +87,7 @@ namespace TransPileScript
                 SoundFXManager.Instance.PlaySoundFXClip(coinHolderSwiperClip, destPos, coinHolderSwiperClipVolume);
             }
 
-            sequence.onComplete += () =>
+            sequence.AppendCallback(() =>
             {
                 // 动画播放完成后，卸载 currentTransGameObject
                 if (currentTransGameObject != null)
@@ -99,7 +99,7 @@ namespace TransPileScript
                 {
                     onComplete();
                 }
-            };
+            });
         }
     }
 }

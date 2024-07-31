@@ -16,6 +16,10 @@ GameObject:
   - component: {fileID: 3172373731136017629}
   - component: {fileID: 3167239011293325613}
   - component: {fileID: 2976564056917959037}
+  - component: {fileID: 1284710190301970291}
+  - component: {fileID: 4135683223050079893}
+  - component: {fileID: 5919162388971166556}
+  - component: {fileID: -5357562185829206027}
   m_Layer: 0
   m_HasEditorInfo: 1
   m_Name: Coin Pile
@@ -125,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92be63745107f04e889ff63edaf5a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinHiddenTube: {fileID: 5009100948829499146, guid: c78900f0e4b85d940975b4abe7ce5f64,
+  coinHiddenTube: {fileID: 4843784426220132757, guid: 965c7f5684abd1d4e8be6b6cac4af8b0,
     type: 3}
 --- !u!114 &3172373731136017629
 MonoBehaviour:
@@ -162,5 +166,57 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60ae6ffcbc6e5f74a9b16cd35a20fb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1284710190301970291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389895846148220071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09efed86debc20c409203fb960571a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinShutter: {fileID: 4621356729329409733, guid: 23162602e6219754880dd2c0d4223d0f,
+    type: 3}
+--- !u!114 &4135683223050079893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389895846148220071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aad7e2ba1bb5614b8e336601c2a013c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5919162388971166556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389895846148220071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1657bac0f51e44f4ebdddd114afdddd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinTunnel: {fileID: 3649622225460569747, guid: 4b7b37b08ee77584ab4b0be5d57ab823,
+    type: 3}
+--- !u!114 &-5357562185829206027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389895846148220071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72e6f32436ae0d44932d24bd8535ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

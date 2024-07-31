@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ThinRL.Core;
 using UniFramework.Machine;
 using UnityEngine;
+using YooAsset;
 
 public class FsmGameState : IStateNode
 {
@@ -17,6 +18,7 @@ public class FsmGameState : IStateNode
     public void OnEnter()
     {
         EventManager.Instance.AddEvent(GameEventGlobalDefine.ExitGamePage, OnExitGameEvent);
+        UIManager.Instance.SetBackground(4, null);
         UIManager.Instance.OpenUI(UIViewID.UIGamePage);
     }
 
@@ -28,7 +30,14 @@ public class FsmGameState : IStateNode
 
     public void OnExitGameEvent(object sender, EventArgsPack e)
     {
+        // var assetHandle = YooAssets.LoadSceneAsync("Main_Scene");
+        // assetHandle.Completed += (handle) =>
+        // {
+        //     
+        // };
+        UIManager.Instance.OpenUI(UIViewID.UIHomePage);
         m_Machine.ChangeState<FsmHomeState>();
+        
     }
     public void OnUpdate()
     {
