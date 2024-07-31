@@ -150,19 +150,39 @@ namespace CoinPileScript
 
         public Boolean CheckAllCoinPilesIsFrozenOrShuttered()
         {
+            Boolean allIsEmptyFlag = true;
+            Boolean someIsNotFrozenOrShutterFlag = false;
             foreach (var coinGameObject in coinGameObjectList)
             {
                 var coinPileComponent = coinGameObject.GetComponent<CoinPile>();
                 if (coinPileComponent != null)
                 {
-                    if (!coinPileComponent.CheckTopCoinIsFrozen() && !coinPileComponent.CheckTopCoinIsShuttered())
+                    if (!coinPileComponent.CheckCoinPileIsEmpty())
                     {
-                        return false;
+                        allIsEmptyFlag = false;
+                        if (!coinPileComponent.CheckTopCoinIsFrozen() && !coinPileComponent.CheckTopCoinIsShuttered())
+                        {
+                            someIsNotFrozenOrShutterFlag = true;
+                        }
                     }
                 }
             }
 
-            return true;
+            if (allIsEmptyFlag)
+            {
+                return false;
+            }
+            else
+            {
+                if (someIsNotFrozenOrShutterFlag)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         public Boolean CheckCoinPileIsBlockByRope(GameObject coinGameObject, int coinGroupId, Action onBlock)
