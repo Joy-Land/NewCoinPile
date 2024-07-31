@@ -216,7 +216,7 @@ namespace CoinPileScript
                 return stackTop.frozenNumber > 0;
             }
             
-            return false;
+            return true;
         }
 
         public Boolean CheckTopCoinIsShuttered()
@@ -227,7 +227,7 @@ namespace CoinPileScript
                 return stackTop.isShutter && !stackTop.shutterIsOpen ;
             }
             
-            return false;
+            return true;
         }
 
         public Boolean CheckIsBelowTopCoin(int coinElementIndex)

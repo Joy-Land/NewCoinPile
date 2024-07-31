@@ -8,7 +8,7 @@ namespace Manager
         public void Vibrate()
         {
             var param = new VibrateShortOption();
-            param.type = "medium";
+            param.type = "heavy";
             WX.VibrateShort(param);
         }
     }
