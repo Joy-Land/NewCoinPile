@@ -385,7 +385,7 @@ public class FsmStartGameState : IStateNode
     {
         public bool Query(string packageName, string fileName, string fileCRC)
         {
-            //Debug.Log($"BuildinQueryServices {packageName} >> {fileName}   {fileCRC}");
+            Debug.Log($"BuildinQueryServices {packageName} >> {fileName}   {fileCRC}");
             return false;
         }
     }
