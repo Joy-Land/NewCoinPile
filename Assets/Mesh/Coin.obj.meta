@@ -43,12 +43,6 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations: []
     isReadable: 0
-    virtualGeometry: 0
-    hasBoneWeight: 0
-    generateGeometryBuffer: 0
-    positionPrecision: -2147483648
-    normalPrecision: -1
-    tangentPrecision: -1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -94,7 +88,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
