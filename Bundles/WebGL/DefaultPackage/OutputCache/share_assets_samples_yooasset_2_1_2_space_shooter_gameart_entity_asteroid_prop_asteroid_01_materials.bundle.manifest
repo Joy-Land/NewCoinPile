@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3175111946
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: be870ea55a6de66757af574e61ec8eec
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5e762ccb57c4caaabbb5a4199ac82c23
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/Entity/Asteroid/prop_asteroid_01/Materials/prop_asteroid_01_mat.mat
+Dependencies:
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/unityshaders.bundle

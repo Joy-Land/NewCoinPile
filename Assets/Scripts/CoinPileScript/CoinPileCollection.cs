@@ -185,7 +185,7 @@ namespace CoinPileScript
             }
         }
 
-        public Boolean CheckCoinPileIsBlockByRope(GameObject coinGameObject, int coinGroupId, Action onBlock)
+        public Boolean CheckCoinPileIsBlockByRope(GameObject coinGameObject, int coinGroupId)
         {
             // 根据 coinGameObject 找到记录的绳子的状态
             if (coinPileRopeMap.TryGetValue(coinGameObject, out var coinPileRopeItem))
@@ -200,23 +200,13 @@ namespace CoinPileScript
                     var destCoinPileComponent = destCoinGameObject.GetComponent<CoinPile>();
                     if (srcCoinPileComponent != null && destCoinPileComponent != null)
                     {
-                        if (destCoinPileComponent.CheckIsBelowTopCoin(coinPileRopeItem.destCoinElementIndex))
+                        if (destCoinPileComponent.CheckIsBelowTopCoin(coinPileRopeItem.destCoinElementIndex) || destCoinPileComponent.CheckTopCoinIsFrozen() || destCoinPileComponent.CheckTopCoinIsShuttered())
                         {
-                            // 如果在栈顶下面，说明被挡住了，就不销毁绳子，然后把当前绳子两端的钱堆都加上震动动画
-                            var coinGroupGameObjectList = new List<GameObject>();
-                            if(srcCoinPileComponent.GetCoinGroupsAboveIndex(coinPileRopeItem.srcCoinElementIndex, out var srcCoinGroups) && destCoinPileComponent.GetCoinGroupsAboveIndex(coinPileRopeItem.destCoinElementIndex, out var destCoinGroups))
-                            {
-                                coinGroupGameObjectList.AddRange(srcCoinGroups);
-                                coinGroupGameObjectList.AddRange(destCoinGroups);
-                                
-                                coinPileRopeAnim.ShakeBlockedCoins(coinGroupGameObjectList, () =>
-                                {
-                                    if (onBlock != null)
-                                    {
-                                        onBlock();
-                                    }
-                                });
-                            }
+                            // 如果在栈顶下面，或者被冰冻冻住了，或者被开关挡住了
+                            // 说明被挡住了，就不销毁绳子，然后把当前绳子两端的钱堆都加上震动动画
+                            srcCoinPileComponent.ShakeBlockedCoins(coinPileRopeItem.srcCoinElementIndex);
+                            destCoinPileComponent.ShakeBlockedCoins(coinPileRopeItem.destCoinElementIndex);
+                            
                             return true;
                         }
                     

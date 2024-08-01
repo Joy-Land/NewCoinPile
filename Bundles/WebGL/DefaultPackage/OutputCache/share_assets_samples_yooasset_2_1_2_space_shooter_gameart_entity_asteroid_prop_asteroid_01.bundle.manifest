@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 3138224003
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c0c79e98fcd6d1fc7c5713551bf74444
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9203a98c4a3dca5f67928e72fff8f95d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/Entity/Asteroid/prop_asteroid_01/prop_asteroid_01_mat.mat
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/Entity/Asteroid/prop_asteroid_01/prop_asteroid_01.FBX
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/Entity/Asteroid/prop_asteroid_01/prop_asteroid_01_dff.tif
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/Entity/Asteroid/prop_asteroid_01/prop_asteroid_01_nrm.tif
+Dependencies:
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01_materials.bundle
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/unityshaders.bundle

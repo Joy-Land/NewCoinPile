@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2677938149
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 953130ff161118cf27e4c61e0c78af1c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0a4b57b1a56d6b76d200651994ae0863
+HashAppended: 0
+ClassTypes:
+- Class: 850595691
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/Scene/scene_battleSettings.lighting
+Dependencies: []

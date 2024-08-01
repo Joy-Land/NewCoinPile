@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3772583000
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5f703f3c797d37785379099d2a6cdc5c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0a4b57b1a56d6b76d200651994ae0863
+HashAppended: 0
+ClassTypes:
+- Class: 850595691
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/Scene/scene_homeSettings.lighting
+Dependencies: []

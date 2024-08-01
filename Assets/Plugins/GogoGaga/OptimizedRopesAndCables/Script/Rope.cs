@@ -179,8 +179,10 @@ namespace GogoGaga.OptimizedRopesAndCables
             Vector3 startPointPosition = startPoint.position;
             Vector3 endPointPosition = endPoint.position;
             Vector3 midpos = Vector3.Lerp(startPointPosition, endPointPosition, midPointPosition);
-            float yFactor = (ropeLength - Mathf.Min(Vector3.Distance(startPointPosition, endPointPosition), ropeLength)) / CalculateYFactorAdjustment(midPointWeight);
-            midpos.y -= yFactor;
+            // float yFactor = (ropeLength - Mathf.Min(Vector3.Distance(startPointPosition, endPointPosition), ropeLength)) / CalculateYFactorAdjustment(midPointWeight);
+            // midpos.y -= yFactor;
+            float zFactor = (ropeLength - Mathf.Min(Vector3.Distance(startPointPosition, endPointPosition), ropeLength)) / CalculateYFactorAdjustment(midPointWeight);
+            midpos.z += zFactor;
             return midpos;
         }
 

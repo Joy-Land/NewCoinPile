@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 949761281
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9e6064b75952f9e0ae32846f0e1ebba9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameBundle/Atlas/UIGame/ui_game.png
+Dependencies: []

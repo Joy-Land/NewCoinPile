@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Manager;
+using Sirenix.OdinInspector;
 
 namespace SOData
 {
@@ -20,7 +21,8 @@ namespace SOData
     [System.Serializable]
     public class CoinList 
     {
-       public List<CoinItem> data = new List<CoinItem>();
+        [ListDrawerSettings(ShowIndexLabels = true)]
+        public List<CoinItem> data = new List<CoinItem>();
         public Boolean hasTunnel;
         public int tunnelStartIndex;
         public Vector2 position;

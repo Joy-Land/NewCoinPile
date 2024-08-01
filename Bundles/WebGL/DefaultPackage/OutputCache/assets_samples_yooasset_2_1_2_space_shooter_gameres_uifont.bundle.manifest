@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 3886378066
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6c756f0f4d2830f86bb502f2cbabe886
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9372662e05ede815898c391bbc5766da
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/UIFont/SourceHanSansCN-Bold.ttf
+Dependencies: []

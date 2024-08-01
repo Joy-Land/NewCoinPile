@@ -1,0 +1,115 @@
+ManifestFileVersion: 0
+CRC: 2976316227
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2bd4f364206e83e920db95a169111340
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 19700662172b9eee900c009eefd8ad96
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7af070894787f164f906a486c5cf2fff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 81a6cba661749b34b8a85708e263ea04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fba69efb549a11f4ca519418dd3c100c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e42b32706c4fc5d4fa0c30c49c80e2b2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d47d28cee8bf33f41a604f34e2450c47, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cbee7b152b5ce63479cf86a424251dd4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6ba604580139cd340942185c5d813fb1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 79d7f2e1e11d33f4ca4be8bddc7c4f8e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7aa871921df5ab14dad39be4ef203876, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f9ba35650514854caff0e0079006e68, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7782a9b7b270e4e4ab488244616c7b88, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ScrollRect/ScrollRectEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Scrollbar/ScrollEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/GameBundle/UIView/UICollectInfo.prefab
+- Assets/GameBundle/UIView/UIGameSettlement.prefab
+- Assets/GameBundle/UIView/UIHomePage.prefab
+- Assets/GameBundle/UIView/UISetting.prefab
+- Assets/GameBundle/UIView/UICollect.prefab
+- Assets/GameBundle/UIView/UITips.prefab
+- Assets/GameBundle/UIView/UIGamePage.prefab
+- Assets/GameBundle/UIView/UIGameOver.prefab
+- Assets/GameBundle/UIView/UIPopupItem.prefab
+- Assets/GameBundle/UIView/UIBank.prefab
+Dependencies:
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/assets_gamebundle_atlas_uigame.bundle
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/assets_gamebundle_atlas_uigameover.bundle
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/assets_gamebundle_atlas_uihome.bundle
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/assets_gamebundle_atlas_uitools.bundle
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/assets_samples_yooasset_2_1_2_space_shooter_gameres_uifont.bundle

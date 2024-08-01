@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2643625364
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4e11553d5b37739e8a97d8b3552ee291
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/UIImage/Space.jpg
+Dependencies: []

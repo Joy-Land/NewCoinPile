@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3814927259
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2d57b0273aae4c34fdc5d45a32ddc377
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameBundle/Config/CollectConfig.json
+- Assets/GameBundle/Config/ItemUsageConfig.json
+- Assets/GameBundle/Config/CopyWriteConfig.json
+Dependencies: []

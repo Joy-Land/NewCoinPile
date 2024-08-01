@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 2195156626
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fe4dd23f4acaad359c6c4c58f5295f82
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 033fafe2c9f6c610c3a734393882fd4c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/UIAtlas/common/window_transparent.png
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/UIAtlas/common/rocket.png
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/UIAtlas/common/bar_blue1.png
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/UIAtlas/common/bullets.png
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/UIAtlas/common/button1.png
+Dependencies: []

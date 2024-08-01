@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 3845834794
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 806ef7c7a2409c02cf4bc79bfca7587d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/Audio/sound_weapon_player.wav
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/Audio/sound_weapon_enemy.wav
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/Audio/music_background.wav
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/Audio/sound_explosion_player.wav
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/Audio/sound_explosion_enemy.wav
+- Assets/Samples/YooAsset/2.1.2/Space Shooter/GameRes/Audio/sound_explosion_asteroid.wav
+Dependencies: []

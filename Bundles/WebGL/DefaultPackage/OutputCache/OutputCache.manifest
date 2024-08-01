@@ -1,0 +1,173 @@
+ManifestFileVersion: 0
+CRC: 853182675
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_effect_engines.bundle
+      Dependencies:
+        Dependency_0: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_effect.bundle
+    Info_1:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_effect_explosions.bundle
+      Dependencies:
+        Dependency_0: assets_samples_yooasset_2_1_2_space_shooter_gameres_audio.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_effect.bundle
+    Info_2:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_entity.bundle
+      Dependencies:
+        Dependency_0: assets_samples_yooasset_2_1_2_space_shooter_gameres_audio.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_effect.bundle
+        Dependency_2: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01.bundle
+        Dependency_3: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_02.bundle
+        Dependency_4: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_03.bundle
+        Dependency_5: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_enemyship.bundle
+        Dependency_6: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_playership.bundle
+    Info_3:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_audio.bundle
+      Dependencies: {}
+    Info_4:
+      Name: unityshaders.bundle
+      Dependencies: {}
+    Info_5:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_battle.bundle
+      Dependencies:
+        Dependency_0: assets_samples_yooasset_2_1_2_space_shooter_gameres_audio.bundle
+        Dependency_1: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_battlesettings.bundle
+        Dependency_2: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_effect.bundle
+        Dependency_3: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_scene.bundle
+    Info_6:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_battlesettings.bundle
+      Dependencies: {}
+    Info_7:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_home.bundle
+      Dependencies:
+        Dependency_0: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_homesettings.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_scene.bundle
+    Info_8:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_homesettings.bundle
+      Dependencies: {}
+    Info_9:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_uiimage.bundle
+      Dependencies: {}
+    Info_10:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uibattle.bundle
+      Dependencies:
+        Dependency_0: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uianim.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameres_uiatlas_common.bundle
+        Dependency_2: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uifont.bundle
+    Info_11:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uihome.bundle
+      Dependencies:
+        Dependency_0: share_assets_samples_yooasset_2_1_2_space_shooter_gameres_uiatlas_common.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uifont.bundle
+    Info_12:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uiloading.bundle
+      Dependencies:
+        Dependency_0: assets_samples_yooasset_2_1_2_space_shooter_gameres_uiimage.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uifont.bundle
+    Info_13:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uinewhome.bundle
+      Dependencies: {}
+    Info_14:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uitest1component.bundle
+      Dependencies: {}
+    Info_15:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uitestcomponent.bundle
+      Dependencies: {}
+    Info_16:
+      Name: assets_samples_yooasset_2_1_2_space_shooter_gameres_uifont.bundle
+      Dependencies: {}
+    Info_17:
+      Name: assets_gamebundle_atlas_uigame.bundle
+      Dependencies: {}
+    Info_18:
+      Name: assets_gamebundle_atlas_uigameover.bundle
+      Dependencies: {}
+    Info_19:
+      Name: assets_gamebundle_atlas_uihome.bundle
+      Dependencies: {}
+    Info_20:
+      Name: assets_gamebundle_atlas_uitools.bundle
+      Dependencies: {}
+    Info_21:
+      Name: assets_gamebundle_config.bundle
+      Dependencies: {}
+    Info_22:
+      Name: assets_gamebundle_uicomp.bundle
+      Dependencies:
+        Dependency_0: assets_samples_yooasset_2_1_2_space_shooter_gameres_uifont.bundle
+        Dependency_1: assets_gamebundle_atlas_uitools.bundle
+    Info_23:
+      Name: assets_gamebundle_uiview.bundle
+      Dependencies:
+        Dependency_0: assets_samples_yooasset_2_1_2_space_shooter_gameres_uifont.bundle
+        Dependency_1: assets_gamebundle_atlas_uigame.bundle
+        Dependency_2: assets_gamebundle_atlas_uigameover.bundle
+        Dependency_3: assets_gamebundle_atlas_uihome.bundle
+        Dependency_4: assets_gamebundle_atlas_uitools.bundle
+    Info_24:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_effect.bundle
+      Dependencies: {}
+    Info_25:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01_materials.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+    Info_26:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01_materials.bundle
+    Info_27:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_02.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_02_materials.bundle
+    Info_28:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_02_materials.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+    Info_29:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_03.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_03_materials.bundle
+    Info_30:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_03_materials.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+    Info_31:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_enemyship_materials.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+    Info_32:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_enemyship.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_enemyship_materials.bundle
+        Dependency_2: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_scene.bundle
+    Info_33:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_scene.bundle
+      Dependencies: {}
+    Info_34:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_playership_materials.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+    Info_35:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_playership.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+        Dependency_1: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_scene.bundle
+        Dependency_2: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_playership_materials.bundle
+        Dependency_3: share_packages_com_unity_render-pipelines_universal_runtime_materials.bundle
+    Info_36:
+      Name: share_packages_com_unity_render-pipelines_universal_runtime_materials.bundle
+      Dependencies:
+        Dependency_0: unityshaders.bundle
+    Info_37:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uianim.bundle
+      Dependencies: {}
+    Info_38:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameres_uiatlas_common.bundle
+      Dependencies: {}
+    Info_39:
+      Name: share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uifont.bundle
+      Dependencies: {}

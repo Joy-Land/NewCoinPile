@@ -22,9 +22,11 @@ namespace CoinPileScript
         private Boolean pointLock = false;
         private Boolean shutterLock = false;
         private Boolean tunnelLock = false;
+        private Boolean shakeLock = false;
         
         private CoinPileMesh coinPileMesh;
         private CoinPileTransAnim coinPileTransAnim;
+        private CoinPileShakeAnim coinPileShakeAnim;
         private CoinPileHiddenTubeMesh coinPileHiddenTubeMesh;
         private CoinPileHiddenTubeAnim coinPileHiddenTubeAnim;
         private CoinPileIceMesh coinPileIceMesh;
@@ -64,14 +66,20 @@ namespace CoinPileScript
             coinPileMesh = GetComponent<CoinPileMesh>();
             if (coinPileMesh == null)
             {
-                throw new Exception("coinPileMesh component missing");
+                throw new Exception("CoinPileMesh component missing");
             }
             coinPileMesh.Init(coinList, hasTunnel, tunnelStartIndex);
 
             coinPileTransAnim = GetComponent<CoinPileTransAnim>();
             if (coinPileTransAnim == null)
             {
-                throw new Exception("coinPileTransAnim component missing");
+                throw new Exception("CoinPileTransAnim component missing");
+            }
+
+            coinPileShakeAnim = GetComponent<CoinPileShakeAnim>();
+            if (coinPileShakeAnim == null)
+            {
+                throw new Exception("CoinPileShakeAnim component missing");
             }
             
             // 初始化 Hidden Tube 的 Mesh 和 Anim
@@ -92,48 +100,43 @@ namespace CoinPileScript
             coinPileIceMesh = GetComponent<CoinPileIceMesh>();
             if (coinPileIceMesh == null)
             {
-                throw new Exception("coinPileIceMesh component missing");
+                throw new Exception("CoinPileIceMesh component missing");
             }
             coinPileIceMesh.Init(coinList);
 
             coinPileIceAnim = GetComponent<CoinPileIceAnim>();
             if (coinPileIceAnim == null)
             {
-                throw new Exception("coinPileIceAnim component missing");
+                throw new Exception("CoinPileIceAnim component missing");
             }
             
             // 初始化 Shutter 的 Mesh 和 Anim
             coinPileShutterMesh = GetComponent<CoinPileShutterMesh>();
             if (coinPileShutterMesh == null)
             {
-                throw new Exception("coinPileShutterMesh component missing");
+                throw new Exception("CoinPileShutterMesh component missing");
             }
             coinPileShutterMesh.Init(coinList);
 
             coinPileShutterAnim = GetComponent<CoinPileShutterAnim>();
             if (coinPileShutterAnim == null)
             {
-                throw new Exception("coinPileShutterAnim component missing");
+                throw new Exception("CoinPileShutterAnim component missing");
             }
             
             // 初始化 Tunnel 的 Mesh 和 Anim
             coinPileTunnelMesh = GetComponent<CoinPileTunnelMesh>();
             if (coinPileTunnelMesh == null)
             {
-                throw new Exception("coinPileTunnelMesh component missing");
+                throw new Exception("CoinPileTunnelMesh component missing");
             }
             coinPileTunnelMesh.Init(coinList, hasTunnel, tunnelStartIndex);
 
             coinPileTunnelAnim = GetComponent<CoinPileTunnelAnim>();
             if (coinPileTunnelAnim == null)
             {
-                throw new Exception("coinPileTunnelAnim component missing");
+                throw new Exception("CoinPileTunnelAnim component missing");
             }
-            
-            // // 初始化状态数组
-            // var tmpCoinsSettings = coinsSettings.ToList();
-            // tmpCoinsSettings.Reverse();
-            // coinList = new Stack<CoinPileItem>(tmpCoinsSettings);
         }
 
         public void Destroy()
@@ -246,16 +249,11 @@ namespace CoinPileScript
             return false;
         }
 
-        public Boolean GetCoinGroupsAboveIndex(int coinGroupIndex, out List<GameObject> coinGroupList)
-        {
-            return coinPileMesh.GetCoinGroupsAboveIndex(coinGroupIndex, out coinGroupList);
-        }
-        
         public void OnPointerClick(PointerEventData eventData)
         {
             // Debug.Log("Clicked");
             // 如果钱堆为空，或者被锁住了，不做任何操作
-            if (coinList.Count <= 0 || pointLock || tunnelLock || shutterLock || GameManager.Instance.IsGameStopped()) return;
+            if (coinList.Count <= 0 || pointLock || tunnelLock || shutterLock || shakeLock || GameManager.Instance.IsGameStopped()) return;
             pointLock = true;
             
             // 获取栈顶状态
@@ -290,13 +288,10 @@ namespace CoinPileScript
             }
             
             // 判断是否被连线挡住了
-            if (coinPileCollection != null && coinPileCollection.CheckCoinPileIsBlockByRope(this.gameObject, stackTop.id,
-                    () =>
-                    {
-                        pointLock = false;
-                    }))
+            if (coinPileCollection != null && coinPileCollection.CheckCoinPileIsBlockByRope(this.gameObject, stackTop.id))
             {
                 // 如果被挡住了，阻止进一步点击
+                pointLock = false;
                 return;
             }
             
@@ -558,6 +553,18 @@ namespace CoinPileScript
             }
         }
 
+        public void ShakeBlockedCoins(int coinGroupIndex)
+        {
+            if (coinPileMesh.GetCoinGroupsAboveIndex(coinGroupIndex, out var coinGroupList))
+            {
+                shakeLock = true;
+                coinPileShakeAnim.ShakeCoins(coinGroupList, () =>
+                {
+                    shakeLock = false;
+                });
+            }
+        }
+        
         public void TryMeltIce()
         {
             if (coinList.Count > 0)

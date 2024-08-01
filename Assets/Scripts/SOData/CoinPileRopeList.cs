@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace SOData
@@ -16,6 +17,7 @@ namespace SOData
     [System.Serializable]
     public class CoinPileRopeList
     {
+        [ListDrawerSettings(ShowIndexLabels = true)]
         public List<CoinPileRopeItem> data;
     }
 }
