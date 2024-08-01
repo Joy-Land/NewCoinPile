@@ -12,15 +12,20 @@ namespace CoinPileScript
     public class CoinPileMesh : MonoBehaviour
     {
         [SerializeField] private GameObject coinPrefab;
+        [SerializeField] private GameObject coinShadow;
         
         private readonly float coinOffsetZ = 0.18f;
+        private readonly float coinStartZ = -0.09f;
+        private readonly float coinShadowOffsetY = -0.1f;
+        private readonly float coinTunnelShadowOffsetY = -0.2f;
+        private readonly float coinTunnelShadowScaleXY = 1.5f;
         
         private List<GameObject> coinGameObjectList;
         private Dictionary<int, GameObject> coinGameObjectMap;
         private Dictionary<GameObject, int> coinGameObjectReverseMap;
         private List<GameObject> coinGroupGameObjectList;
         private GameObject transCoinGroupGameObject; // 在 GetTopCoins 中获取的 coin 对象，会从 coinGameObjectList 中删除，暂时会挂载在该对象下面作为子对象
-        // private GameObject coinStackGameObject; // 为了和钱堆上的各个功能区分开，只包含钱堆的部分
+        private GameObject coinShadowGameObject;
         
         public void Init(in List<CoinPileItem> coinsSettings, Boolean hasTunnel, int tunnelStartIndex)
         {
@@ -42,6 +47,8 @@ namespace CoinPileScript
                     localPosition = new Vector3(0, 0, 0)
                 }
             };
+            
+            
             
             var n = 0;
             for (var i = 0; i < coinsSettings.Count; i++)
@@ -89,6 +96,14 @@ namespace CoinPileScript
                         n++;
                     }
                 }
+            }
+            
+            // 只在没有隧道的情况下，创建 coinShadow 对象
+            // 在有隧道的情况下，隧道本身会带有阴影
+            if (!hasTunnel)
+            {
+                coinShadowGameObject = Instantiate(coinShadow, this.transform);
+                coinShadowGameObject.transform.localPosition = new Vector3(0, coinShadowOffsetY, coinStartZ + coinOffsetZ * coinsSum);
             }
         }
 
@@ -151,6 +166,14 @@ namespace CoinPileScript
             }
 
             return coinGroupList.Count > 0;
+        }
+
+        public void DestroyCoinShadow()
+        {
+            if (coinShadowGameObject != null)
+            {
+                Destroy(coinShadowGameObject);
+            }
         }
     }
 }

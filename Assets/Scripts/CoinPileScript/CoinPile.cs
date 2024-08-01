@@ -544,6 +544,11 @@ namespace CoinPileScript
                             }
                         }
                     }
+
+                    if (coinList.Count == 1)
+                    {
+                        coinPileMesh.DestroyCoinShadow();
+                    }
                 });
             }
             else

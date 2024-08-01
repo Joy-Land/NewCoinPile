@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 8139087110305414404, guid: e671d62b367ed1a4991bb254cb6e8e1e, type: 3}
+  coinShadow: {fileID: 3835565703238910277, guid: 52f16aa8a52cc304ab0d51c9d068789b, type: 3}
 --- !u!114 &8916121069514772742
 MonoBehaviour:
   m_ObjectHideFlags: 0
