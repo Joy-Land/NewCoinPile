@@ -19,12 +19,12 @@ public class FsmHomeState : IStateNode
         EventManager.Instance.AddEvent(GameEventGlobalDefine.EnterGamePage, OnEnterGamePageEvent);
         //来到主界面 切换背景
         //UIManager.Instance.SetBackground(0,)
-        //var assetHandle = YooAssets.LoadAssetAsync<Sprite>("home_bg");
-        //assetHandle.Completed += (handle) =>
-        //{
-        //    var sp = handle.AssetObject as Sprite;
-        //    UIManager.Instance.SetBackground(0, sp);
-        //};
+        var assetHandle = YooAssets.LoadAssetAsync<Sprite>("home_bg");
+        assetHandle.Completed += (handle) =>
+        {
+            var sp = handle.AssetObject as Sprite;
+            UIManager.Instance.SetBackground(0, sp);
+        };
         UIManager.Instance.OpenUI(UIViewID.UIHomePage, null);
     }
 
