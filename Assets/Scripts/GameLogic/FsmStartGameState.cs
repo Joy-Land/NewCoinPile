@@ -67,7 +67,7 @@ public class FsmStartGameState : IStateNode
     {
         var m_UIStartGameNode = m_Machine.GetBlackboardValue("_UIStartGameNode") as GameObject;
         m_Bg = Resources.Load<Sprite>("FirstAssets/bg2");
-        console.error("fzy bb:", m_Bg);
+
         UIManager.Instance.SetBackground(0, m_Bg);
         UIManager.Instance.GetAndOpenUIViewOnNode<UIStartGame>(m_UIStartGameNode, UIViewID.UIStartGame,
             new UIViewConfig() { bundleName = "", layer = UIViewLayerEnum.Lowest, packageName = "" }, new EventArgsPack((int)LoadingStageEventCode.Finish));
@@ -198,8 +198,9 @@ public class FsmStartGameState : IStateNode
             }
 #if UNITY_WX && !UNITY_EDITOR
             WX.SetDataCDN(m_CDNRootPath);
-#endif
             GetBundleCacheFileList("/StreamingAssets"+pathSplit[1]);
+#endif
+
         }
         else
         {
@@ -272,7 +273,16 @@ public class FsmStartGameState : IStateNode
         var fileSystem = WX.GetFileSystemManager();
 
         var path = cachePath + fileCachePath;
-        var cacheFileList = fileSystem.ReaddirSync(path);
+
+        var cacheFileList = new string[0];
+        try
+        {
+            cacheFileList = fileSystem.ReaddirSync(path);
+        }
+        catch
+        {
+            cacheFileList = new string[0];
+        }
 
         foreach (var file in cacheFileList)
         {
@@ -418,9 +428,10 @@ public class FsmStartGameState : IStateNode
 
         public bool Query(string packageName, string fileName, string fileCRC)
         {
+            return false;
             //console.info($"BuildinQueryServices {packageName} >> {fileName}   {fileCRC}");
-            var res = JStreamingAssetsHelper.FileExists(packageName, fileName, fileCRC);
-            return res;
+            //var res = JStreamingAssetsHelper.FileExists(packageName, fileName, fileCRC);
+            //return res;
         }
     }
 
