@@ -1,5 +1,7 @@
+using DG.Tweening;
 using Joyland.GamePlay;
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ThinRL.Core;
@@ -7,6 +9,7 @@ using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
 using WeChatWASM;
+
 
 public class UIStartGame : UIViewBase
 {
@@ -16,6 +19,14 @@ public class UIStartGame : UIViewBase
     public Text Txt_Test;
     public Image Img_Slider;
 
+    public Image Img_Coin;
+
+    public Image emptyStart;
+    public Image yi;
+    public Image ge;
+    public Image xiao;
+    public Image mu;
+    public Image biao;
 
     private int m_TotalProgress = 1;
     public override void OnViewAwake(EventArgsPack args)
@@ -27,10 +38,23 @@ public class UIStartGame : UIViewBase
         Txt_Tesss = transform.Find("Txt_StageDesc/Txt_Tesss").GetComponent<Text>();
         Txt_Test = transform.Find("Txt_Test").GetComponent<Text>();
         Img_Slider = transform.Find("Progress/Img_Slider").GetComponent<Image>();
+        Img_Coin = transform.Find("AnimateNode/Img_Coin").GetComponent<Image>();
+
+        emptyStart = transform.Find("AnimateNode/emptyStart").GetComponent<Image>();
+        yi = transform.Find("AnimateNode/yi").GetComponent<Image>();
+        ge = transform.Find("AnimateNode/ge").GetComponent<Image>();
+        xiao = transform.Find("AnimateNode/xiao").GetComponent<Image>();
+        mu = transform.Find("AnimateNode/mu").GetComponent<Image>();
+        biao = transform.Find("AnimateNode/biao").GetComponent<Image>();
 
 
         Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
+
+        emptyStart.rectTransform.anchoredPosition = new Vector2(-Img_Bg.rectTransform.rect.width , emptyStart.rectTransform.anchoredPosition.y);
+        console.warn(emptyStart.rectTransform.anchoredPosition,Img_Bg.rectTransform.rect);
+        Img_Coin.rectTransform.anchoredPosition = emptyStart.rectTransform.anchoredPosition;
+
 #if UNITY_EDITOR
 
 #else
@@ -49,17 +73,93 @@ public class UIStartGame : UIViewBase
         m_TotalProgress = args.GetData<int>(0);
     }
 
+    private Sequence m_AnimationSeq = null;
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        m_AnimationSeq = DOTween.Sequence();
+
+        m_AnimationSeq.Append(DOTween.To(setter: value =>
+        {
+            Debug.Log(value);
+            Img_Coin.rectTransform.anchoredPosition = Parabola(emptyStart.rectTransform.anchoredPosition + new Vector2(0, emptyStart.rectTransform.sizeDelta.y) * 1.39f, yi.rectTransform.anchoredPosition + new Vector2(0, yi.rectTransform.sizeDelta.y) * 1.39f, 150, value);
+        }, startValue: 0, endValue: 1, duration: 0.45f).SetEase(Ease.Linear).OnComplete(() => { TT(yi.rectTransform); }));
+
+        m_AnimationSeq.Append(DOTween.To(setter: value =>
+        {
+            Debug.Log(value);
+            Img_Coin.rectTransform.anchoredPosition = Parabola(yi.rectTransform.anchoredPosition + new Vector2(0, yi.rectTransform.sizeDelta.y) * 1.39f, ge.rectTransform.anchoredPosition + new Vector2(0, ge.rectTransform.sizeDelta.y) * 1.39f, 180, value);
+        }, startValue: 0, endValue: 1, duration: 0.35f).SetEase(Ease.Linear).OnComplete(() => { TT(ge.rectTransform); }));
+
+        m_AnimationSeq.Append(DOTween.To(setter: value =>
+        {
+            Debug.Log(value);
+            Img_Coin.rectTransform.anchoredPosition = Parabola(ge.rectTransform.anchoredPosition + new Vector2(0, ge.rectTransform.sizeDelta.y) * 1.39f, xiao.rectTransform.anchoredPosition + new Vector2(0, xiao.rectTransform.sizeDelta.y) * 1.39f, 130, value);
+        }, startValue: 0, endValue: 1, duration: 0.35f).SetEase(Ease.Linear).OnComplete(() => { TT(xiao.rectTransform); }));
+
+        m_AnimationSeq.Append(DOTween.To(setter: value =>
+        {
+            Debug.Log(value);
+            Img_Coin.rectTransform.anchoredPosition = Parabola(xiao.rectTransform.anchoredPosition + new Vector2(0, xiao.rectTransform.sizeDelta.y) * 1.39f, mu.rectTransform.anchoredPosition + new Vector2(0, mu.rectTransform.sizeDelta.y) * 1.39f, 130, value);
+        }, startValue: 0, endValue: 1, duration: 0.35f).SetEase(Ease.Linear).OnComplete(() => { TT(mu.rectTransform); }));
+
+        m_AnimationSeq.Append(DOTween.To(setter: value =>
+        {
+            Debug.Log(value);
+            Img_Coin.rectTransform.anchoredPosition = Parabola(mu.rectTransform.anchoredPosition + new Vector2(0, mu.rectTransform.sizeDelta.y) * 1.39f, biao.rectTransform.anchoredPosition + new Vector2(0, biao.rectTransform.sizeDelta.y) * 1.39f, 130, value);
+        }, startValue: 0, endValue: 1, duration: 0.35f).SetEase(Ease.Linear).OnComplete(() => { TT(biao.rectTransform, 0.2f, () => { if (m_AnimationSeq != null) { m_AnimationSeq.Kill(); m_AnimationSeq = null; } }); }));
+
     }
+
+    public void TT(RectTransform target, float duration = 0.2f, Action cb = null)
+    {
+        // 创建一个 Sequence 对象
+        Sequence mySequence = DOTween.Sequence();
+
+        // 第一步：缩小 Y 轴到 0.5
+        mySequence.Append(target.DOScaleY(0.7f, duration *0.4f)); // 持续时间为总时间的一半
+
+        // 第二步：以 Bounce 缓动曲线放大 Y 轴到 1
+        mySequence.Append(target.DOScaleY(1f, duration *0.6f).SetEase(Ease.OutBounce)); // 持续时间为总时间的一半
+
+        mySequence.OnComplete(() =>
+        {
+            cb?.Invoke();
+        });
+        // 开始播放动画
+        mySequence.Play();
+    }
+
+    public static Vector3 Parabola(Vector3 start, Vector3 end, float height, float t)
+    {
+        float Func(float x) => 4 * (-height * x * x + height * x);
+
+        var mid = Vector3.Lerp(start, end, t);
+
+        return new Vector3(mid.x, Func(t) + Mathf.Lerp(start.y, end.y, t), mid.z);
+    }
+
+    public static Vector2 Parabola(Vector2 start, Vector2 end, float height, float t)
+    {
+        float Func(float x) => 4 * (-height * x * x + height * x);
+
+        var mid = Vector2.Lerp(start, end, t);
+
+        return new Vector2(mid.x, Func(t) + Mathf.Lerp(start.y, end.y, t));
+    }
+
+
 
     public override void OnViewUpdate()
     {
         base.OnViewUpdate();
 
     }
+
+
+
 
     public override void OnViewUpdateBySecond()
     {
@@ -85,7 +185,7 @@ public class UIStartGame : UIViewBase
         EventManager.Instance.AddEvent(GameEventGlobalDefine.AddProgressBar, OnAddProgressBarEvent);
     }
 
-   
+
     private static readonly string[] m_StageDescTable = new string[]
     {
         "初始化中...",
@@ -97,7 +197,7 @@ public class UIStartGame : UIViewBase
     private void OnAddProgressBarEvent(object sender, EventArgsPack e)
     {
         var stageCode = e.GetData<int>(0);
-        
+
         //阶段描述
         var stageDesc = m_StageDescTable[stageCode];
         //当前进度
@@ -114,9 +214,14 @@ public class UIStartGame : UIViewBase
         else
         {
             Txt_StageDesc.text = stageDesc;
-            if(stageCode == (int)LoadingStageEventCode.Finish)
+            if (stageCode == (int)LoadingStageEventCode.Finish)
             {
                 //可以发消息切状态机,关闭这个ui，正式进入游戏了
+                if (m_AnimationSeq != null)
+                {
+                    m_AnimationSeq.Kill();
+                    m_AnimationSeq = null;
+                }
                 EventManager.Instance.DispatchEvent(GameEventGlobalDefine.EverythingIsReady, null, null);
             }
         }
