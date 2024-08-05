@@ -52,7 +52,7 @@ public class UIFlyElementController : MonoBehaviour
         coinGo.transform.SetParent(GetCoinGoParent());
         coinGo.transform.localPosition = Vector3.zero;
         coinGo.transform.localRotation = Quaternion.identity;
-        coinGo.transform.localScale = Vector3.one * 25;
+        coinGo.transform.localScale = Vector3.one;
         _coinGos.Add(coinGo);
     }
 
@@ -151,16 +151,16 @@ public class UIFlyElementSys
             var randomStartPos = new Vector2(flyObjTf.localPosition.x, flyObjTf.localPosition.y) + Vector2.up * 50 + UnityEngine.Random.insideUnitCircle * new Vector2(500, 200);
             Tween startMove = flyObjTf.DOLocalMove(new Vector3(randomStartPos.x, randomStartPos.y, -100f), 0.1f);
             tempSeq.Append(startMove);
-            tempSeq.AppendInterval(0.01f);
+            tempSeq.AppendInterval(0.1f);
 
             Tween moveT = flyObjTf.DOLocalPath(path, 0.6f, PathType.CatmullRom).SetEase(Ease.InSine);
-            Tween scaleT = flyObjTf.DOScale(new Vector3(15f, 15f, 15f), 0.6f).SetEase(Ease.InBack);
-            Tween rotateT = flyObjTf.DOLocalRotate(new Vector3(0, 360, 0), 0.25f, RotateMode.FastBeyond360).SetLoops(3, LoopType.Restart).SetEase(Ease.Linear);
+            Tween scaleT = flyObjTf.DOScale(new Vector3(0.7f, 0.7f, 0.7f), 0.6f).SetEase(Ease.InBack);
+            Tween rotateT = flyObjTf.DOLocalRotate(new Vector3(0, UnityEngine.Random.Range(-45,45), 360), 0.25f, RotateMode.FastBeyond360).SetLoops(2, LoopType.Restart).SetEase(Ease.Linear);
             tempSeq.Append(moveT);
             tempSeq.Join(scaleT);
             tempSeq.Join(rotateT);
 
-            tempSeq.SetDelay(UnityEngine.Random.Range(0.001f, 0.025f) * i);
+            tempSeq.SetDelay(UnityEngine.Random.Range(0.005f, 0.025f) * i);
             tempSeq.SetUpdate(true);
             tempSeq.onComplete = () =>
             {

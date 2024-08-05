@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using ThinRL.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using YooAsset;
 
 public class UIHomePage : UIViewBase
 {
@@ -106,6 +107,13 @@ public class UIHomePage : UIViewBase
     public void OnBtn_StartGameClicked()
     {
         EventManager.Instance.DispatchEvent(GameEventGlobalDefine.EnterGamePage, null, null);
+        //YooAssets.LoadAssetAsync("Effect_Appear").Completed += (handle) =>
+        //{
+        //    var p = handle.AssetObject;
+        //    console.error(p.name);
+        //    var go = handle.InstantiateSync(Btn_StartGame.transform, true);
+        //    go.transform.localPosition = new Vector3(0, 10, 10);
+        //};
         //UIFlyElementSys.Instance.PlayFlyCoinEffect(ss.position, ee.position);
         //args[0]：是否带图片类型， args[1]：desc， args[2]：动画播放完成回调 args[3]：点击遮罩关闭回调
         //UIManager.Instance.OpenUI(UIViewID.UITips, new EventArgsPack(true, "你好，你的利息很高很高",

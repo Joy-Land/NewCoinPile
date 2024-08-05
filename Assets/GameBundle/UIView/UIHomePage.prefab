@@ -1816,6 +1816,8 @@ MonoBehaviour:
   Btn_Collect: {fileID: 0}
   Btn_Setting: {fileID: 0}
   Btn_Bank: {fileID: 0}
+  Img_Cloud1: {fileID: 0}
+  Img_Cloud2: {fileID: 0}
   ss: {fileID: 4838596675943209443}
   ee: {fileID: 3578575348165930682}
 --- !u!1 &8277001677323345245
