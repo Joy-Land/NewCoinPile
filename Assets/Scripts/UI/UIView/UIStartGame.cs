@@ -83,31 +83,26 @@ public class UIStartGame : UIViewBase
 
         m_AnimationSeq.Append(DOTween.To(setter: value =>
         {
-            Debug.Log(value);
             Img_Coin.rectTransform.anchoredPosition = Parabola(emptyStart.rectTransform.anchoredPosition + new Vector2(0, emptyStart.rectTransform.sizeDelta.y) * 1.39f, yi.rectTransform.anchoredPosition + new Vector2(0, yi.rectTransform.sizeDelta.y) * 1.39f, 150, value);
         }, startValue: 0, endValue: 1, duration: 0.45f).SetEase(Ease.Linear).OnComplete(() => { TT(yi.rectTransform); }));
 
         m_AnimationSeq.Append(DOTween.To(setter: value =>
         {
-            Debug.Log(value);
             Img_Coin.rectTransform.anchoredPosition = Parabola(yi.rectTransform.anchoredPosition + new Vector2(0, yi.rectTransform.sizeDelta.y) * 1.39f, ge.rectTransform.anchoredPosition + new Vector2(0, ge.rectTransform.sizeDelta.y) * 1.39f, 180, value);
         }, startValue: 0, endValue: 1, duration: 0.35f).SetEase(Ease.Linear).OnComplete(() => { TT(ge.rectTransform); }));
 
         m_AnimationSeq.Append(DOTween.To(setter: value =>
         {
-            Debug.Log(value);
             Img_Coin.rectTransform.anchoredPosition = Parabola(ge.rectTransform.anchoredPosition + new Vector2(0, ge.rectTransform.sizeDelta.y) * 1.39f, xiao.rectTransform.anchoredPosition + new Vector2(0, xiao.rectTransform.sizeDelta.y) * 1.39f, 130, value);
         }, startValue: 0, endValue: 1, duration: 0.35f).SetEase(Ease.Linear).OnComplete(() => { TT(xiao.rectTransform); }));
 
         m_AnimationSeq.Append(DOTween.To(setter: value =>
         {
-            Debug.Log(value);
             Img_Coin.rectTransform.anchoredPosition = Parabola(xiao.rectTransform.anchoredPosition + new Vector2(0, xiao.rectTransform.sizeDelta.y) * 1.39f, mu.rectTransform.anchoredPosition + new Vector2(0, mu.rectTransform.sizeDelta.y) * 1.39f, 130, value);
         }, startValue: 0, endValue: 1, duration: 0.35f).SetEase(Ease.Linear).OnComplete(() => { TT(mu.rectTransform); }));
 
         m_AnimationSeq.Append(DOTween.To(setter: value =>
         {
-            Debug.Log(value);
             Img_Coin.rectTransform.anchoredPosition = Parabola(mu.rectTransform.anchoredPosition + new Vector2(0, mu.rectTransform.sizeDelta.y) * 1.39f, biao.rectTransform.anchoredPosition + new Vector2(0, biao.rectTransform.sizeDelta.y) * 1.39f, 130, value);
         }, startValue: 0, endValue: 1, duration: 0.35f).SetEase(Ease.Linear).OnComplete(() => { TT(biao.rectTransform, 0.2f, () => { if (m_AnimationSeq != null) { m_AnimationSeq.Kill(); m_AnimationSeq = null; } }); }));
 

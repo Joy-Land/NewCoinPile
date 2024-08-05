@@ -203,6 +203,7 @@ namespace Joyland.GamePlay
                 }
             }
 
+
         }
 
 
@@ -233,8 +234,6 @@ namespace Joyland.GamePlay
             {
                 return;
             }
-            var bgRectTransform = m_BackgroundNode.GetComponent<RectTransform>();
-            m_FullSizeDetail = bgRectTransform.sizeDelta;
 
 
             float standard_width = canvasScaler.referenceResolution.x;        //初始宽度  
@@ -303,6 +302,11 @@ namespace Joyland.GamePlay
             console.error(standard_width + "  " + standard_height + "  " + res.x + "  " + res.y);
             //canvasScaler.referenceResolution = res;
 
+            Canvas.ForceUpdateCanvases();
+            //LayoutRebuilder.ForceRebuildLayoutImmediate(m_RootCanvas.GetComponent<RectTransform>());
+            var canvasTransform = m_RootCanvas.GetComponent<RectTransform>();
+            m_FullSizeDetail = canvasTransform.sizeDelta;
+            //console.error("sssssss:", m_FullSizeDetail,m_RootCanvas.GetComponent<RectTransform>().sizeDelta, m_RootCanvas.GetComponent<RectTransform>().rect.size);
         }
 
 
