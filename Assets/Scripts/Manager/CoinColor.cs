@@ -18,6 +18,11 @@ namespace Manager
         Red,
         Teal,
         Yellow,
+        GlassBlue,
+        GlassGreen,
+        GlassPurple,
+        GlassRed,
+        GlassYellow,
         Empty
     }
 
@@ -50,6 +55,16 @@ namespace Manager
                 case CoinColor.Teal:
                     return "Teal";
                 case CoinColor.Yellow:
+                    return "Yellow";
+                case CoinColor.GlassBlue:
+                    return "Yellow";
+                case CoinColor.GlassGreen:
+                    return "Yellow";
+                case CoinColor.GlassPurple:
+                    return "Yellow";
+                case CoinColor.GlassRed:
+                    return "Yellow";
+                case CoinColor.GlassYellow:
                     return "Yellow";
                 case CoinColor.Empty:
                     return "Empty";

@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b8dfeaebf9ef964a8bcb865f809137a, type: 3}
-  m_Name: Level 1
+  m_Name: Level Glass Panel Test
   m_EditorClassIdentifier: 
   coinLists:
   - data:
+    - color: 5
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
     - color: 1
       number: 5
       isHidden: 0
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
-    - color: 0
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 3
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
     hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: -3.86, y: -15.14}
+    tunnelStartIndex: 1
+    position: {x: -2.77, y: -16.82}
   - data:
     - color: 5
       number: 5
@@ -42,24 +42,80 @@ MonoBehaviour:
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
-    - color: 3
+    - color: 2
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 1
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 1
+    position: {x: -2.78, y: -19.64}
+  - data:
+    - color: 5
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 5
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 1
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 2
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    hasTunnel: 0
+    tunnelStartIndex: 1
+    position: {x: 0.0800001, y: -16.82}
+  - data:
+    - color: 5
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+      isShutter: 0
+      shutterIsOpen: 0
+    - color: 4
       number: 5
       isHidden: 0
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
-    - color: 0
+    - color: 2
       number: 5
       isHidden: 0
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
     hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: -1.36, y: -15.18}
+    tunnelStartIndex: 1
+    position: {x: 0.07, y: -19.64}
   - data:
-    - color: 5
-      number: 5
+    - color: 4
+      number: 4
       isHidden: 0
       isFrozen: 0
       isShutter: 0
@@ -77,110 +133,32 @@ MonoBehaviour:
       isShutter: 0
       shutterIsOpen: 0
     hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: -3.89, y: -18.27}
+    tunnelStartIndex: 1
+    position: {x: -1.33, y: -18.24}
   - data:
-    - color: 0
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 2
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 5
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: -1.37, y: -18.23}
-  - data:
-    - color: 5
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 2
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 0
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: 0.74, y: -18.21}
-  - data:
-    - color: 1
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
     - color: 3
       number: 5
       isHidden: 0
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
-    - color: 0
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: -2.66, y: -19.98}
-  - data:
-    - color: 0
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
     - color: 2
       number: 5
       isHidden: 0
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
-    - color: 1
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -1.42, y: -21.74}
+    position: {x: 0, y: -25}
   - data:
-    - color: 1
+    - color: 4
       number: 5
       isHidden: 0
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
-    - color: 5
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 3
+    - color: 6
       number: 5
       isHidden: 0
       isFrozen: 0
@@ -188,80 +166,28 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 0.78, y: -21.65}
-  - data:
-    - color: 1
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 0
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 3
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: -0.12, y: -23.56}
-  - data:
-    - color: 5
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 2
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 0
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: -3.88, y: -25.63}
-  - data:
-    - color: 2
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 0
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    - color: 3
-      number: 5
-      isHidden: 0
-      isFrozen: 0
-      isShutter: 0
-      shutterIsOpen: 0
-    hasTunnel: 0
-    tunnelStartIndex: 0
-    position: {x: -1.47, y: -25.63}
+    position: {x: -3, y: -25}
   transCoinStackList:
-    data: 0000000005000000020000000100000003000000000000000500000000000000010000000200000003000000
+    data: 05000000040000000200000001000000
   coinPileRopeList:
-    data:
-    - srcCoinPileIndex: 0
-      srcCoinElementIndex: 0
-      destCoinPileIndex: 0
-      destCoinElementIndex: 0
-  coinPilePanelList:
     data: []
+  coinPilePanelList:
+    data:
+    - coinPanelBlendShape:
+        height: 0
+        width: 68.3
+        cross: 0
+        triangle: 0
+        triangle2: 0
+        triangle3: 0
+        baklava: 0
+        heart: 0
+      coinPanelMesh:
+        position: {x: -3, y: 0, z: 0.81}
+        color: 15
+      coinPanelItem:
+        data:
+        - coinPileIndex: 5
+          coinElementIndex: 1
+        - coinPileIndex: 6
+          coinElementIndex: 1

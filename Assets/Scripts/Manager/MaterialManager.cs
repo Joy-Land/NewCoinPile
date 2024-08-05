@@ -19,6 +19,11 @@ namespace Manager
         [SerializeField] private Material redMaterial;
         [SerializeField] private Material tealMaterial;
         [SerializeField] private Material yellowMaterial;
+        [SerializeField] private Material glassBlueMaterial;
+        [SerializeField] private Material glassGreenMaterial;
+        [SerializeField] private Material glassPurpleMaterial;
+        [SerializeField] private Material glassRedMaterial;
+        [SerializeField] private Material glassYellowMaterial;
         
         public Material GetMaterialByColor(CoinColor color)
         {
@@ -48,6 +53,16 @@ namespace Manager
                     return tealMaterial;
                 case CoinColor.Yellow:
                     return yellowMaterial;
+                case CoinColor.GlassBlue:
+                    return glassBlueMaterial;
+                case CoinColor.GlassGreen:
+                    return glassGreenMaterial;
+                case CoinColor.GlassPurple:
+                    return glassPurpleMaterial;
+                case CoinColor.GlassRed:
+                    return glassRedMaterial;
+                case CoinColor.GlassYellow:
+                    return glassYellowMaterial;
             }
     
             return null;
