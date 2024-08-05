@@ -181,24 +181,25 @@ namespace Manager
             // 进行死亡判定前，需要先判断缓冲区是否满了，如果都没满，就不进行死亡判定
             if (CheckCachePileListIsFull())
             {
-                // 重新获取一下当前运钱区的数量
-                GetCurrentTransPile(out CoinColor _, out int transPileFreeNumberLocal, out GameObject _);
-                if (transPileFreeNumberLocal == 0)
-                {
-                    // 如果当前运钱区满了，那就判断下一个运钱区的颜色，然后查找是否能找到和其颜色相同的缓冲区
-                    GetNextTransPile(out CoinColor nextTransColor, out int _,
-                        out GameObject _);
-                    if (!FindSameColorCachePile(nextTransColor, out int _))
-                    {
-                        // 如果所有缓冲区中，根本没有和下一个运钱区颜色相同的缓冲区，则游戏失败
-                        GameIsFailed();
-                    }
-                }
-                else
-                {
-                    // 如果当前运钱区没满，则直接判定死亡
-                    GameIsFailed();
-                }
+                // // 重新获取一下当前运钱区的数量
+                // GetCurrentTransPile(out CoinColor _, out int transPileFreeNumberLocal, out GameObject _);
+                // if (transPileFreeNumberLocal == 0)
+                // {
+                //     // 如果当前运钱区满了，那就判断下一个运钱区的颜色，然后查找是否能找到和其颜色相同的缓冲区
+                //     GetNextTransPile(out CoinColor nextTransColor, out int _,
+                //         out GameObject _);
+                //     if (!FindSameColorCachePile(nextTransColor, out int _))
+                //     {
+                //         // 如果所有缓冲区中，根本没有和下一个运钱区颜色相同的缓冲区，则游戏失败
+                //         GameIsFailed();
+                //     }
+                // }
+                // else
+                // {
+                //     // 如果当前运钱区没满，则直接判定死亡
+                //     GameIsFailed();
+                // }
+                GameIsFailed();
             };
         }
         

@@ -92,23 +92,24 @@ namespace CachePileScript
                 }
             }
 
-            var checkFlag = true; 
-            foreach (var cachePile in cachePileList)
-            {
-                // 还有一种情况需要特殊处理，那就是虽然目前的缓冲区数量未满，但是钱堆里面已经没有同样的颜色了
-                if (cachePile.Number < GameManager.CachePileCapacity)
-                {
-                    // 检查当前的所有的钱堆堆顶的颜色，是否和当前缓冲区颜色相同
-                    if (GameManager.Instance.CheckCoinPilesHasColor(cachePile.Color, out var coinIndexList))
-                    {
-                        // 只要有一个相同的，直接返回 false
-                        checkFlag = false;
-                        break;
-                    }
-                }
-            }
-
-            return checkFlag;
+            // var checkFlag = true; 
+            // foreach (var cachePile in cachePileList)
+            // {
+            //     // 还有一种情况需要特殊处理，那就是虽然目前的缓冲区数量未满，但是钱堆里面已经没有同样的颜色了
+            //     if (cachePile.Number < GameManager.CachePileCapacity)
+            //     {
+            //         // 检查当前的所有的钱堆堆顶的颜色，是否和当前缓冲区颜色相同
+            //         if (GameManager.Instance.CheckCoinPilesHasColor(cachePile.Color, out var coinIndexList))
+            //         {
+            //             // 只要有一个相同的，直接返回 false
+            //             checkFlag = false;
+            //             break;
+            //         }
+            //     }
+            // }
+            //
+            // return checkFlag;
+            return true;
         }
 
         public Boolean FindSameColorCachePile(CoinColor transPileColor, out int cachePileIndex)

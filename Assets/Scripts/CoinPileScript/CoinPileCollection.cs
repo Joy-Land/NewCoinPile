@@ -111,7 +111,17 @@ namespace CoinPileScript
             {
                 foreach (var coinPileItem in coinPilePanelData.coinPanelItem.data)
                 {
-                    
+                    if (coinPileItem.coinPileIndex < coinGameObjectList.Count)
+                    {
+                        var coinPileGameObject = coinGameObjectList[coinPileItem.coinPileIndex];
+                        if (coinPileGameObject != null)
+                        {
+                            if (!coinPilePanelMap.ContainsKey(coinPileGameObject))
+                            {
+                                
+                            }
+                        }
+                    }
                 }
             }
             
