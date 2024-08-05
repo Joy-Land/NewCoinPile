@@ -50,16 +50,17 @@ namespace SOData
     }
     
     [System.Serializable]
-    public struct CoinPileItem
+    public struct CoinPanelItem
     {
         public int coinPileIndex;
         public int coinElementIndex;
     }
     
     [System.Serializable]
-    public struct CoinPanelItem
+    public struct CoinPanelItemList
     {
-        public List<CoinPileItem> data;
+        [ListDrawerSettings(ShowIndexLabels = true)]
+        public List<CoinPanelItem> data;
     }
     
     [System.Serializable]
@@ -67,7 +68,7 @@ namespace SOData
     {
         public CoinPanelBlendShape coinPanelBlendShape;
         public CoinPanelMesh coinPanelMesh;
-        public CoinPanelItem coinPanelItem;
+        public CoinPanelItemList coinPanelItemList;
     }
     
     [System.Serializable]

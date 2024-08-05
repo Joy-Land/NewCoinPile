@@ -8,7 +8,7 @@ namespace CoinPileScript
 {
     class CoinPilePanelItem
     {
-        public List<CoinPileItem> Data;
+        public List<CoinPanelItem> Data;
         public int CurrentCoinPileIndex;
     }
     
@@ -109,16 +109,25 @@ namespace CoinPileScript
             coinPilePanelMap = new Dictionary<GameObject, Dictionary<int, CoinPilePanelItem>>();
             foreach (var coinPilePanelData in coinPilePanelList.data)
             {
-                foreach (var coinPileItem in coinPilePanelData.coinPanelItem.data)
+                foreach (var coinPanelItem in coinPilePanelData.coinPanelItemList.data)
                 {
-                    if (coinPileItem.coinPileIndex < coinGameObjectList.Count)
+                    if (coinPanelItem.coinPileIndex < coinGameObjectList.Count)
                     {
-                        var coinPileGameObject = coinGameObjectList[coinPileItem.coinPileIndex];
+                        var coinPileGameObject = coinGameObjectList[coinPanelItem.coinPileIndex];
                         if (coinPileGameObject != null)
                         {
                             if (!coinPilePanelMap.ContainsKey(coinPileGameObject))
                             {
-                                
+                                coinPilePanelMap.Add(coinPileGameObject, new Dictionary<int, CoinPilePanelItem>());
+                            }
+
+                            if (coinPilePanelMap.TryGetValue(coinPileGameObject, out var coinPilePanelItemMap))
+                            {
+                                coinPilePanelItemMap.Add(coinPanelItem.coinElementIndex, new CoinPilePanelItem()
+                                {
+                                    CurrentCoinPileIndex = coinPanelItem.coinPileIndex,
+                                    Data = coinPilePanelData.coinPanelItemList.data,
+                                });
                             }
                         }
                     }

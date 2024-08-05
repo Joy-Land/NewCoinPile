@@ -282,81 +282,88 @@
             "BundleID": 21
         },
         {
+            "Address": "Effect_Appear",
+            "AssetPath": "Assets/GameBundle/Effect/Effect_Appear.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 22
+        },
+        {
             "Address": "UICollectItemComponent",
             "AssetPath": "Assets/GameBundle/UIComp/UICollectItemComponent.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 22
+            "BundleID": 23
         },
         {
             "Address": "UIBank",
             "AssetPath": "Assets/GameBundle/UIView/UIBank.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UICollect",
             "AssetPath": "Assets/GameBundle/UIView/UICollect.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UICollectInfo",
             "AssetPath": "Assets/GameBundle/UIView/UICollectInfo.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UIGameOver",
             "AssetPath": "Assets/GameBundle/UIView/UIGameOver.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UIGamePage",
             "AssetPath": "Assets/GameBundle/UIView/UIGamePage.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UIGameSettlement",
             "AssetPath": "Assets/GameBundle/UIView/UIGameSettlement.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UIHomePage",
             "AssetPath": "Assets/GameBundle/UIView/UIHomePage.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UIPopupItem",
             "AssetPath": "Assets/GameBundle/UIView/UIPopupItem.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UISetting",
             "AssetPath": "Assets/GameBundle/UIView/UISetting.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         },
         {
             "Address": "UITips",
             "AssetPath": "Assets/GameBundle/UIView/UITips.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 23
+            "BundleID": 24
         }
     ],
     "BundleList": [
@@ -581,6 +588,16 @@
             "DependIDs": []
         },
         {
+            "BundleName": "assets_gamebundle_effect.bundle",
+            "UnityCRC": 0,
+            "FileHash": "1b93539dee5c5762dc97b8220ec16c6d",
+            "FileCRC": "00000000",
+            "FileSize": 880311,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
             "BundleName": "assets_gamebundle_uicomp.bundle",
             "UnityCRC": 0,
             "FileHash": "3d6d387a4d453241d527cf5c89abe2c9",
@@ -595,7 +612,7 @@
             "UnityCRC": 0,
             "FileHash": "cc84fdc8213d970313712821a3242e1b",
             "FileCRC": "00000000",
-            "FileSize": 563853,
+            "FileSize": 570032,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
