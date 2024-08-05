@@ -55,7 +55,7 @@ MonoBehaviour:
     fbslim: 1
     DeleteStreamingAssets: 1
     ProfilingMemory: 0
-    CleanBuild: 0
+    CleanBuild: 1
     CustomNodePath: 
     showMonitorSuggestModal: 0
     enableProfileStats: 0
