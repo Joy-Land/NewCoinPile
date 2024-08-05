@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8dfeaebf9ef964a8bcb865f809137a, type: 3}
+  m_Name: Level 37
+  m_EditorClassIdentifier: 
+  coinLists:
+  - data:
+    - color: 11
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 1.34, y: -19.27}
+  - data:
+    - color: 3
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 6
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 0.03, y: -16.52}
+  - data:
+    - color: 6
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 2
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -3.94, y: -19.27}
+  - data:
+    - color: 9
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    - color: 11
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    - color: 3
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    - color: 4
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 0.03000005, y: -21.85}
+  - data:
+    - color: 9
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    - color: 6
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    - color: 3
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    - color: 2
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -2.56, y: -27.05}
+  - data:
+    - color: 7
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    - color: 9
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -2.56, y: -16.52}
+  - data:
+    - color: 3
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    - color: 11
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 2
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -2.56, y: -21.85}
+  - data:
+    - color: 9
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    - color: 7
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -1.23, y: -13.88}
+  - data:
+    - color: 3
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    - color: 9
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+    - color: 4
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    - color: 11
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -1.23, y: -24.44}
+  - data:
+    - color: 7
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    - color: 6
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+    - color: 7
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    - color: 11
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+    - color: 2
+      number: 4
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 0.03000005, y: -27.05}
+  - data:
+    - color: 7
+      number: 2
+      isHidden: 0
+      isFrozen: 0
+    - color: 2
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 4
+      number: 3
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -3.94, y: -29.3}
+  transCoinStackList:
+    data: 0900000003000000070000000b00000008000000060000000200000004000000

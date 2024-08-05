@@ -46,7 +46,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -2.65, y: -15.61}
+    position: {x: -2.65, y: -17.51}
   - data:
     - color: 8
       number: 2
@@ -98,7 +98,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 1
     tunnelStartIndex: 1
-    position: {x: -0.04, y: -22.41}
+    position: {x: -0.04, y: -24.31}
   - data:
     - color: 1
       number: 2
@@ -138,7 +138,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -1.36, y: -13.55}
+    position: {x: -1.36, y: -15.45}
   - data:
     - color: 8
       number: 2
@@ -184,7 +184,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -3.89, y: -17.89}
+    position: {x: -3.89, y: -19.79}
   - data:
     - color: 8
       number: 2
@@ -218,7 +218,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -2.65, y: -20.3}
+    position: {x: -2.65, y: -22.2}
   - data:
     - color: 9
       number: 1
@@ -246,7 +246,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 1.2, y: -17.89}
+    position: {x: 1.2, y: -19.79}
   - data:
     - color: 1
       number: 3
@@ -286,6 +286,8 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -0.04, y: -15.61}
+    position: {x: -0.04, y: -17.51}
   transCoinStackList:
     data: 080000000900000004000000010000000b0000000800000006000000
+  coinPileRopeList:
+    data: []

@@ -16,80 +16,146 @@ MonoBehaviour:
   - data:
     - color: 5
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 0
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 2
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 2
+      isHidden: 1
+      isFrozen: 0
     - color: 2
       number: 5
+      isHidden: 0
+      isFrozen: 0
     position: {x: 0.0800001, y: -18.26}
   - data:
     - color: 5
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 0
       number: 4
+      isHidden: 0
+      isFrozen: 0
     - color: 3
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 2
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 3
+      isHidden: 1
+      isFrozen: 0
     position: {x: -1.33, y: -17.1}
   - data:
     - color: 5
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 0
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 2
       number: 4
+      isHidden: 0
+      isFrozen: 0
     - color: 3
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 2
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 2
+      isHidden: 1
+      isFrozen: 0
     position: {x: -1.33, y: -19.37}
   - data:
     - color: 2
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 0
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 5
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 3
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 2
       number: 3
+      isHidden: 1
+      isFrozen: 0
     position: {x: -1.33, y: -14.89}
   - data:
     - color: 2
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 5
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 0
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 3
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 3
+      isHidden: 1
+      isFrozen: 0
     - color: 2
       number: 2
+      isHidden: 0
+      isFrozen: 0
     position: {x: -1.33, y: -21.61}
   - data:
     - color: 5
       number: 2
+      isHidden: 0
+      isFrozen: 0
     - color: 2
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 0
       number: 3
+      isHidden: 0
+      isFrozen: 0
     - color: 3
       number: 4
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 3
+      isHidden: 1
+      isFrozen: 0
     position: {x: -2.76, y: -18.26}
   transCoinStackList:
     data: 050000000000000002000000030000000100000002000000

@@ -34,7 +34,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 0.03, y: -16.52}
+    position: {x: 0.03, y: -16.41}
   - data:
     - color: 3
       number: 3
@@ -56,7 +56,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -2.56, y: -16.52}
+    position: {x: -2.56, y: -16.41}
   - data:
     - color: 8
       number: 3
@@ -84,7 +84,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -2.56, y: -19.51}
+    position: {x: -2.56, y: -19.4}
   - data:
     - color: 8
       number: 3
@@ -106,7 +106,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -4.01, y: -14.14}
+    position: {x: -4.01, y: -14.03}
   - data:
     - color: 8
       number: 2
@@ -128,7 +128,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 0.03, y: -24.84}
+    position: {x: 0.03, y: -23.55}
   - data:
     - color: 3
       number: 2
@@ -150,7 +150,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -2.56, y: -24.84}
+    position: {x: -2.56, y: -23.55}
   - data:
     - color: 10
       number: 3
@@ -172,7 +172,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 0.03, y: -19.51}
+    position: {x: 0.03, y: -19.4}
   - data:
     - color: 6
       number: 3
@@ -194,7 +194,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -4.01, y: -21.95}
+    position: {x: -4.01, y: -21.84}
   - data:
     - color: 6
       number: 4
@@ -210,7 +210,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 1.35, y: -14.14}
+    position: {x: 1.35, y: -14.03}
   - data:
     - color: 8
       number: 3
@@ -232,7 +232,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 1.35, y: -21.95}
+    position: {x: 1.35, y: -21.84}
   - data:
     - color: 3
       number: 3
@@ -254,7 +254,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -4.01, y: -27.41}
+    position: {x: -4.01, y: -25.59}
   - data:
     - color: 10
       number: 3
@@ -276,7 +276,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 1.35, y: -27.41}
+    position: {x: 1.35, y: -25.59}
   transCoinStackList:
     data: 03000000080000000a0000000400000006000000090000000700000001000000
   coinPileRopeList:
