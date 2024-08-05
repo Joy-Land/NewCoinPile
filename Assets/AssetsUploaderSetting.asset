@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a7a515480768740ace54db8435b297, type: 3}
+  m_Name: AssetsUploaderSetting
+  m_EditorClassIdentifier: 
+  Uploaders:
+  - coverMode: 1
+    bucketKey: UnityTest/FzyTest/StreamingAssets/yoo/DefaultPackage
+    filesPath:
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_gamebundle_atlas_uitools_fd8b6c84cf3c8d96948a5feb29d7ce9e.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_gamebundle_config_c0f1c4788e5357da06d389a0a679f615.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_gamebundle_uicomp_3023162a974856ad715063d6a7dea3ff.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_gamebundle_uiview_fbea047ad4fd673b00e811ad5f8a9c35.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_audio_590b796a25b43accda7a17dd577b7cf5.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_effect_engines_00bf5cb068048af1906b178e9648bcea.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_effect_explosions_bb5188bedebb4758429f0bb733df0f42.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_entity_08f975c0030e2ad22ac5618f2990b275.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_battle_c64f05a7a835a879902b069668f861d6.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_battlesettings_8a7b55bcfb7536b14fb9c5a112575353.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_home_9f543b31c52fa7bf4cebef0f5638f6ad.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_scene_scene_homesettings_b743cbc8187d9eed73a3e86569168b42.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_uifont_0b69ce14f9b41edbd486657890722f7f.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_uiimage_4d14de867607d4a63e571bc6a3cd0a65.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uibattle_3032235bc8e48bced11e05acfe2b8522.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uihome_caf09bacd96e05dcfbf173c258e8f7cf.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uiloading_cf113b0446fe1e9b3705b9d39809cdc2.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uinewhome_1d3d1358b04b37b09d9c53e217dbf31f.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uitest1component_054e2b3fbe5675623ab8f146f6ed7a2f.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_samples_yooasset_2_1_2_space_shooter_gameres_uipanel_uitestcomponent_b7932edf0e6d92be59582bab526d1dc4.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage.version
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_2024-08-01-971.bytes
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_2024-08-01-971.hash
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_effect_c8cb0728c58a1b8d2d86d59ec423952a.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01_d59c1250fd0d2e9cb5cd8ec753cdb426.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_01_materials_0c7a22ff6e9cf56def7fdfa03e1af8a7.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_02_a63959af15540f2510f2ec50e91a8351.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_02_materials_5430419104ea188fda80035b681f5bf6.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_03_883f5156a393a00a67182818b02ba3cd.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_asteroid_prop_asteroid_03_materials_141cbeeee248d2fb9efd5e3aa3358d98.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_enemyship_fa94a22c4530637429319f17d81772db.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_enemyship_materials_68a801cbff22dbec01a33d118147a9fd.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_playership_d7001c796d67f631f814f520c64f3bb7.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_entity_vehicle_vehicle_playership_materials_92c6bcf3d9af5187db42f68dfb969200.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_scene_7af558d7cadef86dcbf0f25e55560eec.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uianim_45f39f854e079ba9c1033d3a8c194d26.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameart_uifont_cd3cf42607a92ed1e2b679c53c40596f.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_assets_samples_yooasset_2_1_2_space_shooter_gameres_uiatlas_common_230c382f44bab44134d9570dc1560d88.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/share_packages_com_unity_render-pipelines_universal_runtime_materials_d1fd388f76d5691f8978c2afd41a9d86.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/unityshaders_52dab13dc3d2f49232a9cbd502fadb09.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_gamebundle_atlas_uigame_62154e269c255192b63d3b97b43feaec.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_gamebundle_atlas_uigameover_db6f9487b1a5d106d855b5b4c6b80d35.bundle
+    - E:/CocosProject/duomino/PhysicalTest/Build/webgl/StreamingAssets/yoo/DefaultPackage/assets_gamebundle_atlas_uihome_91ea381cd7a64a664a2044ba6f9d074a.bundle

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Joyland.GamePlay;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ public class UIGameSettlement : UIViewBase
     public GameObject Obj_Container;
     public GameObject Obj_Success;
     public Button Btn_Collect;
+    public GameObject Obj_Txt_DescResult;
     public Text Txt_Desc1;
     public Text Txt_Desc2;
     public GameObject Obj_Fail;
@@ -35,8 +37,9 @@ public class UIGameSettlement : UIViewBase
         Obj_Container = transform.Find("Obj_Container").gameObject;
         Obj_Success = transform.Find("Obj_Container/Obj_Success").gameObject;
         Btn_Collect = transform.Find("Obj_Container/Obj_Success/Btn_Collect").GetComponent<Button>();
-        Txt_Desc1 = transform.Find("Obj_Container/Obj_Success/Txt_Desc1").GetComponent<Text>();
-        Txt_Desc2 = transform.Find("Obj_Container/Obj_Success/Txt_Desc2").GetComponent<Text>();
+        Obj_Txt_DescResult = transform.Find("Obj_Container/Obj_Success/Obj_TxtDescResult").gameObject;
+        Txt_Desc1 = transform.Find("Obj_Container/Obj_Success/Obj_TxtDescResult/Txt_Desc1").GetComponent<Text>();
+        Txt_Desc2 = transform.Find("Obj_Container/Obj_Success/Obj_TxtDescResult/Txt_Desc2").GetComponent<Text>();
         Obj_Fail = transform.Find("Obj_Container/Obj_Fail").gameObject;
         Btn_TryGetRevive = transform.Find("Obj_Container/Obj_Fail/Btn_TryGetRevive").GetComponent<Button>();
         Txt_TryGetRevive = transform.Find("Obj_Container/Obj_Fail/Btn_TryGetRevive/Txt_TryGetRevive").GetComponent<Text>();
@@ -60,6 +63,17 @@ public class UIGameSettlement : UIViewBase
         {
             Obj_Success.SetActive(true);
             Obj_Fail.SetActive(false);
+
+            Obj_Txt_DescResult.SetActive(false);
+            Obj_Txt_DescResult.transform.localScale = Vector3.one * 5f;
+
+            //盖章动画
+            DOVirtual.DelayedCall(0.2f, () =>
+            {
+                Obj_Txt_DescResult.SetActive(true);
+                Obj_Txt_DescResult.GetComponent<RectTransform>().DOScale(Vector3.one, 0.3f).SetDelay(0.07f).SetEase(Ease.Linear);
+            });
+            
         }
         else
         {

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ThinRL.Core;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.UI;
 
 public class UITips : UIViewBase
@@ -45,16 +46,43 @@ public class UITips : UIViewBase
 
     }
 
+    private bool m_CanclickBg = false;
+
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
 
-        Obj_HasImageType.SetActive(m_IsHasImageType);
-        Obj_NoImageType.SetActive(m_IsHasImageType);
+        m_CanclickBg = false;
+
+        Obj_HasImageType.SetActive(false);
+        Obj_NoImageType.SetActive(false);
 
         Txt_HasImageTypeDesc.text = m_Desc;
         Txt_NoImageTypeDesc.text = m_Desc;
+
+        if(m_IsHasImageType)
+        {
+            Obj_HasImageType.SetActive(true);
+            var rectTrans = Obj_HasImageType.GetComponent<RectTransform>();
+            rectTrans.anchoredPosition = new Vector2(UIManager.Instance.FullSizeDetail.x * 1f, rectTrans.anchoredPosition.y);
+            rectTrans.DOAnchorPosX(0, 0.6f).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                m_CanclickBg = true;
+                m_AnimationFinishCb?.Invoke();
+            });
+        }
+        else
+        {
+            Obj_NoImageType.SetActive(true);
+            var rectTrans = Obj_NoImageType.GetComponent<RectTransform>();
+            rectTrans.anchoredPosition = new Vector2(UIManager.Instance.FullSizeDetail.x * 1f, rectTrans.anchoredPosition.y);
+            rectTrans.DOAnchorPosX(0, 0.6f).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                m_CanclickBg = true;
+                m_AnimationFinishCb?.Invoke();
+            });
+        }
     }
 
     public override void OnViewUpdate()
@@ -84,13 +112,28 @@ public class UITips : UIViewBase
 
     public void RegistEvent()
     {
+        if(m_ClickCloseFinishCb != null)
+        {
+            EventTriggerListener.Get(Img_Bg.gameObject).GoToClick += OnImg_BgClicked;
+        }
+    }
 
+
+    private void OnImg_BgClicked(GameObject go)
+    {
+        if (m_CanclickBg == false)
+            return;
+
+        m_ClickCloseFinishCb?.Invoke();
     }
 
 
     public void UnregistEvent()
     {
-
+        if (m_ClickCloseFinishCb != null)
+        {
+            EventTriggerListener.Get(Img_Bg.gameObject).GoToClick -= OnImg_BgClicked;
+        }
     }
 
 

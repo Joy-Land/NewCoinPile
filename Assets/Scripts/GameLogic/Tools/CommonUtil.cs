@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using ThinRL.Core;
 using Joyland.GamePlay;
+using DG.Tweening;
 
 
 namespace Joyland.GamePlay
@@ -92,7 +93,7 @@ namespace Joyland.GamePlay
                     return "零";
                 }
 
-                string[] units = { "","万", "十万", "百万", "千万", "亿", "十亿", "百亿", "千亿" };
+                string[] units = { "", "万", "十万", "百万", "千万", "亿", "十亿", "百亿", "千亿" };
                 int unitIndex = 0;
 
                 while (number >= 10000 && unitIndex < units.Length)
@@ -179,6 +180,25 @@ namespace Joyland.GamePlay
         public static class Assets
         {
 
+        }
+
+        public static class Tween
+        {
+            public static void DoNumberFloat(float s, float e, Action<float> updateCB, Action finishCB, float duration = 1f)
+            {
+                DOTween.To(value => { updateCB?.Invoke(value); }, startValue: s, endValue: e, duration: duration).OnComplete(()=>
+                {
+                    finishCB?.Invoke();
+                });
+            }
+
+            public static void DoNumberInt(int s, int e, Action<int> updateCB, Action finishCB, float duration = 1f)
+            {
+                DOTween.To(value => { updateCB?.Invoke(Mathf.FloorToInt(value)); }, startValue: s, endValue: e, duration: duration).OnComplete(()=>
+                {
+                    finishCB?.Invoke();
+                });
+            }
         }
 
 

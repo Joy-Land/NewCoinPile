@@ -16,7 +16,7 @@ using UniFramework.Machine;
 using UnityEngine;
 using UnityEngine.Scripting;
 using YooAsset;
-using static UnityEngine.Rendering.ReloadAttribute;
+using System.IO;
 
 public class FsmStartGameState : IStateNode
 {
@@ -67,7 +67,7 @@ public class FsmStartGameState : IStateNode
     {
         var m_UIStartGameNode = m_Machine.GetBlackboardValue("_UIStartGameNode") as GameObject;
         m_Bg = Resources.Load<Sprite>("FirstAssets/bg2");
-        console.error("fzy bb:", m_Bg);
+
         UIManager.Instance.SetBackground(0, m_Bg);
         UIManager.Instance.GetAndOpenUIViewOnNode<UIStartGame>(m_UIStartGameNode, UIViewID.UIStartGame,
             new UIViewConfig() { bundleName = "", layer = UIViewLayerEnum.Lowest, packageName = "" }, new EventArgsPack((int)LoadingStageEventCode.Finish));
@@ -164,18 +164,16 @@ public class FsmStartGameState : IStateNode
             GameConfig.Instance.LoadLocalItemUsageConfig(res.text);
         };
         await itemUsage.ToUniTask();
-        
+
         //别的配置
     }
 
+    private static string m_RemoteBundlePath = "https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage";
     private static string m_CDNRootPath = "https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage";//https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage
-    //const string cndROOTPath = "https://cdn.joylandstudios.com/UnityTest/DefaultPackage";
     void InitConfig(int tryTime)
     {
+
         // var www = UnityWebRequest.Get()
-#if UNITY_WX && !UNITY_EDITOR
-            WX.SetDataCDN(m_CDNRootPath);
-#endif
         var json = "";
         TextAsset text = Resources.Load<TextAsset>("version_config");
         json = text.text;
@@ -185,10 +183,24 @@ public class FsmStartGameState : IStateNode
             console.error("cdnURL:", config.debug.cdn, config.release.cdn);
 
 #if JOYLAND_DEBUG
-            m_CDNRootPath = config.debug.cdn;
+            m_RemoteBundlePath = config.debug.cdn;
 #else
-            m_CDNRootPath = config.release.cdn;
+            m_RemoteBundlePath = config.release.cdn;
 #endif
+
+            var pathSplit = config.debug.cdn.Split("/StreamingAssets");
+            m_CDNRootPath = pathSplit[0];
+            console.info("cdnRoot:", m_CDNRootPath);
+            if (string.IsNullOrEmpty(m_CDNRootPath))
+            {
+                console.error("路径错误");
+                return;
+            }
+#if UNITY_WX && !UNITY_EDITOR
+            WX.SetDataCDN(m_CDNRootPath);
+            GetBundleCacheFileList("/StreamingAssets"+pathSplit[1]);
+#endif
+
         }
         else
         {
@@ -205,7 +217,6 @@ public class FsmStartGameState : IStateNode
         YooAssets.Initialize();
         // 创建资源包裹类
         var package = YooAssets.CreatePackage(PACKAGE_NAME);
-
         // 编辑器下的模拟模式
         InitializeParameters createParameters = null;
         if (PlayMode == EPlayMode.EditorSimulateMode)
@@ -235,7 +246,8 @@ public class FsmStartGameState : IStateNode
             createParameters = new WebPlayModeParameters()
             {
                 RemoteServices = new RemoteServices(),
-                BuildinQueryServices = new BuildinQueryServices()
+                BuildinQueryServices = new BuildinQueryServices(),
+                WechatQueryServices = new WechatCacheQueryService()
             };
             //因为微信小游戏平台的特殊性，需要关闭WebGL的缓存系统，使用微信自带的缓存系统。
             YooAssets.SetCacheSystemDisableCacheOnWebGL();
@@ -251,7 +263,33 @@ public class FsmStartGameState : IStateNode
             return;
         }
         UpdatePackageVersionAsync(package).Forget();
+    }
 
+    public static HashSet<string> CacheFileNameSet = new HashSet<string>();
+    public void GetBundleCacheFileList(string fileCachePath)
+    {
+        CacheFileNameSet.Clear();
+        var cachePath = WX.PluginCachePath;
+        var fileSystem = WX.GetFileSystemManager();
+
+        var path = cachePath + fileCachePath;
+
+        var cacheFileList = new string[0];
+        try
+        {
+            cacheFileList = fileSystem.ReaddirSync(path);
+        }
+        catch
+        {
+            cacheFileList = new string[0];
+        }
+
+        foreach (var file in cacheFileList)
+        {
+            CacheFileNameSet.Add(file);
+        }
+        console.info("fzypp:", cachePath, path, cacheFileList, Application.streamingAssetsPath, WX.env.USER_DATA_PATH);
+        console.info("fzy new pp:", cacheFileList);
     }
 
     async UniTaskVoid UpdatePackageVersionAsync(ResourcePackage package)
@@ -347,7 +385,7 @@ public class FsmStartGameState : IStateNode
     }
     void OnDownloadProgress(int totalDownloadCount, int currentDownloadCount, long totalDownloadBytes, long currentDownloadBytes)
     {
-        EventManager.Instance.DispatchEvent(GameEventGlobalDefine.AddProgressBar, this, new EventArgsPack((int)LoadingStageEventCode.DownloadPackage, (float)((int)LoadingStageEventCode.DownloadPackage)+ (float)currentDownloadCount/(float)totalDownloadCount, currentDownloadCount, totalDownloadCount));
+        EventManager.Instance.DispatchEvent(GameEventGlobalDefine.AddProgressBar, this, new EventArgsPack((int)LoadingStageEventCode.DownloadPackage, (float)((int)LoadingStageEventCode.DownloadPackage) + (float)currentDownloadCount / (float)totalDownloadCount, currentDownloadCount, totalDownloadCount));
         //console.warn($"正在下载({currentDownloadCount}/{totalDownloadCount}): {(currentDownloadBytes >> 10)}KB/{(totalDownloadBytes >> 10)}KB");
     }
 
@@ -368,11 +406,11 @@ public class FsmStartGameState : IStateNode
     {
         string IRemoteServices.GetRemoteMainURL(string fileName)
         {
-            return m_CDNRootPath + "/" + fileName;
+            return m_RemoteBundlePath + "/" + fileName;
         }
         string IRemoteServices.GetRemoteFallbackURL(string fileName)
         {
-            return m_CDNRootPath + "/" + fileName;
+            return m_RemoteBundlePath + "/" + fileName;
         }
     }
     /// <summary>
@@ -383,11 +421,117 @@ public class FsmStartGameState : IStateNode
     /// </summary>
     private class BuildinQueryServices : IBuildinQueryServices
     {
+        /// <summary>
+        /// 查询内置文件的时候，是否比对文件哈希值
+        /// </summary>
+        public static bool CompareFileCRC = true;
+
         public bool Query(string packageName, string fileName, string fileCRC)
         {
-            Debug.Log($"BuildinQueryServices {packageName} >> {fileName}   {fileCRC}");
             return false;
+            //console.info($"BuildinQueryServices {packageName} >> {fileName}   {fileCRC}");
+            //var res = JStreamingAssetsHelper.FileExists(packageName, fileName, fileCRC);
+            //return res;
         }
     }
+
+    private class WechatCacheQueryService : IWechatQueryServices
+    {
+        public bool Query(string packageName, string fileName, string fileCRC)
+        {
+            var res = CacheFileNameSet.Contains(fileName);
+            //console.error("wxquery:", res, packageName, fileName);
+            return res;
+        }
+    }
+
+
+
+#if UNITY_EDITOR
+    public sealed class JStreamingAssetsHelper
+    {
+        public static void Init() { }
+        public static bool FileExists(string packageName, string fileName, string fileCRC)
+        {
+            string filePath = Path.Combine(Application.streamingAssetsPath, StreamingAssetsDefine.RootFolderName, packageName, fileName);
+            if (File.Exists(filePath))
+            {
+                if (BuildinQueryServices.CompareFileCRC)
+                {
+                    string crc32 = YooAsset.HashUtility.FileCRC32(filePath);
+                    return crc32 == fileCRC;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+#else
+public sealed class JStreamingAssetsHelper
+{
+    private class PackageQuery
+    {
+        public readonly Dictionary<string, BuildinFileManifest.Element> Elements = new Dictionary<string, BuildinFileManifest.Element>(1000);
+    }
+
+    private static bool _isInit = false;
+    private static readonly Dictionary<string, PackageQuery> _packages = new Dictionary<string, PackageQuery>(10);
+
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    public static void Init()
+    {
+        if (_isInit == false)
+        {
+            _isInit = true;
+
+            var manifest = Resources.Load<BuildinFileManifest>("BuildinFileManifest");
+            if (manifest != null)
+            {
+                foreach (var element in manifest.BuildinFiles)
+                {
+                    if (_packages.TryGetValue(element.PackageName, out PackageQuery package) == false)
+                    {
+                        package = new PackageQuery();
+                        _packages.Add(element.PackageName, package);
+                    }
+                    package.Elements.Add(element.FileName, element);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 内置文件查询方法
+    /// </summary>
+    public static bool FileExists(string packageName, string fileName, string fileCRC32)
+    {
+        if (_isInit == false)
+            Init();
+
+        if (_packages.TryGetValue(packageName, out PackageQuery package) == false)
+            return false;
+
+        if (package.Elements.TryGetValue(fileName, out var element) == false)
+            return false;
+
+        if (BuildinQueryServices.CompareFileCRC)
+        {
+            return element.FileCRC32 == fileCRC32;
+        }
+        else
+        {
+            return true;
+        }
+    }
+}
+#endif
 
 }

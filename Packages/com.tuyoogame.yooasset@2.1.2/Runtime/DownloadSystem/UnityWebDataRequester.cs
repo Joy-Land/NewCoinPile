@@ -13,16 +13,16 @@ namespace YooAsset
         /// </summary>
         public void SendRequest(string url, int timeout = 60)
         {
-            Debug.Log("fzy uuu:"+url);
-            if(url.Contains("DOCTYPE") && url.Contains(".bytes"))
-            {
-                url = "https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_0.bytes";
-            }
-            if(url.Contains("DOCTYPE") && url.Contains(".hash"))
-            {
-                url = "https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_0.hash";
-            }
-            Debug.Log("fzy uuu:"+url);
+            //Debug.Log("fzy uuu:"+url);
+            //if(url.Contains("DOCTYPE") && url.Contains(".bytes"))
+            //{
+            //    url = "https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_0.bytes";
+            //}
+            //if(url.Contains("DOCTYPE") && url.Contains(".hash"))
+            //{
+            //    url = "https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage/PackageManifest_DefaultPackage_0.hash";
+            //}
+            //Debug.Log("fzy uuu:"+url);
             if (_webRequest == null)
             {
                 URL = url;

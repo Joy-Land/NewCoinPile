@@ -288,10 +288,28 @@ public class WechatMiniGame : MiniGameBase
         {
             success = (res) =>
             {
-                m_AuthData.hasUserInfoAuth = res.authSetting["scope.userInfo"];
-                m_AuthData.hasFuzzyLocationAuth = res.authSetting["scope.userFuzzyLocation"];
-                m_AuthData.hasWeRunAuth = res.authSetting["scope.werun'"];
-                m_AuthData.hasWritePhtosAlbum = res.authSetting["scope.writePhotosAlbum'"];
+                m_AuthData.hasUserInfoAuth = false;
+                m_AuthData.hasFuzzyLocationAuth = false;
+                m_AuthData.hasWeRunAuth = false;
+                m_AuthData.hasWritePhtosAlbum = false;
+
+                var toggle = false;
+                if (res.authSetting.TryGetValue("scope.userInfo", out toggle))
+                {
+                    m_AuthData.hasUserInfoAuth = toggle;
+                }
+                if (res.authSetting.TryGetValue("scope.userFuzzyLocation", out toggle))
+                {
+                    m_AuthData.hasFuzzyLocationAuth = toggle;
+                }
+                if (res.authSetting.TryGetValue("scope.werun", out toggle))
+                {
+                    m_AuthData.hasWeRunAuth = toggle;
+                }
+                if (res.authSetting.TryGetValue("scope.writePhotosAlbum", out toggle))
+                {
+                    m_AuthData.hasWritePhtosAlbum = toggle;
+                }
             }
         });
     }
