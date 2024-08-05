@@ -46,10 +46,14 @@ public class UITips : UIViewBase
 
     }
 
+    private bool m_CanclickBg = false;
+
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        m_CanclickBg = false;
 
         Obj_HasImageType.SetActive(false);
         Obj_NoImageType.SetActive(false);
@@ -57,7 +61,6 @@ public class UITips : UIViewBase
         Txt_HasImageTypeDesc.text = m_Desc;
         Txt_NoImageTypeDesc.text = m_Desc;
 
-        console.error("fzy size:",UIManager.Instance.FullSizeDetail);
         if(m_IsHasImageType)
         {
             Obj_HasImageType.SetActive(true);
@@ -65,6 +68,7 @@ public class UITips : UIViewBase
             rectTrans.anchoredPosition = new Vector2(UIManager.Instance.FullSizeDetail.x * 1f, rectTrans.anchoredPosition.y);
             rectTrans.DOAnchorPosX(0, 0.6f).SetEase(Ease.OutBack).OnComplete(() =>
             {
+                m_CanclickBg = true;
                 m_AnimationFinishCb?.Invoke();
             });
         }
@@ -75,6 +79,7 @@ public class UITips : UIViewBase
             rectTrans.anchoredPosition = new Vector2(UIManager.Instance.FullSizeDetail.x * 1f, rectTrans.anchoredPosition.y);
             rectTrans.DOAnchorPosX(0, 0.6f).SetEase(Ease.OutBack).OnComplete(() =>
             {
+                m_CanclickBg = true;
                 m_AnimationFinishCb?.Invoke();
             });
         }
@@ -107,13 +112,28 @@ public class UITips : UIViewBase
 
     public void RegistEvent()
     {
+        if(m_ClickCloseFinishCb != null)
+        {
+            EventTriggerListener.Get(Img_Bg.gameObject).GoToClick += OnImg_BgClicked;
+        }
+    }
 
+
+    private void OnImg_BgClicked(GameObject go)
+    {
+        if (m_CanclickBg == false)
+            return;
+
+        m_ClickCloseFinishCb?.Invoke();
     }
 
 
     public void UnregistEvent()
     {
-
+        if (m_ClickCloseFinishCb != null)
+        {
+            EventTriggerListener.Get(Img_Bg.gameObject).GoToClick -= OnImg_BgClicked;
+        }
     }
 
 

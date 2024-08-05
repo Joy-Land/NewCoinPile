@@ -25,12 +25,17 @@ public class UIHomePage : UIViewBase
     public Button Btn_Setting;
     public Button Btn_Bank;
 
+    public Image Img_Cloud1;
+    public Image Img_Cloud2;
 
 
+    private List<Image> m_CloudList;
     public override void OnViewAwake(EventArgsPack args)
     {
         base.OnViewAwake(args);
         Img_Bg = transform.Find("Img_Bg").GetComponent<Image>();
+        Img_Cloud1 = transform.Find("Img_Bg/Img_Cloud1").GetComponent<Image>();
+        Img_Cloud2 = transform.Find("Img_Bg/Img_Cloud2").GetComponent<Image>();
         Img_House = transform.Find("Img_Bg/Img_House").GetComponent<Image>();
         Img_Bord = transform.Find("Img_Bg/Img_Bord").GetComponent<Image>();
         Txt_InterestRate = transform.Find("Img_Bg/Img_Bord/Txt_InterestRate").GetComponent<Text>();
@@ -42,6 +47,10 @@ public class UIHomePage : UIViewBase
 
         Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
+
+        m_CloudList = new List<Image>();
+        m_CloudList.Add(Img_Cloud1);
+        m_CloudList.Add(Img_Cloud2);
     }
     public override void OnViewShow(EventArgsPack args)
     {
@@ -51,6 +60,17 @@ public class UIHomePage : UIViewBase
     public override void OnViewUpdate()
     {
         base.OnViewUpdate();
+
+        var len = m_CloudList.Count;
+        for (int i = 0; i < len; i++)
+        {
+            var cloud = m_CloudList[i];
+            cloud.rectTransform.anchoredPosition = new Vector2(cloud.rectTransform.anchoredPosition.x - 15 * Time.deltaTime, cloud.rectTransform.anchoredPosition.y);
+            if(cloud.rectTransform.anchoredPosition.x < -(UIManager.Instance.FullSizeDetail.x * 0.5f + cloud.rectTransform.sizeDelta.x * 1.5))
+            {
+                cloud.rectTransform.anchoredPosition = new Vector2((UIManager.Instance.FullSizeDetail.x * 0.5f + 50), cloud.rectTransform.anchoredPosition.y);
+            }
+        }
 
     }
     public override void OnViewUpdateBySecond()
