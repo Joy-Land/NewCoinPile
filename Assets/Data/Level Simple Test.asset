@@ -18,20 +18,20 @@ MonoBehaviour:
       number: 3
       isHidden: 0
       isFrozen: 0
-      isShutter: 1
+      isShutter: 0
       shutterIsOpen: 0
     - color: 4
       number: 3
-      isHidden: 1
+      isHidden: 0
       isFrozen: 0
-      isShutter: 1
-      shutterIsOpen: 1
+      isShutter: 0
+      shutterIsOpen: 0
     - color: 1
       number: 5
       isHidden: 0
       isFrozen: 0
-      isShutter: 1
-      shutterIsOpen: 1
+      isShutter: 0
+      shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 1
     position: {x: -2.77, y: -16.82}
@@ -40,7 +40,7 @@ MonoBehaviour:
       number: 5
       isHidden: 0
       isFrozen: 0
-      isShutter: 1
+      isShutter: 0
       shutterIsOpen: 0
     - color: 2
       number: 2
@@ -62,18 +62,18 @@ MonoBehaviour:
       number: 2
       isHidden: 0
       isFrozen: 0
-      isShutter: 1
-      shutterIsOpen: 1
+      isShutter: 0
+      shutterIsOpen: 0
     - color: 4
       number: 3
-      isHidden: 1
+      isHidden: 0
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
     - color: 5
       number: 2
       isHidden: 0
-      isFrozen: 1
+      isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
     - color: 1
@@ -110,7 +110,7 @@ MonoBehaviour:
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
-    hasTunnel: 1
+    hasTunnel: 0
     tunnelStartIndex: 1
     position: {x: 0.07, y: -19.64}
   - data:
@@ -132,10 +132,12 @@ MonoBehaviour:
       isFrozen: 0
       isShutter: 0
       shutterIsOpen: 0
-    hasTunnel: 1
+    hasTunnel: 0
     tunnelStartIndex: 1
     position: {x: -1.33, y: -18.24}
   transCoinStackList:
     data: 05000000040000000200000001000000
   coinPileRopeList:
+    data: []
+  coinPilePanelList:
     data: []

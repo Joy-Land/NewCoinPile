@@ -34,7 +34,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -3.96, y: -13.31}
+    position: {x: -3.96, y: -14.79}
   - data:
     - color: 1
       number: 5
@@ -56,7 +56,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -0.09000006, y: -15.92}
+    position: {x: -0.09000006, y: -16.59}
   - data:
     - color: 1
       number: 5
@@ -78,7 +78,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -3.96, y: -27.77}
+    position: {x: -3.96, y: -24.87}
   - data:
     - color: 10
       number: 5
@@ -100,7 +100,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -2.7, y: -20.66}
+    position: {x: -2.7, y: -20.04}
   - data:
     - color: 4
       number: 5
@@ -122,7 +122,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -1.39, y: -27.78}
+    position: {x: -1.39, y: -24.9}
   - data:
     - color: 4
       number: 5
@@ -144,7 +144,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 1.24, y: -27.77}
+    position: {x: 1.24, y: -24.89}
   - data:
     - color: 1
       number: 5
@@ -166,7 +166,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: 1.24, y: -13.31}
+    position: {x: 1.24, y: -14.49}
   - data:
     - color: 4
       number: 5
@@ -188,7 +188,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -1.39, y: -13.31}
+    position: {x: -1.39, y: -14.49}
   - data:
     - color: 10
       number: 5
@@ -232,7 +232,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -1.36, y: -23}
+    position: {x: -1.36, y: -21.85}
   - data:
     - color: 10
       number: 5
@@ -254,7 +254,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -0.09000006, y: -25.36}
+    position: {x: -0.09000006, y: -23.38}
   transCoinStackList:
     data: 040000000a0000000100000009000000060000000a000000040000000b000000010000000900000006000000
   coinPileRopeList:
@@ -263,11 +263,11 @@ MonoBehaviour:
       srcCoinElementIndex: 1
       destCoinPileIndex: 7
       destCoinElementIndex: 0
+    - srcCoinPileIndex: 5
+      srcCoinElementIndex: 1
+      destCoinPileIndex: 10
+      destCoinElementIndex: 0
     - srcCoinPileIndex: 2
       srcCoinElementIndex: 2
       destCoinPileIndex: 9
       destCoinElementIndex: 0
-    - srcCoinPileIndex: 5
-      srcCoinElementIndex: 0
-      destCoinPileIndex: 8
-      destCoinElementIndex: 1

@@ -53,6 +53,12 @@ namespace Manager
             Init();
         }
 
+        public void LevelSelect(int index)
+        {
+            levelIndex = index;
+            Init();
+        }
+
         public void ReStart(Boolean nextLevel)
         {
             var levelListCount = LevelManager.Instance.GetLevelListCount();
@@ -100,7 +106,7 @@ namespace Manager
                 {
                     throw new Exception("CoinPileCollection component missing");
                 }
-                coinPileCollection.Init(levelData.coinLists, levelData.coinPileRopeList);
+                coinPileCollection.Init(levelData.coinLists, levelData.coinPileRopeList, levelData.coinPilePanelList);
             }
         }
         

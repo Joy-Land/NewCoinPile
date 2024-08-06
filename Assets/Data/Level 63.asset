@@ -144,7 +144,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -1.36, y: -20.71}
+    position: {x: -1.36, y: -21.11}
   - data:
     - color: 11
       number: 2

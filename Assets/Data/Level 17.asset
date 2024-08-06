@@ -16,98 +16,170 @@ MonoBehaviour:
   - data:
     - color: 4
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 5
       number: 5
+      isHidden: 1
+      isFrozen: 0
     position: {x: -3.62, y: -13.73}
   - data:
     - color: 5
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 5
       number: 5
+      isHidden: 1
+      isFrozen: 0
     - color: 0
       number: 5
+      isHidden: 0
+      isFrozen: 0
     position: {x: -1.45, y: -13.73}
   - data:
     - color: 0
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 4
       number: 5
+      isHidden: 1
+      isFrozen: 0
     position: {x: 0.8100002, y: -13.73}
   - data:
     - color: 0
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 3
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 5
+      isHidden: 1
+      isFrozen: 0
     position: {x: -3.62, y: -17.06}
   - data:
     - color: 4
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 5
       number: 5
+      isHidden: 0
+      isFrozen: 0
     position: {x: -1.45, y: -17.06}
   - data:
     - color: 5
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 4
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 2
       number: 5
+      isHidden: 1
+      isFrozen: 0
     position: {x: 0.8100002, y: -17.06}
   - data:
     - color: 0
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 4
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 5
+      isHidden: 1
+      isFrozen: 0
     position: {x: -3.62, y: -20.33}
   - data:
     - color: 1
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 4
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 0
       number: 5
+      isHidden: 0
+      isFrozen: 0
     position: {x: -1.45, y: -20.33}
   - data:
     - color: 3
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 2
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 5
+      isHidden: 1
+      isFrozen: 0
     position: {x: 0.8100002, y: -20.33}
   - data:
     - color: 5
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 4
       number: 5
+      isHidden: 0
+      isFrozen: 0
     position: {x: -3.62, y: -23.76}
   - data:
     - color: 4
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 3
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 0
       number: 5
+      isHidden: 1
+      isFrozen: 0
     position: {x: -1.45, y: -23.76}
   - data:
     - color: 2
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 1
       number: 5
+      isHidden: 0
+      isFrozen: 0
     - color: 4
       number: 5
+      isHidden: 0
+      isFrozen: 0
     position: {x: 0.8100002, y: -23.76}
   transCoinStackList:
     data: 000000000500000004000000010000000300000001000000020000000500000004000000000000000100000004000000

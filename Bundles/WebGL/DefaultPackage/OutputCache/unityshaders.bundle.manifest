@@ -1,21 +1,28 @@
 ManifestFileVersion: 0
-CRC: 1059806678
+CRC: 1670866361
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ed6ed7b65d9fbb4e304be811e0c02f48
+    Hash: bd1418c63e0cfddc4c9c6fbba63c4ca4
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 64e37ac0e41cec2efd7de4138972079e
+    Hash: 0f5e2fb7f80e73ee1148205d378c2511
 HashAppended: 0
 ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
 - Class: 200
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/VFX_Klaus/Shaders/Fx_GrabThatSeries_Particle.shadergraph
 - Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/ShaderVariants/MyShaderVariants.shadervariants
 - Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/Shader/StandardMobile.shader
+- Assets/VFX_Klaus/Shaders/Fx_GrabThatCoin_CoinMesh.shadergraph
 - Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader
-Dependencies: []
+Dependencies:
+- D:/WorkSpace/NewCoinPile/Bundles/WebGL/DefaultPackage/OutputCache/share_assets_vfx_klaus_textures.bundle

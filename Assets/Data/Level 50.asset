@@ -62,7 +62,7 @@ MonoBehaviour:
       shutterIsOpen: 0
     hasTunnel: 0
     tunnelStartIndex: 0
-    position: {x: -1.21, y: -13.32}
+    position: {x: -1.21, y: -13.78}
   - data:
     - color: 10
       number: 5
@@ -265,3 +265,5 @@ MonoBehaviour:
     position: {x: 0.07, y: -22.24}
   transCoinStackList:
     data: 010000000a000000070000000900000004000000060000000b000000080000000500000002000000
+  coinPileRopeList:
+    data: []

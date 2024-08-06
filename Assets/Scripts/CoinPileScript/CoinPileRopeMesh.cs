@@ -7,12 +7,6 @@ using Item;
 
 namespace CoinPileScript
 {
-    internal class RopeReverseItem
-    {
-        public GameObject SrcGameObject;
-        public GameObject DestGameObject;
-    }
-    
     public class CoinPileRopeMesh : MonoBehaviour
     {
         [SerializeField] private GameObject coinPileRope;

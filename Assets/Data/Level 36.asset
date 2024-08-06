@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8dfeaebf9ef964a8bcb865f809137a, type: 3}
+  m_Name: Level 36
+  m_EditorClassIdentifier: 
+  coinLists:
+  - data:
+    - color: 7
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 10
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 1.34, y: -14.22}
+  - data:
+    - color: 6
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 10
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -3.94, y: -14.22}
+  - data:
+    - color: 7
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 9
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 1.34, y: -19.61}
+  - data:
+    - color: 2
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 9
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 0.03, y: -16.86}
+  - data:
+    - color: 7
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 10
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -3.94, y: -19.61}
+  - data:
+    - color: 5
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 2
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 0.03000005, y: -22.64}
+  - data:
+    - color: 9
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 9
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: 0.03000005, y: -26.29}
+  - data:
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 9
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 8
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -2.56, y: -26.29}
+  - data:
+    - color: 5
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 9
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -2.56, y: -16.86}
+  - data:
+    - color: 5
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 6
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -2.56, y: -22.64}
+  - data:
+    - color: 2
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    - color: 6
+      number: 5
+      isHidden: 0
+      isFrozen: 0
+    position: {x: -1.23, y: -19.61}
+  transCoinStackList:
+    data: 0700000005000000090000000200000008000000060000000a00000009000000

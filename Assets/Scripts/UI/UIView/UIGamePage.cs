@@ -24,6 +24,8 @@ public class UIGamePage : UIViewBase
     public Image Img_MagnetCount;
     public Text Txt_MagnetCount;
     public Image Img_MagnetEmpty;
+    public InputField input;
+    public Button Btn_xuanguan;
 
 
 
@@ -46,8 +48,13 @@ public class UIGamePage : UIViewBase
         Txt_MagnetCount = transform.Find("Btn_Magnet/Img_MagnetCount/Txt_MagnetCount").GetComponent<Text>();
         Img_MagnetEmpty = transform.Find("Btn_Magnet/Img_MagnetCount/Img_MagnetEmpty").GetComponent<Image>();
 
+        Txt_MagnetCount = transform.Find("Btn_Magnet/Image/Txt_MagnetCount").GetComponent<Text>();
+        Img_MagnetEmpty = transform.Find("Btn_Magnet/Image/Img_MagnetEmpty").GetComponent<Image>();
+        input = transform.Find("input").GetComponent<InputField>();
+        Btn_xuanguan = transform.Find("Btn_xuanguan").GetComponent<Button>();
 
-
+        m_Show = false;
+        input.gameObject.SetActive(m_Show);
     }
 
     public override void OnViewShow(EventArgsPack args)
@@ -100,10 +107,23 @@ public class UIGamePage : UIViewBase
         Btn_AddBox.onClick.AddListener(OnBtn_AddBoxClicked);
         Btn_Clear.onClick.AddListener(OnBtn_ClearClicked);
         Btn_Magnet.onClick.AddListener(OnBtn_MagnetClicked);
+        Btn_xuanguan.onClick.AddListener(OnBtn_xuanguan);
 
+        input.onEndEdit.AddListener(LevelSelect);
         EventManager.Instance.AddEvent(GameEventGlobalDefine.OnGetGameTools, OnGetGetToolsEvent);
     }
 
+    private bool m_Show = false;
+    public void OnBtn_xuanguan()
+    {
+        m_Show = !m_Show;
+        input.gameObject.SetActive(m_Show);
+    }
+    public void LevelSelect(string str)
+    {
+        Manager.GameManager.Instance.LevelSelect(int.Parse(str));
+        OnBtn_xuanguan();
+    }
     /// <summary>
     /// 0:道具id
     /// </summary>
@@ -250,7 +270,9 @@ public class UIGamePage : UIViewBase
         Btn_AddBox.onClick.RemoveListener(OnBtn_AddBoxClicked);
         Btn_Clear.onClick.RemoveListener(OnBtn_ClearClicked);
         Btn_Magnet.onClick.RemoveListener(OnBtn_MagnetClicked);
-
+        input.onEndEdit.RemoveListener(LevelSelect);
+        Btn_xuanguan.onClick.RemoveListener(OnBtn_xuanguan);
+        
         EventManager.Instance.RemoveEvent(GameEventGlobalDefine.OnGetGameTools, OnGetGetToolsEvent);
     }
 

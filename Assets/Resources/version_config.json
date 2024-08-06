@@ -1,6 +1,6 @@
 {
     "debug":{
-        "cdn":"https://cdn.joylandstudios.com/UnityTest/FzyTest/StreamingAssets/yoo/DefaultPackage"
+        "cdn":"https://cdn.joylandstudios.com/CoinPileTest/webgl/StreamingAssets/yoo/DefaultPackage"
     },
     "release":{
         "cdn":""

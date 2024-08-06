@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2976316227
+CRC: 2216622421
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2bd4f364206e83e920db95a169111340
+    Hash: 9cc88b8f7ba7431ec3993ee1f16f008e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 19700662172b9eee900c009eefd8ad96
+    Hash: 1920b1e1bd71b3bb6631a9cfe8066b17
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -35,6 +35,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 7af070894787f164f906a486c5cf2fff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 81a6cba661749b34b8a85708e263ea04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fba69efb549a11f4ca519418dd3c100c, type: 3}
 - Class: 114
@@ -86,6 +88,12 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.ColorBlock
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.InputField/EndEditEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.InputField/OnChangeEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.InputField/SubmitEvent
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 - AssemblyName: UnityEngine.UI

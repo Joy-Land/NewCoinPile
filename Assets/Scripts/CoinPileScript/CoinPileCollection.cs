@@ -6,6 +6,12 @@ using Manager;
 
 namespace CoinPileScript
 {
+    class CoinPilePanelItem
+    {
+        public List<CoinPanelItem> Data;
+        public int CurrentCoinPileIndex;
+    }
+    
     public class CoinPileCollection : MonoBehaviour
     {
         [SerializeField] private GameObject coinPilePrefab;
@@ -13,12 +19,15 @@ namespace CoinPileScript
         // 状态
         private List<GameObject> coinGameObjectList = new List<GameObject>();
         private Dictionary<GameObject, CoinPileRopeItem> coinPileRopeMap;
+        private Dictionary<GameObject, Dictionary<int, CoinPilePanelItem>> coinPilePanelMap;
         
         // 组件
         private CoinPileRopeMesh coinPileRopeMesh;
         private CoinPileRopeAnim coinPileRopeAnim;
+        private CoinPilePanelMesh coinPilePanelMesh;
+        private CoinPilePanelAnim coinPilePanelAnim;
 
-        public void Init(List<CoinList> coinLists, CoinPileRopeList coinPileRopeList)
+        public void Init(List<CoinList> coinLists, CoinPileRopeList coinPileRopeList, CoinPilePanelList coinPilePanelList)
         {
             // 初始化钱堆
             if (coinGameObjectList.Count > 0)
@@ -86,14 +95,57 @@ namespace CoinPileScript
             coinPileRopeMesh = GetComponent<CoinPileRopeMesh>();
             if (coinPileRopeMesh == null)
             {
-                throw new Exception("coinPileRopeMesh component missing");
+                throw new Exception("CoinPileRopeMesh component missing");
             }
             coinPileRopeMesh.Init(coinGameObjectList, coinPileRopeList.data);
 
             coinPileRopeAnim = GetComponent<CoinPileRopeAnim>();
             if (coinPileRopeAnim == null)
             {
-                throw new Exception("coinPileRopeAnim component missing");
+                throw new Exception("CoinPileRopeAnim component missing");
+            }
+            
+            // 初始化钱币玻璃挡板状态
+            coinPilePanelMap = new Dictionary<GameObject, Dictionary<int, CoinPilePanelItem>>();
+            foreach (var coinPilePanelData in coinPilePanelList.data)
+            {
+                foreach (var coinPanelItem in coinPilePanelData.coinPanelItemList.data)
+                {
+                    if (coinPanelItem.coinPileIndex < coinGameObjectList.Count)
+                    {
+                        var coinPileGameObject = coinGameObjectList[coinPanelItem.coinPileIndex];
+                        if (coinPileGameObject != null)
+                        {
+                            if (!coinPilePanelMap.ContainsKey(coinPileGameObject))
+                            {
+                                coinPilePanelMap.Add(coinPileGameObject, new Dictionary<int, CoinPilePanelItem>());
+                            }
+
+                            if (coinPilePanelMap.TryGetValue(coinPileGameObject, out var coinPilePanelItemMap))
+                            {
+                                coinPilePanelItemMap.Add(coinPanelItem.coinElementIndex, new CoinPilePanelItem()
+                                {
+                                    CurrentCoinPileIndex = coinPanelItem.coinPileIndex,
+                                    Data = coinPilePanelData.coinPanelItemList.data,
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 初始化钱币玻璃挡板的 Mesh 和 Anim 组件
+            coinPilePanelMesh = GetComponent<CoinPilePanelMesh>();
+            if (coinPilePanelMesh == null)
+            {
+                throw new Exception("CoinPilePanelMesh component missing");
+            }
+            coinPilePanelMesh.Init(coinGameObjectList, coinPilePanelList.data);
+
+            coinPilePanelAnim = GetComponent<CoinPilePanelAnim>();
+            if (coinPilePanelAnim == null)
+            {
+                throw new Exception("CoinPilePanelAnim component missing");
             }
         }
 

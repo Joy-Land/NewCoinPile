@@ -3,7 +3,17 @@ guid: 2cf181becef54534cb743652a3ea03da
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CoinTexture_Grey
+    second: {fileID: 2100000, guid: 708f2df214e297249acf75ec5d4c829c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GlassYellow
+    second: {fileID: 2100000, guid: 5a582131bd0274242a60ed34c05a13a0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -33,12 +43,6 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations: []
     isReadable: 0
-    virtualGeometry: 0
-    hasBoneWeight: 0
-    generateGeometryBuffer: 0
-    positionPrecision: -2147483648
-    normalPrecision: -1
-    tangentPrecision: -1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
