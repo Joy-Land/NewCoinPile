@@ -488,6 +488,7 @@ GameObject:
   - component: {fileID: 4920499267839974694}
   - component: {fileID: 6001124719247398770}
   - component: {fileID: 5627134744480447846}
+  - component: {fileID: 8316310022374114667}
   m_Layer: 0
   m_Name: Btn_Rank
   m_TagString: Untagged
@@ -574,7 +575,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -599,6 +600,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8316310022374114667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2441966321700125185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 0}
+  showHover: 1
+  hover: {x: 1, y: 1, z: 1}
+  hoverDuration: 0.2
+  showPressed: 1
+  pressed: {x: 0.9, y: 0.9, z: 0.9}
+  pressedDuration: 0.2
 --- !u!1 &2909356326937328302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1107,7 @@ GameObject:
   - component: {fileID: 1472628536685093596}
   - component: {fileID: 5094491729959213433}
   - component: {fileID: 356365807358263894}
+  - component: {fileID: 5171789516492064369}
   m_Layer: 0
   m_Name: Btn_Collect
   m_TagString: Untagged
@@ -1173,7 +1194,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1198,6 +1219,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5171789516492064369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3643503892506274291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 0}
+  showHover: 1
+  hover: {x: 1, y: 1, z: 1}
+  hoverDuration: 0.2
+  showPressed: 1
+  pressed: {x: 0.9, y: 0.9, z: 0.9}
+  pressedDuration: 0.2
 --- !u!1 &3654782021219989243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1406,7 @@ GameObject:
   - component: {fileID: 6932719809024689606}
   - component: {fileID: 4095232219089539356}
   - component: {fileID: 1300602356567595310}
+  - component: {fileID: 8396095763684275337}
   m_Layer: 0
   m_Name: Btn_StartGame
   m_TagString: Untagged
@@ -1451,7 +1492,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1476,6 +1517,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8396095763684275337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687215693940238039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 0}
+  showHover: 1
+  hover: {x: 1, y: 1, z: 1}
+  hoverDuration: 0.2
+  showPressed: 1
+  pressed: {x: 0.9, y: 0.9, z: 0.9}
+  pressedDuration: 0.2
 --- !u!1 &4847265811304338326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,6 +2873,7 @@ GameObject:
   - component: {fileID: 5984666583823476366}
   - component: {fileID: 107706102733065513}
   - component: {fileID: 4231562596532579287}
+  - component: {fileID: 4205882827016961628}
   m_Layer: 0
   m_Name: Btn_Bank
   m_TagString: Untagged
@@ -2899,7 +2960,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2924,6 +2985,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4205882827016961628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555822767876374594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 0}
+  showHover: 1
+  hover: {x: 1, y: 1, z: 1}
+  hoverDuration: 0.2
+  showPressed: 1
+  pressed: {x: 0.9, y: 0.9, z: 0.9}
+  pressedDuration: 0.2
 --- !u!1 &7697849893762862383
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,6 +3329,7 @@ GameObject:
   - component: {fileID: 3904679909332510842}
   - component: {fileID: 8802872460676359147}
   - component: {fileID: 2699382134775199260}
+  - component: {fileID: 2615505042481411736}
   m_Layer: 0
   m_Name: Btn_Setting
   m_TagString: Untagged
@@ -3334,7 +3415,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3359,6 +3440,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2615505042481411736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371931112508114746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 0}
+  showHover: 1
+  hover: {x: 1, y: 1, z: 1}
+  hoverDuration: 0.2
+  showPressed: 1
+  pressed: {x: 0.9, y: 0.9, z: 0.9}
+  pressedDuration: 0.2
 --- !u!1 &8384020048032649438
 GameObject:
   m_ObjectHideFlags: 0
