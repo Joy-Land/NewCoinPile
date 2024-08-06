@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2cf181becef54534cb743652a3ea03da, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2cf181becef54534cb743652a3ea03da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56d52a266909be41996ec52c12bc910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 4692881998261060710}
+  panelRenderer: {fileID: 4692881998261060710}
 --- !u!137 &4692881998261060710 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7960858496465009476, guid: 2cf181becef54534cb743652a3ea03da, type: 3}

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectConf:
     projectName: NewCoinPile
-    Appid: wxd192dcaf32738b8d
-    CDN: https://cdn.joylandstudios.com/CoinPileTest/webgl
+    Appid: wx83a1af3ddb0635da
+    CDN: https://cdn.joylandstudios.com/UnityTest/webgl
     assetLoadType: 0
     compressDataPackage: 1
     VideoUrl: 

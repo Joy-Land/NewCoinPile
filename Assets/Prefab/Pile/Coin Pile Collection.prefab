@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8436ecd7acb468f4b94263cf43da822b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPanel: {fileID: 2565846852240032371, guid: 73608d4291d7a9148a0304b64e9ae5dd, type: 3}
 --- !u!114 &3796981410472664530
 MonoBehaviour:
   m_ObjectHideFlags: 0

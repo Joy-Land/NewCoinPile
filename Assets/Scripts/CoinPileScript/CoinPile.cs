@@ -249,6 +249,17 @@ namespace CoinPileScript
             return false;
         }
 
+        public Boolean CheckIsTopCoin(int coinElementIndex)
+        {
+            if (coinList.Count > 0)
+            {
+                var stackTop = coinList[0];
+                return stackTop.id == coinElementIndex;
+            }
+            
+            return false;
+        }
+
         public void OnPointerClick(PointerEventData eventData)
         {
             // Debug.Log("Clicked");
@@ -289,6 +300,14 @@ namespace CoinPileScript
             
             // 判断是否被连线挡住了
             if (coinPileCollection != null && coinPileCollection.CheckCoinPileIsBlockByRope(this.gameObject, stackTop.id))
+            {
+                // 如果被挡住了，阻止进一步点击
+                pointLock = false;
+                return;
+            }
+            
+            // 判断是否被玻璃板挡住
+            if (coinPileCollection != null && coinPileCollection.CheckCoinPileIsBlockByPanel(this.gameObject, stackTop.id))
             {
                 // 如果被挡住了，阻止进一步点击
                 pointLock = false;
@@ -542,6 +561,12 @@ namespace CoinPileScript
                                     }
                                 }
                             }
+                        }
+                        
+                        // 检查是否需要破碎玻璃板
+                        if (coinPileCollection != null)
+                        {
+                            coinPileCollection.CheckCoinPileIfDestroyPanel(this.gameObject, stockTopItem.id);
                         }
                     }
 

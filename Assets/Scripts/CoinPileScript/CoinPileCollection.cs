@@ -292,5 +292,67 @@ namespace CoinPileScript
 
             return false;
         }
+
+        public Boolean CheckCoinPileIsBlockByPanel(GameObject coinGameObject, int coinGroupId)
+        {
+            if (coinPilePanelMap.TryGetValue(coinGameObject, out var coinPilePanelItemMap))
+            {
+                if (coinPilePanelItemMap.ContainsKey(coinGroupId))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void CheckCoinPileIfDestroyPanel(GameObject coinGameObject, int coinGroupId)
+        {
+            if (coinPilePanelMap.TryGetValue(coinGameObject, out var coinPilePanelItemMap))
+            {
+                if (coinPilePanelItemMap.TryGetValue(coinGroupId, out var coinPilePanelItem))
+                {
+                    var currentCoinPileIndex = coinPilePanelItem.CurrentCoinPileIndex;
+                    var destroyPanelFlag = true;
+                    foreach (var coinPanelItem in coinPilePanelItem.Data)
+                    {
+                        if (coinPanelItem.coinPileIndex != currentCoinPileIndex)
+                        {
+                            var coinPileComponent = coinGameObjectList[coinPanelItem.coinPileIndex]
+                                .GetComponent<CoinPile>();
+                            if (coinPileComponent != null)
+                            {
+                                if (!coinPileComponent.CheckIsTopCoin(coinPanelItem.coinElementIndex))
+                                {
+                                    // 只要有一个不是栈顶，就不能破坏
+                                    destroyPanelFlag = false;
+                                }
+                            }
+                        }
+                    }
+
+                    if (destroyPanelFlag)
+                    {
+                        // 销毁 coinPilePanelMap 中的状态
+                        foreach (var coinPanelItem in coinPilePanelItem.Data)
+                        {
+                            var coinPileGameObject = coinGameObjectList[coinPanelItem.coinPileIndex];
+                            if (coinPilePanelMap.TryGetValue(coinPileGameObject,
+                                    out var coinPilePanelItemMap0))
+                            {
+                                coinPilePanelItemMap0.Remove(coinPanelItem.coinElementIndex);
+
+                                if (coinPilePanelItemMap0.Count == 0)
+                                {
+                                    coinPilePanelMap.Remove(coinPileGameObject);
+                                }
+                            }
+                        }
+                        
+                        // 销毁 CoinPilePanelMesh 中的 Mesh
+                        coinPilePanelMesh.DestroyPanel(coinGameObjectList, coinPilePanelItem.Data);
+                    }
+                }
+            }
+        }
     }
 }
