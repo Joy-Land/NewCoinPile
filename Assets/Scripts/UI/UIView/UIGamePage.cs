@@ -48,8 +48,7 @@ public class UIGamePage : UIViewBase
         Txt_MagnetCount = transform.Find("Btn_Magnet/Img_MagnetCount/Txt_MagnetCount").GetComponent<Text>();
         Img_MagnetEmpty = transform.Find("Btn_Magnet/Img_MagnetCount/Img_MagnetEmpty").GetComponent<Image>();
 
-        Txt_MagnetCount = transform.Find("Btn_Magnet/Image/Txt_MagnetCount").GetComponent<Text>();
-        Img_MagnetEmpty = transform.Find("Btn_Magnet/Image/Img_MagnetEmpty").GetComponent<Image>();
+
         input = transform.Find("input").GetComponent<InputField>();
         Btn_xuanguan = transform.Find("Btn_xuanguan").GetComponent<Button>();
 
