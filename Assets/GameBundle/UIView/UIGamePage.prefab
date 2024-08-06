@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1126586707829621210}
   - component: {fileID: 57306173711734543}
   - component: {fileID: 7784517913810677619}
+  - component: {fileID: 3801901974729400212}
   m_Layer: 0
   m_Name: Btn_Bank
   m_TagString: Untagged
@@ -98,7 +99,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -123,6 +124,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3801901974729400212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20662881145098712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 0}
+  showHover: 1
+  hover: {x: 1, y: 1, z: 1}
+  hoverDuration: 0.2
+  showPressed: 1
+  pressed: {x: 0.9, y: 0.9, z: 0.9}
+  pressedDuration: 0.2
 --- !u!1 &36016149285946466
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +747,7 @@ GameObject:
   - component: {fileID: 7220969668476281151}
   - component: {fileID: 3682546210245042297}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Img_MagnetCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,6 +1233,7 @@ GameObject:
   - component: {fileID: 3233133117840117704}
   - component: {fileID: 156788269398938106}
   - component: {fileID: 5658358711769255198}
+  - component: {fileID: 1696190968970986421}
   m_Layer: 0
   m_Name: Btn_Setting
   m_TagString: Untagged
@@ -1298,7 +1319,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1323,6 +1344,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1696190968970986421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3817229070826750153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 0}
+  showHover: 1
+  hover: {x: 1, y: 1, z: 1}
+  hoverDuration: 0.2
+  showPressed: 1
+  pressed: {x: 0.9, y: 0.9, z: 0.9}
+  pressedDuration: 0.2
 --- !u!1 &3901314986790273307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,12 +1432,15 @@ MonoBehaviour:
   Btn_Setting: {fileID: 0}
   Btn_Bank: {fileID: 0}
   Btn_AddBox: {fileID: 0}
+  Img_AddBoxCount: {fileID: 0}
   Txt_AddBoxCount: {fileID: 0}
   Img_AddBoxEmpty: {fileID: 0}
   Btn_Clear: {fileID: 0}
+  Img_ClearCount: {fileID: 0}
   Txt_ClearCount: {fileID: 0}
   Img_ClearEmpty: {fileID: 0}
   Btn_Magnet: {fileID: 0}
+  Img_MagnetCount: {fileID: 0}
   Txt_MagnetCount: {fileID: 0}
   Img_MagnetEmpty: {fileID: 0}
   input: {fileID: 0}
@@ -1414,7 +1457,7 @@ GameObject:
   - component: {fileID: 7289410481798229968}
   - component: {fileID: 191862836279256269}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Img_AddBoxCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2212,7 +2255,7 @@ GameObject:
   - component: {fileID: 806956851314694808}
   - component: {fileID: 1123340608060103563}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Img_ClearCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

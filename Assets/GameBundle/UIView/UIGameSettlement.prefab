@@ -876,6 +876,7 @@ MonoBehaviour:
   Obj_Container: {fileID: 0}
   Obj_Success: {fileID: 0}
   Btn_Collect: {fileID: 0}
+  Obj_Txt_DescResult: {fileID: 0}
   Txt_Desc1: {fileID: 0}
   Txt_Desc2: {fileID: 0}
   Obj_Fail: {fileID: 0}
@@ -1877,6 +1878,7 @@ GameObject:
   - component: {fileID: 8818654968741688250}
   - component: {fileID: 2041843551826271424}
   - component: {fileID: 3408168423158532665}
+  - component: {fileID: 9203930299508537859}
   m_Layer: 0
   m_Name: Btn_Close
   m_TagString: Untagged
@@ -1962,7 +1964,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1987,6 +1989,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9203930299508537859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534791104026482894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fc561af1ff1e44fa955adf85eca2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 0}
+  showHover: 1
+  hover: {x: 1, y: 1, z: 1}
+  hoverDuration: 0.2
+  showPressed: 1
+  pressed: {x: 0.9, y: 0.9, z: 0.9}
+  pressedDuration: 0.2
 --- !u!1 &9113135858282218510
 GameObject:
   m_ObjectHideFlags: 0
