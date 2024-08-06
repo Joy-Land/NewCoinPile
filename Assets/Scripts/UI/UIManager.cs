@@ -112,10 +112,13 @@ namespace Joyland.GamePlay
         private GameObject m_SingleImageNode;
         private GameObject m_MultiImageNode;
 
+        public Camera UICamera;
+
         public void Init()
         {
             m_UIViewConfig = new Dictionary<int, UIViewConfig>();
             m_RootCanvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
+            UICamera = GameObject.Find("Canvas/UICamera")?.GetComponent<Camera>();
             if (m_RootCanvas == null)
             {
                 console.error("需要先确保UI根节点加载完成");

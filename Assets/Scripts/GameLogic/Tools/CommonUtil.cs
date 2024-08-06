@@ -25,6 +25,16 @@ namespace Joyland.GamePlay
             };
         }
 
+        public static void SetMaterialWithAsync(this UnityEngine.UI.Image image, string materialName, string packageName = "DefaultPackage")
+        {
+            var package = YooAsset.YooAssets.GetPackage(packageName);
+            package.LoadAssetAsync<Sprite>(materialName).Completed += (handle) =>
+            {
+                var target = handle.AssetObject as Material;
+                image.material = target;
+            };
+        }
+
         public static class Common
         {
             /// <summary>

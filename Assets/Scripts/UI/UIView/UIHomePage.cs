@@ -1,7 +1,9 @@
+using DG.Tweening;
 using Joyland.GamePlay;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ThinRL.Core;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,10 +28,14 @@ public class UIHomePage : UIViewBase
     public Button Btn_Setting;
     public Button Btn_Bank;
 
+    public Image Img_TestCoin;
     public Image Img_Cloud1;
     public Image Img_Cloud2;
 
+    public Image Img_Slot;
+    public RectTransform CoinsNode;
 
+    private List<Image> m_CoinsList;
     private List<Image> m_CloudList;
     public override void OnViewAwake(EventArgsPack args)
     {
@@ -45,19 +51,82 @@ public class UIHomePage : UIViewBase
         Btn_Collect = transform.Find("Btn_Collect").GetComponent<Button>();
         Btn_Setting = transform.Find("Btn_Setting").GetComponent<Button>();
         Btn_Bank = transform.Find("Btn_Bank").GetComponent<Button>();
+        
+        Img_Slot = transform.Find("Img_Bg/Image/AnimationNode/Img_Slot").GetComponent<Image>();
+        Img_TestCoin = transform.Find("Img_Bg/Img_TestCoin").GetComponent<Image>();
+        CoinsNode = transform.Find("Img_Bg/Image/AnimationNode/Img_Slot/CoinsNode").GetComponent<RectTransform>();
 
         Img_Bg.GetComponent<RectTransform>().offsetMin = -UIManager.Instance.FullOffset.offsetMin;
         Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
-        m_CloudList = new List<Image>();
-        m_CloudList.Add(Img_Cloud1);
-        m_CloudList.Add(Img_Cloud2);
+        m_CoinsList = CoinsNode.GetComponentsInChildren<Image>().ToList();
+
+        m_CloudList = new List<Image>
+        {
+            Img_Cloud1,
+            Img_Cloud2
+        };
     }
+
+    private Sequence m_AnimationSeq;
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
+
+        m_AnimationSeq = DOTween.Sequence();
+        //持续做动画硬币飞入的动画
+        var sP = RectTransformUtility.WorldToScreenPoint(UIManager.Instance.UICamera, Img_TestCoin.transform.position);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(Img_Slot.rectTransform, sP, UIManager.Instance.UICamera, out var pos);
+
+        console.error("len:", m_CoinsList.Count);
+        for (int i = 0; i < m_CoinsList.Count; i++)
+        {
+            Sequence s = DOTween.Sequence();
+
+            //定义一共2秒的 x 轴移动
+            s.Append(m_CoinsList[i].rectTransform.DOAnchorPosX(pos.x, 1.3f).SetEase(Ease.InSine));
+
+            //s.Insert(0, m_CoinsList[i].transform.DOScale(1.15f, 0.6f).SetEase(Ease.OutCubic));
+            //s.Insert(0.6f, m_CoinsList[i].transform.DOScale(0.75f, 0.5f).SetEase(Ease.InCubic));
+
+            s.Insert(0, m_CoinsList[i].rectTransform.DOAnchorPosY(pos.y, 1.3F).SetEase(Ease.OutCubic));
+            //定义0 - 1秒的 y 轴移动
+            //s.Insert(0, m_CoinsList[i].rectTransform.DOAnchorPosY(pos.y - 100, 0.6F).SetEase(Ease.OutCubic));
+
+
+            //下落 1 - 2秒的 y 轴移动
+            //s.Insert(0.6F, m_CoinsList[i].rectTransform.DOAnchorPosY(pos.y, 0.5F).SetEase(Ease.InCubic)).OnUpdate(() =>
+            //{
+            //});
+
+            //播放
+            //s.Play();
+            //该动画组的回调方法
+            s.OnComplete(() =>
+            {
+                //eff.SetActive(false);
+            });
+            s.SetDelay(i*0.1f);
+            m_AnimationSeq.Join(s);
+        }
+
+        m_AnimationSeq.Play();
     }
+
+    public Vector2 Parabola(Vector2 start, Vector2 end, float height, float t)
+    {
+        var mid = Vector2.Lerp(start, end, t);
+
+        return new Vector2(mid.x, fff(t, height) + Mathf.Lerp(start.y, end.y, t));
+    }
+
+    float fff(float x, float height)
+    {
+        return 4 * (-height * x * x + height * x);
+    }
+
+
     public override void OnViewUpdate()
     {
         base.OnViewUpdate();
@@ -73,6 +142,13 @@ public class UIHomePage : UIViewBase
             }
         }
 
+
+
+
+
+
+        //Img_House.rectTransform.position
+        //console.error(pos);
     }
     public override void OnViewUpdateBySecond()
     {

@@ -249,6 +249,81 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">HomeUI/img_boxbg.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>128,45,257,90</rect>
+                <key>scale9Paddings</key>
+                <rect>128,45,257,90</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">HomeUI/img_boxfront.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>128,45,257,89</rect>
+                <key>scale9Paddings</key>
+                <rect>128,45,257,89</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">HomeUI/img_coin1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,45,15,90</rect>
+                <key>scale9Paddings</key>
+                <rect>8,45,15,90</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">HomeUI/img_coin2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,45,46,91</rect>
+                <key>scale9Paddings</key>
+                <rect>23,45,46,91</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">HomeUI/img_coin3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>39,45,78,91</rect>
+                <key>scale9Paddings</key>
+                <rect>39,45,78,91</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">HomeUI/paihang.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

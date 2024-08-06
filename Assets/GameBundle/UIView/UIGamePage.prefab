@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 7220969668476281151}
   - component: {fileID: 3682546210245042297}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Img_MagnetCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: 7289410481798229968}
   - component: {fileID: 191862836279256269}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Img_AddBoxCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1780,7 +1780,7 @@ GameObject:
   - component: {fileID: 806956851314694808}
   - component: {fileID: 1123340608060103563}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Img_ClearCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
