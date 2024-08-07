@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1926
-        y: 928
+        y: 1952
         width: 95
         height: 95
       alignment: 0
@@ -147,8 +147,8 @@ TextureImporter:
       name: bulebttn
       rect:
         serializedVersion: 2
-        x: 469
-        y: 88
+        x: 1702
+        y: 1112
         width: 159
         height: 159
       alignment: 0
@@ -168,8 +168,8 @@ TextureImporter:
       name: greenbttn
       rect:
         serializedVersion: 2
-        x: 630
-        y: 88
+        x: 1519
+        y: 1010
         width: 159
         height: 159
       alignment: 0
@@ -189,8 +189,8 @@ TextureImporter:
       name: heiban
       rect:
         serializedVersion: 2
-        x: 843
-        y: 82
+        x: 1069
+        y: 816
         width: 448
         height: 455
       alignment: 0
@@ -210,8 +210,8 @@ TextureImporter:
       name: house
       rect:
         serializedVersion: 2
-        x: 1
-        y: 249
+        x: 1084
+        y: 1273
         width: 840
         height: 774
       alignment: 0
@@ -232,7 +232,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1926
-        y: 835
+        y: 1495
         width: 88
         height: 91
       alignment: 0
@@ -252,8 +252,8 @@ TextureImporter:
       name: shoucng
       rect:
         serializedVersion: 2
-        x: 469
-        y: 6
+        x: 1926
+        y: 1413
         width: 76
         height: 80
       alignment: 0
@@ -273,8 +273,8 @@ TextureImporter:
       name: tanmu
       rect:
         serializedVersion: 2
-        x: 1842
-        y: 437
+        x: 1519
+        y: 1171
         width: 181
         height: 100
       alignment: 0
@@ -294,8 +294,8 @@ TextureImporter:
       name: "\u4E91"
       rect:
         serializedVersion: 2
-        x: 1293
-        y: 257
+        x: 1
+        y: 1281
         width: 547
         height: 280
       alignment: 0
@@ -315,8 +315,8 @@ TextureImporter:
       name: "\u4F20\u9001\u5E26"
       rect:
         serializedVersion: 2
-        x: 843
-        y: 539
+        x: 1
+        y: 1563
         width: 1081
         height: 484
       alignment: 0
@@ -337,7 +337,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 21
+        y: 1053
         width: 466
         height: 226
       alignment: 0
@@ -349,6 +349,132 @@ TextureImporter:
       bones: []
       spriteID: 284a8628fed7a424994878346ab91394
       internalID: -189702290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img_boxbg
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1385
+        width: 517
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7e3459100c54647954e0eee2c95c29
+      internalID: 441841681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img_boxfront
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1209
+        width: 517
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d543f0e0cae1f8e40adfa390b65bc3a6
+      internalID: -916012266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img_coin1
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 1588
+        width: 92
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00cc2f05086a37a4993d2dfaf8774b2b
+      internalID: 783295050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img_coin2
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 1769
+        width: 92
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e23df0d17fe7a45b1ce41925c7fae9
+      internalID: -1106393232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img_coin3
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 931
+        width: 131
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ba1606a4a99534d9eb75062ddf19db
+      internalID: 1374245883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img_coin4
+      rect:
+        serializedVersion: 2
+        x: 1863
+        y: 1090
+        width: 156
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4544884bdddc1e44995c6703d4ec02e4
+      internalID: 1557767265
       vertices: []
       indices: 
       edges: []
@@ -370,6 +496,12 @@ TextureImporter:
       greenbttn: -29218891
       heiban: -1082377935
       house: 195548211
+      img_boxbg: 441841681
+      img_boxfront: -916012266
+      img_coin1: 783295050
+      img_coin2: -1106393232
+      img_coin3: 1374245883
+      img_coin4: 1557767265
       paihang: 727891308
       shoucng: -1714877606
       tanmu: -302908875

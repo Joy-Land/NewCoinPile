@@ -29,7 +29,11 @@ public class UIPopupItem : UIViewBase
     public Image Img_TryGetTypeIcon;
 
     private Dictionary<ItemID, (string icon, string desc)> panelConf = new Dictionary<ItemID, (string icon, string desc)>() {
-
+        {ItemID.AddSlot, ("","") },
+        {ItemID.ReviveGame, ("","") },
+        {ItemID.Magnet, ("","") },
+        {ItemID.PlayGame, ("","") },
+        {ItemID.Clear, ("","") },
     };
 
     private ItemID m_ItemID = 0;
@@ -121,6 +125,7 @@ public class UIPopupItem : UIViewBase
     }
 
 
+
     public void OnBtn_CloseClicked()
     {
         UIManager.Instance.CloseUI(UIViewID.UIPopupItem);
@@ -138,25 +143,30 @@ public class UIPopupItem : UIViewBase
                 {
                     GameConfig.Instance.SetItemData(resData);
                 });
+                EventManager.Instance.DispatchEvent(GameEventGlobalDefine.OnGetGameTools, null, new EventArgsPack(m_ItemID));
             });
         }
         else if(m_ItemCategroyDate.type == ItemCategoryID.Video)
         {
             UIManager.Instance.CloseUI(UIViewID.UIPopupItem);
-
+            EventManager.Instance.DispatchEvent(GameEventGlobalDefine.OnGetGameTools, null, new EventArgsPack(m_ItemID));
         }
         else if(m_ItemCategroyDate.type == ItemCategoryID.Default)
         {
             UIManager.Instance.CloseUI(UIViewID.UIPopupItem);
+            EventManager.Instance.DispatchEvent(GameEventGlobalDefine.OnGetGameTools, null, new EventArgsPack(m_ItemID));
         }
 
     }
+
+
 
     public void UnregistEvent()
     {
         Btn_Close.onClick.RemoveListener(OnBtn_CloseClicked);
         Btn_TryGetItem.onClick.RemoveListener(OnBtn_TryGetItemClicked);
 
+        
     }
 
 

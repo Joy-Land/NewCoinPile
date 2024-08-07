@@ -7,7 +7,9 @@ using System.Linq;
 using ThinRL.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using WeChatWASM;
 using YooAsset;
+using static Joyland.GamePlay.CommonUtil;
 
 public class UIHomePage : UIViewBase
 {
@@ -35,6 +37,7 @@ public class UIHomePage : UIViewBase
     public Image Img_Slot;
     public RectTransform CoinsNode;
 
+    private List<Vector2> m_CoinsPosList;
     private List<Image> m_CoinsList;
     private List<Image> m_CloudList;
     public override void OnViewAwake(EventArgsPack args)
@@ -60,7 +63,11 @@ public class UIHomePage : UIViewBase
         Img_Bg.GetComponent<RectTransform>().offsetMax = -UIManager.Instance.FullOffset.offsetMax;
 
         m_CoinsList = CoinsNode.GetComponentsInChildren<Image>().ToList();
-
+        m_CoinsPosList = new List<Vector2>();
+        for(int i = 0; i < m_CoinsList.Count; i++)
+        {
+            m_CoinsPosList.Add(m_CoinsList[i].rectTransform.anchoredPosition);
+        }
         m_CloudList = new List<Image>
         {
             Img_Cloud1,
@@ -69,28 +76,109 @@ public class UIHomePage : UIViewBase
     }
 
     private Sequence m_AnimationSeq;
+
+    private Sequence m_SlotSeq;
     public override void OnViewShow(EventArgsPack args)
     {
         base.OnViewShow(args);
         RegistEvent();
 
+        if(m_SlotSeq != null)
+        {
+            m_SlotSeq.Kill();
+            m_SlotSeq = null;
+        }
+        m_SlotSeq = DOTween.Sequence();
+        var startX = -UIManager.Instance.FullSizeDetail.x * 0.5f - 600;
+        var middleX = -100;
+        var endX = UIManager.Instance.FullSizeDetail.x * 0.5f + 600;
+        Img_Slot.rectTransform.anchoredPosition = new Vector2(startX, Img_Slot.rectTransform.anchoredPosition.y);
+
+
+        m_SlotSeq.Insert(0,Img_Slot.rectTransform.DOAnchorPosX(middleX, 0.8f).SetEase(Ease.OutBack).OnComplete(() =>
+        {
+            //console.error("fasfsfd");
+            DoCoinsAnima();
+        }));
+        //m_SlotSeq.SetDelay(5);
+        m_SlotSeq.Insert(3.5f, Img_Slot.rectTransform.DOAnchorPosX(endX, 0.8f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            ResetCoins();
+        }));
+
+        m_SlotSeq.SetLoops(-1);
+    }
+
+    void ResetCoins()
+    {
+        var len = m_CoinsList.Count;
+        for (int i = 0; i < len; i++)
+        {
+            var sp = m_CoinsList[i];
+            //显示硬币
+            sp.gameObject.SetActive(true);
+            //重置image
+            sp.SetImageWithAsync("ui_home", "img_coin1");
+            sp.SetNativeSize();
+            //重置位置
+            sp.rectTransform.anchoredPosition = m_CoinsPosList[i];
+        }
+
+
+    }
+
+    void DoCoinsAnima()
+    {
+        if (m_AnimationSeq != null)
+        {
+            m_AnimationSeq.Kill();
+            m_AnimationSeq = null;
+        }
         m_AnimationSeq = DOTween.Sequence();
         //持续做动画硬币飞入的动画
         var sP = RectTransformUtility.WorldToScreenPoint(UIManager.Instance.UICamera, Img_TestCoin.transform.position);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(Img_Slot.rectTransform, sP, UIManager.Instance.UICamera, out var pos);
 
-        console.error("len:", m_CoinsList.Count);
-        for (int i = 0; i < m_CoinsList.Count; i++)
+        var idx = 0;
+        for (int i = m_CoinsList.Count - 1; i >= 0; i--)
         {
             Sequence s = DOTween.Sequence();
+            //console.error(m_CoinsList[i].name);
 
+            var sp = m_CoinsList[i];
+            //sp.SetImageWithAsync("ui_home", "img_coin2");
             //定义一共2秒的 x 轴移动
-            s.Append(m_CoinsList[i].rectTransform.DOAnchorPosX(pos.x, 1.3f).SetEase(Ease.InSine));
+            s.Append(sp.rectTransform.DOAnchorPosX(pos.x, 0.9f).SetEase(Ease.InCubic).OnComplete(() =>
+            {
+                sp.gameObject.SetActive(false);
+            }));
 
-            //s.Insert(0, m_CoinsList[i].transform.DOScale(1.15f, 0.6f).SetEase(Ease.OutCubic));
-            //s.Insert(0.6f, m_CoinsList[i].transform.DOScale(0.75f, 0.5f).SetEase(Ease.InCubic));
+            s.Insert(0, m_CoinsList[i].transform.DOScale(1.05f, 0.4f).SetEase(Ease.Linear));
+            s.Insert(0.4f, m_CoinsList[i].transform.DOScale(0.65f, 0.4f).SetEase(Ease.Linear));
 
-            s.Insert(0, m_CoinsList[i].rectTransform.DOAnchorPosY(pos.y, 1.3F).SetEase(Ease.OutCubic));
+
+            //});
+            //console.error("xvzvzx", i, idx);
+            s.Insert(0, DOVirtual.Float(0, 1, 0.12f, (e) => { }).OnComplete(() =>
+            {
+                sp.SetImageWithAsync("ui_home", "img_coin2");
+                sp.SetNativeSize();
+                //console.error("Aaaa", i, sp.name);
+            }));
+            s.Insert(0.12f, DOVirtual.Float(0, 1, 0.18f, (e) => { }).OnComplete(() =>
+            {
+                sp.SetImageWithAsync("ui_home", "img_coin3");
+                sp.SetNativeSize();
+                //console.error("Aaaa", i, sp.name);
+            }));
+            s.Insert(0.3f, DOVirtual.Float(0, 1, 0.18f, (e) => { }).OnComplete(() =>
+            {
+                sp.SetImageWithAsync("ui_home", "img_coin4");
+                sp.SetNativeSize();
+                //console.error("Aaaa", i, sp.name);
+            }));
+
+            s.Insert(0, sp.rectTransform.DOAnchorPosY(pos.y, 0.9F).SetEase(Ease.OutCubic));
             //定义0 - 1秒的 y 轴移动
             //s.Insert(0, m_CoinsList[i].rectTransform.DOAnchorPosY(pos.y - 100, 0.6F).SetEase(Ease.OutCubic));
 
@@ -103,12 +191,9 @@ public class UIHomePage : UIViewBase
             //播放
             //s.Play();
             //该动画组的回调方法
-            s.OnComplete(() =>
-            {
-                //eff.SetActive(false);
-            });
-            s.SetDelay(i*0.1f);
+            s.SetDelay(idx * 0.1f);
             m_AnimationSeq.Join(s);
+            idx++;
         }
 
         m_AnimationSeq.Play();
@@ -143,7 +228,7 @@ public class UIHomePage : UIViewBase
         }
 
 
-
+        //Img_Slot.rectTransform.anchoredPosition = new Vector2(cloud.rectTransform.anchoredPosition.x + 15 * Time.deltaTime, cloud.rectTransform.anchoredPosition.y);
 
 
 
@@ -165,6 +250,16 @@ public class UIHomePage : UIViewBase
     {
         base.OnViewDestroy();
 
+        if (m_AnimationSeq != null)
+        {
+            m_AnimationSeq.Kill();
+            m_AnimationSeq = null;
+        }
+        if (m_SlotSeq != null)
+        {
+            m_SlotSeq.Kill();
+            m_SlotSeq = null;
+        }
     }
 
     public void RegistEvent()
@@ -175,14 +270,35 @@ public class UIHomePage : UIViewBase
         Btn_Setting.onClick.AddListener(OnBtn_SettingClicked);
         Btn_Bank.onClick.AddListener(OnBtn_BankClicked);
 
+
+        EventManager.Instance.AddEvent(GameEventGlobalDefine.OnGetGameTools, OnGetGetToolsEvent);
     }
 
     public RectTransform ss;
     public RectTransform ee;
 
-    public void OnBtn_StartGameClicked()
+
+    public void StartGame()
     {
         EventManager.Instance.DispatchEvent(GameEventGlobalDefine.EnterGamePage, null, null);
+    }
+
+    public void OnBtn_StartGameClicked()
+    {
+        (ItemCategoryID categoryID, int remainNumber) = GameConfig.GameItemManager.GetItemCategoryData(ItemID.PlayGame);
+        if (categoryID == ItemCategoryID.Default)
+        {
+            GameConfig.GameItemManager.UpdateItemCategoryData(ItemID.PlayGame, categoryID, -1);
+            J.ReqHelper.UpdateItemData((int)ItemID.PlayGame, (int)categoryID, 0, remainNumber - 1, (resData) =>
+            {
+                GameConfig.Instance.SetItemData(resData);
+            });
+            StartGame();
+        }
+        else
+        {
+            UIManager.Instance.OpenUI(UIViewID.UIPopupItem, new EventArgsPack(ItemID.PlayGame));
+        }
         //YooAssets.LoadAssetAsync("Effect_Appear").Completed += (handle) =>
         //{
         //    var p = handle.AssetObject;
@@ -218,6 +334,16 @@ public class UIHomePage : UIViewBase
         UIManager.Instance.OpenUI(UIViewID.UIBank);
     }
 
+    public void OnGetGetToolsEvent(object sender, EventArgsPack e)
+    {
+        var itemId = (ItemID)e.GetData<int>(0);
+
+        if (itemId == ItemID.PlayGame)
+        {
+            StartGame();
+        }
+    }
+
     public void UnregistEvent()
     {
         Btn_StartGame.onClick.RemoveListener(OnBtn_StartGameClicked);
@@ -226,6 +352,7 @@ public class UIHomePage : UIViewBase
         Btn_Setting.onClick.RemoveListener(OnBtn_SettingClicked);
         Btn_Bank.onClick.RemoveListener(OnBtn_BankClicked);
 
+        EventManager.Instance.RemoveEvent(GameEventGlobalDefine.OnGetGameTools, OnGetGetToolsEvent);
     }
 
 
