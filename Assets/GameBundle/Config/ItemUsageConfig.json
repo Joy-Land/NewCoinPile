@@ -1,7 +1,7 @@
 {
     "itemList": [
         {
-            "itemId": 5001,
+            "itemId": 1000,
             "itemName": "加牌道具",
             "defaultCount": 3,
             "currentCount": 3,
@@ -10,7 +10,7 @@
             "desc":""
         },
         {
-            "itemId": 5002,
+            "itemId": 1001,
             "itemName": "撤回道具",
             "defaultCount": 3,
             "currentCount": 0,
@@ -19,7 +19,7 @@
             "desc":"撤回最近的一张牌放到原位置"
         },
         {
-            "itemId": 5003,
+            "itemId": 1002,
             "itemName": "万能牌",
             "defaultCount": 1,
             "currentCount": 0,
@@ -28,13 +28,40 @@
             "desc":""
         },
         {
-            "itemId": 5004,
+            "itemId": 1003,
             "itemName": "洗牌",
             "defaultCount": 3,
             "currentCount": 0,
             "maxAcquireCount": 3,
             "currentAcquireCount": 0,
             "desc":"随机打乱所有未使用的牌"
+        },
+        {
+            "itemId": 1004,
+            "itemName": "移出",
+            "defaultCount": 1,
+            "currentCount": 0,
+            "maxAcquireCount": 1,
+            "currentAcquireCount": 0,
+            "desc":"将存牌区的牌放回牌堆"
+        },
+        {
+            "itemId": 1005,
+            "itemName": "复活",
+            "defaultCount": 1,
+            "currentCount": 0,
+            "maxAcquireCount": 3,
+            "currentAcquireCount": 0,
+            "desc":""
+        },
+        {
+            "itemId": 1006,
+            "itemName": "开始游戏",
+            "defaultCount": 1,
+            "currentCount": 0,
+            "maxAcquireCount": 1,
+            "currentAcquireCount": 0,
+            "desc":"来一条小命"
         }
     ]
-}
+    }

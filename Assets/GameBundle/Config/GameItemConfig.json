@@ -1,0 +1,59 @@
+{
+    "itemList": [
+        {
+            "itemId": 1000,
+            "itemName": "加牌道具",
+            "categoryList": [
+                {
+                    "categoryId": 1,
+                    "categoryName": "每日分享获得",
+                    "currentRemainedNumber": 3
+                }
+            ]
+        },
+        {
+            "itemId": 1001,
+            "itemName": "反悔道具",
+            "categoryList": [
+                {
+                    "categoryId": 1,
+                    "categoryName": "每日分享获得",
+                    "currentRemainedNumber": 3
+                }
+            ]
+        },
+        {
+            "itemId": 1002,
+            "itemName": "万能牌",
+            "categoryList": [
+                {
+                    "categoryId": 1,
+                    "categoryName": "每日分享获得",
+                    "currentRemainedNumber": 3
+                }
+            ]
+        },
+        {
+            "itemId": 1003,
+            "itemName": "洗牌",
+            "categoryList": [
+                {
+                    "categoryId": 1,
+                    "categoryName": "每日分享获得",
+                    "currentRemainedNumber": 300
+                }
+            ]
+        },
+        {
+            "itemId": 1004,
+            "itemName": "移除",
+            "categoryList": [
+                {
+                    "categoryId": 1,
+                    "categoryName": "每日分享获得",
+                    "currentRemainedNumber": 3
+                }
+            ]
+        }
+    ]
+    }

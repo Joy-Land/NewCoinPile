@@ -30,6 +30,17 @@ public class FsmPreloadingState : IStateNode
 
         AudioManager.Instance.LoadAudioConfig();
 
+        J.Minigame.OnGameShowGlobalEvent = (e) =>
+        {
+            AudioManager.Instance.ResumeBackgroundMusic();
+
+        };
+
+        J.Minigame.OnGameHideGlobalEvent = () =>
+        {
+            AudioManager.Instance.PauseBackgroundMusic();
+        };
+
         m_Machine.ChangeState<FsmStartGameState>();
     }  
 

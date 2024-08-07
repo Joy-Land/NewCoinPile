@@ -58,7 +58,7 @@ public class UIPopupItem : UIViewBase
 
         if (args.ArgsLength>0)
         {
-            m_ItemID = (ItemID)args.GetData<int>(0);
+            m_ItemID = args.GetData<ItemID>(0);
             m_ItemCategroyDate = GameConfig.GameItemManager.GetItemCategoryData(m_ItemID);
         }
     }

@@ -43,9 +43,10 @@ public class GameItemManager
     {
         var itemData = GetItemConfigData(id);
         var len = itemData.categroylist.Count;
+        var len = itemData.categorylist.Count;
         for (int i = 0; i < len; i++)
         {
-            var categroy = itemData.categroylist[i];
+            var categroy = itemData.categorylist[i];
             if (categroy.currentRemainedNumber > 0)
             {
                 if (categroy.categoryID == (int)ItemCategoryID.Default)
@@ -64,10 +65,10 @@ public class GameItemManager
     public void UpdateItemCategoryData(ItemID id, ItemCategoryID categoryID, int operationCount)
     {
         var itemData = GetItemConfigData(id);
-        var len = itemData.categroylist.Count;
+        var len = itemData.categorylist.Count;
         for (int i = 0; i < len; i++)
         {
-            var categroy = itemData.categroylist[i];
+            var categroy = itemData.categorylist[i];
             if (categroy.categoryID == (int)categoryID)
             {
                 categroy.currentRemainedNumber = categroy.currentRemainedNumber + operationCount;

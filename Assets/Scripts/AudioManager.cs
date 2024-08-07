@@ -224,14 +224,14 @@ namespace Joyland.GamePlay
 
         public void PauseBackgroundMusic()
         {
-            if (m_BackgroundAudioSource)
+            if (m_BackgroundAudioSource && m_BackgroundAudioSource.isPlaying)
             {
                 m_BackgroundAudioSource.Pause();
             }
         }
         public void ResumeBackgroundMusic()
         {
-            if (m_BackgroundAudioSource)
+            if (m_BackgroundAudioSource && m_BackgroundAudioSource.isPlaying)
             {
                 m_BackgroundAudioSource.UnPause();
             }

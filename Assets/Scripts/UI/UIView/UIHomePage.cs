@@ -336,7 +336,7 @@ public class UIHomePage : UIViewBase
 
     public void OnGetGetToolsEvent(object sender, EventArgsPack e)
     {
-        var itemId = (ItemID)e.GetData<int>(0);
+        var itemId = (ItemID)e.GetData<ItemID>(0);
 
         if (itemId == ItemID.PlayGame)
         {

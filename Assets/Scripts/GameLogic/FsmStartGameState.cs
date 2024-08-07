@@ -156,7 +156,7 @@ public class FsmStartGameState : IStateNode
         };
         await collect.ToUniTask();
 
-
+        //加载局内道具计数配置
         var itemUsage = YooAssets.LoadAssetAsync<TextAsset>("ItemUsageConfig");
         itemUsage.Completed += (handle) =>
         {
@@ -164,6 +164,15 @@ public class FsmStartGameState : IStateNode
             GameConfig.Instance.LoadLocalItemUsageConfig(res.text);
         };
         await itemUsage.ToUniTask();
+
+        //加载道具配置
+        var item = YooAssets.LoadAssetAsync<TextAsset>("GameItemConfig");
+        item.Completed += (handle) =>
+        {
+            var res = handle.AssetObject as TextAsset;
+            GameConfig.Instance.LoadLocalGameItemConfig(res.text);
+        };
+        await item.ToUniTask();
 
         //别的配置
     }

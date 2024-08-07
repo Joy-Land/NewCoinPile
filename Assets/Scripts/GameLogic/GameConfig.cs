@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameConfig.CollectConfigData;
 
 
 //using AllItemConfigDatasMapping = System.Collections.Generic.Dictionary<int, GameConfig.GameItemConfigData>;
@@ -13,7 +14,7 @@ public class GameConfig
     public class GameItemConfigData
     {
         public string itemName;
-        public List<(int categoryID, int currentRemainedNumber)> categroylist;
+        public List<(int categoryID, int currentRemainedNumber)> categorylist;
     }
 
     public class ItemUsageConfigData
@@ -42,6 +43,11 @@ public class GameConfig
             public string note;
         }
         public List<CollectItemConfigData> collect_item_list;
+    }
+
+    public class LocalGameItemConfigData
+    {
+        public List<ProtoItemDataStruct> itemList;
     }
 
     private static GameItemManager m_GameItemManager;
@@ -109,6 +115,14 @@ public class GameConfig
         m_LocalCollectManager = new LocalCollectConfig(json);
     }
 
+    //默认加载一份本地的，服务器拉下来会覆盖之，不会卡住进不去游戏
+    public void LoadLocalGameItemConfig(string json)
+    {
+        var conf = JsonConvert.DeserializeObject<LocalGameItemConfigData>(json);
+        console.error(conf, conf.itemList);
+        SetAllItemData(conf.itemList);
+    }
+
     public void LoadLocalItemUsageConfig(string json)
     {
         Dictionary<int, ItemUsageConfigData.GameItemUsageConfigData> allItemUsageConfigDatas = new Dictionary<int, ItemUsageConfigData.GameItemUsageConfigData>();
@@ -141,11 +155,11 @@ public class GameConfig
         for (int i = 0; i < len; i++)
         {
             var itemData = itemDataList[i];
-            var gConf = new GameItemConfigData() { itemName = itemData.itemName , categroylist = new List<(int categroyID, int currentRemainedNumber)>()};
+            var gConf = new GameItemConfigData() { itemName = itemData.itemName , categorylist = new List<(int categroyID, int currentRemainedNumber)>()};
             for (int j = 0; j < itemData.categoryList.Count; j++)
             {
                 var data = itemData.categoryList[j];
-                gConf.categroylist.Add(new ValueTuple<int,int>(data.categoryId, data.currentRemainedNumber));
+                gConf.categorylist.Add(new ValueTuple<int,int>(data.categoryId, data.currentRemainedNumber));
             }
             if(m_ServerAllItemConfigDatas.ContainsKey(itemData.itemId) == false)
             {
@@ -160,11 +174,11 @@ public class GameConfig
     {
         if (itemData == null)
             return;
-        var gConf = new GameItemConfigData() { itemName = itemData.itemName, categroylist = new List<(int categroyID, int currentRemainedNumber)>() };
+        var gConf = new GameItemConfigData() { itemName = itemData.itemName, categorylist = new List<(int categroyID, int currentRemainedNumber)>() };
         for (int j = 0; j < itemData.categoryList.Count; j++)
         {
             var data = itemData.categoryList[j];
-            gConf.categroylist.Add(new ValueTuple<int, int>(data.categoryId, data.currentRemainedNumber));
+            gConf.categorylist.Add(new ValueTuple<int, int>(data.categoryId, data.currentRemainedNumber));
         }
         if (m_ServerAllItemConfigDatas.ContainsKey(itemData.itemId) == false)
         {
