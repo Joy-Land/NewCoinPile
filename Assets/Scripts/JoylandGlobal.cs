@@ -75,6 +75,8 @@ namespace Joyland.GamePlay
         AddSlot = 1000,
         Clear = 1001,
         Magnet = 1002,
+        PlayGame = 1003,
+        ReviveGame = 1004,
     }
 
     [Preserve]
