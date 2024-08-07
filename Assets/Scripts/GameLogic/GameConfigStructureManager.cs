@@ -42,7 +42,6 @@ public class GameItemManager
     public (ItemCategoryID type, int remainNumber) GetItemCategoryData(ItemID id)
     {
         var itemData = GetItemConfigData(id);
-        var len = itemData.categroylist.Count;
         var len = itemData.categorylist.Count;
         for (int i = 0; i < len; i++)
         {
