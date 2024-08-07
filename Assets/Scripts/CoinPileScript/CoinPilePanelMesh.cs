@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,6 +60,21 @@ namespace CoinPileScript
                     }
                 }
             }
+        }
+
+        public Boolean GetPanelMesh(GameObject coinPileGameObject, int coinElementIndex,
+            out GameObject coinPanelGameObject)
+        {
+            if (coinPilePanelMap.TryGetValue(coinPileGameObject, out var coinPilePanelItemMap))
+            {
+                if (coinPilePanelItemMap.TryGetValue(coinElementIndex, out coinPanelGameObject))
+                {
+                    return true;
+                }
+            }
+
+            coinPanelGameObject = null;
+            return false;
         }
 
         public void DestroyPanel(List<GameObject> coinGameObjectList, List<CoinPanelItem> coinPanelItemList)

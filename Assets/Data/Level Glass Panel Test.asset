@@ -186,4 +186,8 @@ MonoBehaviour:
         position: {x: -3, y: -25, z: 0.81}
         color: 15
       coinPanelItemList:
-        data: []
+        data:
+        - coinPileIndex: 5
+          coinElementIndex: 1
+        - coinPileIndex: 6
+          coinElementIndex: 1

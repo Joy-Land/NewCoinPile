@@ -8,6 +8,7 @@ namespace CoinPileScript
         public int id;
         public CoinColor color;
         public int number;
+        public Boolean isPoping;
         public Boolean isHidden;
         public int frozenNumber;
         public Boolean isShutter;

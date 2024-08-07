@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1670866361
+CRC: 3678040532
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bd1418c63e0cfddc4c9c6fbba63c4ca4
+    Hash: 3cf436a13c98e4cef18873e6861d65ac
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0f5e2fb7f80e73ee1148205d378c2511
@@ -19,6 +19,7 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/GameBundle/Shader/Custom_UIGray.shader
 - Assets/VFX_Klaus/Shaders/Fx_GrabThatSeries_Particle.shadergraph
 - Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/ShaderVariants/MyShaderVariants.shadervariants
 - Assets/Samples/YooAsset/2.1.2/Space Shooter/GameArt/Shader/StandardMobile.shader

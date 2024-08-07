@@ -6,12 +6,6 @@ using Manager;
 
 namespace CoinPileScript
 {
-    class CoinPilePanelItem
-    {
-        public List<CoinPanelItem> Data;
-        public int CurrentCoinPileIndex;
-    }
-    
     public class CoinPileCollection : MonoBehaviour
     {
         [SerializeField] private GameObject coinPilePrefab;
@@ -19,7 +13,7 @@ namespace CoinPileScript
         // 状态
         private List<GameObject> coinGameObjectList = new List<GameObject>();
         private Dictionary<GameObject, CoinPileRopeItem> coinPileRopeMap;
-        private Dictionary<GameObject, Dictionary<int, CoinPilePanelItem>> coinPilePanelMap;
+        private Dictionary<GameObject, Dictionary<int, List<CoinPanelItem>>> coinPilePanelMap;
         
         // 组件
         private CoinPileRopeMesh coinPileRopeMesh;
@@ -106,7 +100,7 @@ namespace CoinPileScript
             }
             
             // 初始化钱币玻璃挡板状态
-            coinPilePanelMap = new Dictionary<GameObject, Dictionary<int, CoinPilePanelItem>>();
+            coinPilePanelMap = new Dictionary<GameObject, Dictionary<int, List<CoinPanelItem>>>();
             foreach (var coinPilePanelData in coinPilePanelList.data)
             {
                 foreach (var coinPanelItem in coinPilePanelData.coinPanelItemList.data)
@@ -118,16 +112,12 @@ namespace CoinPileScript
                         {
                             if (!coinPilePanelMap.ContainsKey(coinPileGameObject))
                             {
-                                coinPilePanelMap.Add(coinPileGameObject, new Dictionary<int, CoinPilePanelItem>());
+                                coinPilePanelMap.Add(coinPileGameObject, new Dictionary<int, List<CoinPanelItem>>());
                             }
 
                             if (coinPilePanelMap.TryGetValue(coinPileGameObject, out var coinPilePanelItemMap))
                             {
-                                coinPilePanelItemMap.Add(coinPanelItem.coinElementIndex, new CoinPilePanelItem()
-                                {
-                                    CurrentCoinPileIndex = coinPanelItem.coinPileIndex,
-                                    Data = coinPilePanelData.coinPanelItemList.data,
-                                });
+                                coinPilePanelItemMap.Add(coinPanelItem.coinElementIndex, coinPilePanelData.coinPanelItemList.data);
                             }
                         }
                     }
@@ -309,23 +299,18 @@ namespace CoinPileScript
         {
             if (coinPilePanelMap.TryGetValue(coinGameObject, out var coinPilePanelItemMap))
             {
-                if (coinPilePanelItemMap.TryGetValue(coinGroupId, out var coinPilePanelItem))
+                if (coinPilePanelItemMap.TryGetValue(coinGroupId, out var coinPanelItemList))
                 {
-                    var currentCoinPileIndex = coinPilePanelItem.CurrentCoinPileIndex;
                     var destroyPanelFlag = true;
-                    foreach (var coinPanelItem in coinPilePanelItem.Data)
+                    foreach (var coinPanelItem in coinPanelItemList)
                     {
-                        if (coinPanelItem.coinPileIndex != currentCoinPileIndex)
+                        var coinPileComponent = coinGameObjectList[coinPanelItem.coinPileIndex].GetComponent<CoinPile>();
+                        if (coinPileComponent != null)
                         {
-                            var coinPileComponent = coinGameObjectList[coinPanelItem.coinPileIndex]
-                                .GetComponent<CoinPile>();
-                            if (coinPileComponent != null)
+                            if (!coinPileComponent.CheckIsTopCoin(coinPanelItem.coinElementIndex))
                             {
-                                if (!coinPileComponent.CheckIsTopCoin(coinPanelItem.coinElementIndex))
-                                {
-                                    // 只要有一个不是栈顶，就不能破坏
-                                    destroyPanelFlag = false;
-                                }
+                                // 只要有一个不是栈顶，就不能破坏
+                                destroyPanelFlag = false;
                             }
                         }
                     }
@@ -333,7 +318,7 @@ namespace CoinPileScript
                     if (destroyPanelFlag)
                     {
                         // 销毁 coinPilePanelMap 中的状态
-                        foreach (var coinPanelItem in coinPilePanelItem.Data)
+                        foreach (var coinPanelItem in coinPanelItemList)
                         {
                             var coinPileGameObject = coinGameObjectList[coinPanelItem.coinPileIndex];
                             if (coinPilePanelMap.TryGetValue(coinPileGameObject,
@@ -349,7 +334,13 @@ namespace CoinPileScript
                         }
                         
                         // 销毁 CoinPilePanelMesh 中的 Mesh
-                        coinPilePanelMesh.DestroyPanel(coinGameObjectList, coinPilePanelItem.Data);
+                        if (coinPilePanelMesh.GetPanelMesh(coinGameObject, coinGroupId, out var coinPanelMesh))
+                        {
+                            coinPilePanelAnim.ShatterPanel(coinPanelMesh, () =>
+                            {
+                                coinPilePanelMesh.DestroyPanel(coinGameObjectList, coinPanelItemList);
+                            });
+                        }
                     }
                 }
             }

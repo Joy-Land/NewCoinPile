@@ -1,18 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinPilePanelAnim : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void ShatterPanel(GameObject coinPanelGameObject, Action onComplete)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (onComplete != null)
+        {
+            onComplete();
+        }
     }
 }

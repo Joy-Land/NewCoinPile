@@ -51,6 +51,7 @@ namespace CoinPileScript
                     id = i,
                     color = coinData.color,
                     number = coinData.number,
+                    isPoping = false,
                     isHidden = coinData.isHidden,
                     frozenNumber = coinData.isFrozen ? 3 : 0,
                     isShutter = coinData.isShutter,
@@ -253,8 +254,13 @@ namespace CoinPileScript
         {
             if (coinList.Count > 0)
             {
-                var stackTop = coinList[0];
-                return stackTop.id == coinElementIndex;
+                foreach (var stackTop in coinList)
+                {
+                    if (!stackTop.isPoping)
+                    {
+                        return stackTop.id == coinElementIndex;
+                    }
+                }
             }
             
             return false;
@@ -365,6 +371,7 @@ namespace CoinPileScript
                             id = stackTop.id,
                             color = stackTop.color,
                             number = stackTop.number - transPileFreeNumber,
+                            isPoping = false,
                             isHidden = stackTop.isHidden,
                             frozenNumber = stackTop.frozenNumber,
                             isShutter = stackTop.isShutter,
@@ -436,6 +443,7 @@ namespace CoinPileScript
                             id = stackTop.id,
                             color = stackTop.color,
                             number = stackTop.number - cachePileFreeNumber,
+                            isPoping = true,
                             isHidden = stackTop.isHidden,
                             frozenNumber = stackTop.frozenNumber,
                             isShutter = stackTop.isShutter,
@@ -469,6 +477,9 @@ namespace CoinPileScript
             // 播放动画
             if (coinTransNumberList.Count != 0 && destGoList.Count != 0 && destStartIndexList.Count != 0 && onCompleteList.Count != 0)
             {
+                // 在播放动画之前，需要修改栈顶金币状态
+                stackTop.isPoping = true;
+                
                 coinPileTransAnim.TransferCoins(coinTransNumberList, coinGoList, destGoList, destStartIndexList, onCompleteList, () =>
                 {
                     // Debug.Log("Complete");
@@ -612,6 +623,7 @@ namespace CoinPileScript
                         id = stackTop.id,
                         color = stackTop.color,
                         number = stackTop.number,
+                        isPoping = stackTop.isPoping,
                         isHidden = stackTop.isHidden,
                         frozenNumber = newFrozenNumber,
                         isShutter = stackTop.isShutter,
@@ -672,6 +684,7 @@ namespace CoinPileScript
                                 id = coin.id,
                                 color = coin.color,
                                 number = coin.number,
+                                isPoping = coin.isPoping,
                                 isHidden = coin.isHidden,
                                 frozenNumber = coin.frozenNumber,
                                 isShutter = coin.isShutter,

@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 923091349
+CRC: 987417706
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -95,8 +95,9 @@ AssetBundleManifest:
     Info_22:
       Name: assets_gamebundle_effect.bundle
       Dependencies:
-        Dependency_0: share_assets_vfx_klaus_meshes.bundle
-        Dependency_1: share_assets_vfx_klaus_materials.bundle
+        Dependency_0: unityshaders.bundle
+        Dependency_1: share_assets_vfx_klaus_meshes.bundle
+        Dependency_2: share_assets_vfx_klaus_materials.bundle
     Info_23:
       Name: assets_gamebundle_uicomp.bundle
       Dependencies:
