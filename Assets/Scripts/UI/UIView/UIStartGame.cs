@@ -79,6 +79,11 @@ public class UIStartGame : UIViewBase
         base.OnViewShow(args);
         RegistEvent();
 
+        if(m_AnimationSeq != null)
+        {
+            m_AnimationSeq.Kill();
+            m_AnimationSeq = null;
+        }
         m_AnimationSeq = DOTween.Sequence();
 
         m_AnimationSeq.Append(DOTween.To(setter: value =>
@@ -123,8 +128,9 @@ public class UIStartGame : UIViewBase
         {
             cb?.Invoke();
         });
+        mySequence.SetLink(this.gameObject);
         // 开始播放动画
-        mySequence.Play();
+        //mySequence.Play();
     }
 
 
@@ -165,6 +171,11 @@ public class UIStartGame : UIViewBase
     {
         base.OnViewDestroy();
 
+        if (m_AnimationSeq != null)
+        {
+            m_AnimationSeq.Kill();
+            m_AnimationSeq = null;
+        }
     }
 
     public void RegistEvent()
