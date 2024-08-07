@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2512169392
+CRC: 1959142039
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1a5c5a4895c01180620e6e25b07e76c9
+    Hash: 451d8d6ba62895e1531fa7be79f8dd57
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -13,6 +13,7 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/GameBundle/Config/GameItemConfig.json
 - Assets/GameBundle/Config/CollectConfig.json
 - Assets/GameBundle/Config/ItemUsageConfig.json
 - Assets/GameBundle/Config/CopyWriteConfig.json

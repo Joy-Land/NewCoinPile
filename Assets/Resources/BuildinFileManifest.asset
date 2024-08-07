@@ -20,23 +20,23 @@ MonoBehaviour:
     FileName: assets_gamebundle_atlas_uigame_62154e269c255192b63d3b97b43feaec.bundle
     FileCRC32: e3753bf3
   - PackageName: DefaultPackage
-    FileName: assets_gamebundle_atlas_uihome_91ea381cd7a64a664a2044ba6f9d074a.bundle
-    FileCRC32: 789fcca5
+    FileName: assets_gamebundle_atlas_uihome_fce1f68bc666bbd702f121dbb376cd8d.bundle
+    FileCRC32: 1656197d
   - PackageName: DefaultPackage
     FileName: assets_gamebundle_atlas_uitools_fd8b6c84cf3c8d96948a5feb29d7ce9e.bundle
     FileCRC32: 9019a786
   - PackageName: DefaultPackage
-    FileName: assets_gamebundle_config_c0f1c4788e5357da06d389a0a679f615.bundle
-    FileCRC32: ed3920a7
+    FileName: assets_gamebundle_config_36cdcc89f8842ffbcca4305de7e517ca.bundle
+    FileCRC32: 381599f6
   - PackageName: DefaultPackage
-    FileName: assets_gamebundle_effect_d3c51c4a085d98662bc136e7916eac89.bundle
-    FileCRC32: f7889702
+    FileName: assets_gamebundle_effect_59c2e6fad365e6322053dbe580e5da85.bundle
+    FileCRC32: f5c2da80
   - PackageName: DefaultPackage
     FileName: assets_gamebundle_uicomp_3023162a974856ad715063d6a7dea3ff.bundle
     FileCRC32: 7a5474c6
   - PackageName: DefaultPackage
-    FileName: assets_gamebundle_uiview_e755d18ae991328ea35bf4909b37cfb2.bundle
-    FileCRC32: 875e81a6
+    FileName: assets_gamebundle_uiview_c6fd319c03192538106ccb2f9e92d75c.bundle
+    FileCRC32: 69d8908b
   - PackageName: DefaultPackage
     FileName: assets_samples_yooasset_2_1_2_space_shooter_gameres_audio_43c4ba5a67ddd1322eae97cd3b1fb0dd.bundle
     FileCRC32: 1bf4f9b8
@@ -143,5 +143,5 @@ MonoBehaviour:
     FileName: share_packages_com_unity_render-pipelines_universal_runtime_materials_d1fd388f76d5691f8978c2afd41a9d86.bundle
     FileCRC32: e2f43c8e
   - PackageName: DefaultPackage
-    FileName: unityshaders_ee0c6728bf5a4c5c497279aaad95460a.bundle
-    FileCRC32: 004209c2
+    FileName: unityshaders_635bfc2a3317966c7aeb087a29c447e1.bundle
+    FileCRC32: 23bd36c4
