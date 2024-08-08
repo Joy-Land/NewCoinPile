@@ -14,20 +14,20 @@ namespace CoinPileScript
 
         public void Init(List<GameObject> coinGameObjectList, List<CoinPilePanelData> coinPilePanelItemList)
         {
-            foreach (var coinPilePanelItem in coinPilePanelItemList)
+            // 销毁上一次的状态
+            if (coinPilePanelMap != null)
             {
-                // 销毁上一次的状态
-                if (coinPilePanelMap != null)
+                foreach (var coinPanelMap in coinPilePanelMap.Values)
                 {
-                    foreach (var coinPilePanelItemMap in coinPilePanelMap.Values)
+                    foreach (var coinPanelGameObject in coinPanelMap.Values)
                     {
-                        foreach (var coinPanelItem in coinPilePanelItemMap.Values)
-                        {
-                            Destroy(coinPanelItem);
-                        }
+                        Destroy(coinPanelGameObject);
                     }
                 }
-                
+            }
+            
+            foreach (var coinPilePanelItem in coinPilePanelItemList)
+            {
                 // 生成 coinPanel 
                 var coinPanelGameObject = Instantiate(coinPanel, this.transform);
                 coinPanelGameObject.transform.localPosition = coinPilePanelItem.coinPanelMesh.position;
