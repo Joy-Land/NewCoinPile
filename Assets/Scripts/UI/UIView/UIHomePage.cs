@@ -97,10 +97,8 @@ public class UIHomePage : UIViewBase
 
         m_SlotSeq.Insert(0,Img_Slot.rectTransform.DOAnchorPosX(middleX, 0.8f).SetEase(Ease.OutBack).OnComplete(() =>
         {
-            //console.error("fasfsfd");
             DoCoinsAnima();
         }));
-        //m_SlotSeq.SetDelay(5);
         m_SlotSeq.Insert(3.5f, Img_Slot.rectTransform.DOAnchorPosX(endX, 0.8f).SetEase(Ease.InBack).OnComplete(() =>
         {
             ResetCoins();
@@ -146,7 +144,6 @@ public class UIHomePage : UIViewBase
             //console.error(m_CoinsList[i].name);
 
             var sp = m_CoinsList[i];
-            //sp.SetImageWithAsync("ui_home", "img_coin2");
             //定义一共2秒的 x 轴移动
             s.Append(sp.rectTransform.DOAnchorPosX(pos.x, 0.9f).SetEase(Ease.InCubic).OnComplete(() =>
             {
@@ -157,25 +154,21 @@ public class UIHomePage : UIViewBase
             s.Insert(0.4f, m_CoinsList[i].transform.DOScale(0.65f, 0.4f).SetEase(Ease.Linear));
 
 
-            //});
-            //console.error("xvzvzx", i, idx);
+
             s.Insert(0, DOVirtual.Float(0, 1, 0.12f, (e) => { }).OnComplete(() =>
             {
                 sp.SetImageWithAsync("ui_home", "img_coin2");
                 sp.SetNativeSize();
-                //console.error("Aaaa", i, sp.name);
             }));
             s.Insert(0.12f, DOVirtual.Float(0, 1, 0.18f, (e) => { }).OnComplete(() =>
             {
                 sp.SetImageWithAsync("ui_home", "img_coin3");
                 sp.SetNativeSize();
-                //console.error("Aaaa", i, sp.name);
             }));
             s.Insert(0.3f, DOVirtual.Float(0, 1, 0.18f, (e) => { }).OnComplete(() =>
             {
                 sp.SetImageWithAsync("ui_home", "img_coin4");
                 sp.SetNativeSize();
-                //console.error("Aaaa", i, sp.name);
             }));
 
             s.Insert(0, sp.rectTransform.DOAnchorPosY(pos.y, 0.9F).SetEase(Ease.OutCubic));
@@ -227,13 +220,6 @@ public class UIHomePage : UIViewBase
             }
         }
 
-
-        //Img_Slot.rectTransform.anchoredPosition = new Vector2(cloud.rectTransform.anchoredPosition.x + 15 * Time.deltaTime, cloud.rectTransform.anchoredPosition.y);
-
-
-
-        //Img_House.rectTransform.position
-        //console.error(pos);
     }
     public override void OnViewUpdateBySecond()
     {
