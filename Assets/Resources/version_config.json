@@ -1,8 +1,8 @@
 {
     "debug":{
-        "cdn":"https://cdn.joylandstudios.com/UnityTest/webgl/StreamingAssets/yoo/DefaultPackage"
+        "cdn":"https://cdn.joylandstudios.com/CoinPileTest/webgl/StreamingAssets/yoo/DefaultPackage"
     },
     "release":{
-        "cdn":""
+        "cdn":"https://cdn.joylandstudios.com/CoinPile/webgl/StreamingAssets/yoo/DefaultPackage"
     }
 }

@@ -30,7 +30,7 @@ public class AdjustCamera_Orth : MonoBehaviour
         //camera.orthographicSize = 1080.0f / 1920.0f;
 
         //m_bgScaleSize = new Vector2()
-        targetWidth = Screen.width / 100.0f ;
+        targetWidth = 920 / 100.0f ;
 
 
 
