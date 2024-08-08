@@ -10,6 +10,9 @@ namespace CoinPileScript
 {
     public class CoinPileIceAnim : MonoBehaviour
     {
+        [SerializeField] private GameObject vfxMeltIce;
+        private readonly float vfxDuration = 1.8f;
+        
         private float shakeDuration = 1.0f;
         private Vector3 shakeStrength = new Vector3(0.06f, 0.06f, 0.0f);
         private int shakeNumber = 10;
@@ -20,7 +23,14 @@ namespace CoinPileScript
             CoinIce coinIce = coinIceGameObject.GetComponent<CoinIce>();
             if (coinIce != null)
             {
-                // TODO: 播放冰破碎的效果动画
+                if (vfxMeltIce != null)
+                {
+                    var vfxGameObject = Instantiate(vfxMeltIce);
+                    vfxGameObject.transform.position = coinIceGameObject.transform.position;
+                    
+                    Destroy(vfxGameObject, vfxDuration);
+                }
+                
                 coinIce.SetActiveStatus(status);
             }
 

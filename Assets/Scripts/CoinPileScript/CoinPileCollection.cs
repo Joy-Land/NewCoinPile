@@ -267,9 +267,9 @@ namespace CoinPileScript
                                     coinPileRopeItem.srcCoinElementIndex, false);
                             }
                             
-                            coinPileRopeAnim.TearOffRope(ropeMesh, () =>
+                            coinPileRopeMesh.DestroyRopeMesh(srcCoinGameObject, destCoinGameObject);
+                            coinPileRopeAnim.TearOffRope(srcCoinGameObject, destCoinGameObject, () =>
                             {
-                                coinPileRopeMesh.DestroyRopeMesh(srcCoinGameObject, destCoinGameObject);
                                 if (destCoinPileComponent != null)
                                 {
                                     destCoinPileComponent.OnPointerClick(null);
@@ -336,10 +336,8 @@ namespace CoinPileScript
                         // 销毁 CoinPilePanelMesh 中的 Mesh
                         if (coinPilePanelMesh.GetPanelMesh(coinGameObject, coinGroupId, out var coinPanelMesh))
                         {
-                            coinPilePanelAnim.ShatterPanel(coinPanelMesh, () =>
-                            {
-                                coinPilePanelMesh.DestroyPanel(coinGameObjectList, coinPanelItemList);
-                            });
+                            coinPilePanelMesh.DestroyPanel(coinGameObjectList, coinPanelItemList);
+                            coinPilePanelAnim.ShatterPanel(coinPanelItemList, coinGameObjectList, coinPanelMesh);
                         }
                     }
                 }

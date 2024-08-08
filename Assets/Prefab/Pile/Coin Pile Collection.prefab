@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df94f87f754bf9a4fbb47c5c8f0f37b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfxTearRope: {fileID: 8744081729688740685, guid: 290cb7281c83c9f4fb6035fe9346bbf8, type: 3}
 --- !u!114 &5461815289658592975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,3 +100,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6f7edef8e660f4ea908d65ac0a4172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfxShatterPanel: {fileID: 5198165461883566848, guid: 811433c97d00d4945a22ed9881e99217, type: 3}

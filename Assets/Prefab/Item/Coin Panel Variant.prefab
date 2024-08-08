@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2cf181becef54534cb743652a3ea03da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2cf181becef54534cb743652a3ea03da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -6.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2cf181becef54534cb743652a3ea03da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7960858496465009476, guid: 2cf181becef54534cb743652a3ea03da, type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[1]
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7960858496465009476, guid: 2cf181becef54534cb743652a3ea03da, type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[2]
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelRenderer: {fileID: 4692881998261060710}
+  vfxShatter: {fileID: 0}
 --- !u!137 &4692881998261060710 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7960858496465009476, guid: 2cf181becef54534cb743652a3ea03da, type: 3}

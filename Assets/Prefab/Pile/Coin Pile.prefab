@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ae6ffcbc6e5f74a9b16cd35a20fb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfxMeltIce: {fileID: 5146328290080256322, guid: 91bb21d8e3e00574e97a2e03206e9de2, type: 3}
 --- !u!114 &1284710190301970291
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ namespace CoinPileScript
 {
     public class CoinPileRopeAnim : MonoBehaviour
     {
+        [SerializeField] private GameObject vfxTearRope;
+        private readonly float vfxDuration = 1.3f;
+        
         private readonly float flashDest = 0.2f;
         private readonly float flashDuration = 0.6f;
         private readonly int flashNum = 10;
@@ -38,11 +41,21 @@ namespace CoinPileScript
                 });
         }
 
-        public void TearOffRope(GameObject coinRopeGameObject, Action onComplete)
+        public void TearOffRope(GameObject srcCoinGameObject, GameObject destCoinGameObject, Action onComplete)
         {
+            if (vfxTearRope != null)
+            {
+                var postion = srcCoinGameObject.transform.position + destCoinGameObject.transform.position;
+                postion /= 2.0f;
+                
+                var vfxGameObject = Instantiate(vfxTearRope);
+                vfxGameObject.transform.position = postion;
+                    
+                Destroy(vfxGameObject, vfxDuration);
+            }
+            
             var sequence = DOTween.Sequence();
-
-            sequence.InsertCallback(0.05f, () =>
+            sequence.InsertCallback(0.2f, () =>
             {
                 if (onComplete != null)
                 {
