@@ -38,7 +38,7 @@ public class ButtonScale : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             if (!_mStarted) Start();
             Vector3 endValue = isPressed ? Vector3.Scale(_mScale, pressed) : (EventSystem.current.currentSelectedGameObject == gameObject ? Vector3.Scale(_mScale, hover) : _mScale);
-            tweenTarget.DOScale(endValue, pressedDuration).SetEase(Ease.InOutQuad);
+            tweenTarget.DOScale(endValue, pressedDuration).SetEase(Ease.InOutQuad).SetLink(this.gameObject);
         }
     }
 
@@ -48,7 +48,7 @@ public class ButtonScale : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             if (!_mStarted) Start();
             Vector3 endValue = isOver ? Vector3.Scale(_mScale, hover) : _mScale;
-            tweenTarget.DOScale(endValue, hoverDuration).SetEase(Ease.InOutQuad);
+            tweenTarget.DOScale(endValue, hoverDuration).SetEase(Ease.InOutQuad).SetLink(this.gameObject);
         }
     }
 
